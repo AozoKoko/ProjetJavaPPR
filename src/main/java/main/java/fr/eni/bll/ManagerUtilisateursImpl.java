@@ -14,7 +14,13 @@ public class ManagerUtilisateursImpl implements ManagerUtilisateurs {
 	    public ManagerUtilisateursImpl() {
 	        daoUtilisateurs = DAOFactory.getDaoUtilisateurs();
 	    }
-
+	    
+		@Override
+		public Utilisateur insert(Utilisateur user) throws BLLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
 		@Override
 		public List<Utilisateur> selectAll() throws BLLException {
 			// TODO Auto-generated method stub
@@ -28,8 +34,10 @@ public class ManagerUtilisateursImpl implements ManagerUtilisateurs {
 		}
 
 		@Override
-		public Utilisateur getUser(String pseudo, String motDePasse) throws DALException, BLLException {
+		public Utilisateur verifLogin(String pseudo, String motDePasse) throws DALException, BLLException {
 			// TODO Auto-generated method stub
 			return null;
 		}
+
+
 }

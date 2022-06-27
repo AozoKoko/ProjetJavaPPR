@@ -7,8 +7,9 @@ import main.java.fr.eni.dal.DALException;
 
 public interface ManagerUtilisateurs {
 
-	 List<Utilisateur> selectAll() throws BLLException;
-	 Utilisateur selectById(Integer id) throws DALException, BLLException;
-	 Utilisateur getUser(String pseudo, String motDePasse) throws DALException, BLLException;
+	Utilisateur insert (Utilisateur user) throws BLLException;
+	List<Utilisateur> selectAll() throws BLLException;
+	Utilisateur selectById(Integer id) throws DALException, BLLException;
+	Utilisateur verifLogin(String pseudo, String motDePasse) throws DALException, BLLException;
 
 }

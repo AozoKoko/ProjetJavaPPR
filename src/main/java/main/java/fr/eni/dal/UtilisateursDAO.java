@@ -6,8 +6,8 @@ import main.java.fr.eni.bll.BLLException;
 import main.java.fr.eni.bo.Utilisateur;
 
 public interface UtilisateursDAO {
-	 List<Utilisateur> selectAll() throws BLLException;
-	 Utilisateur selectById(Integer id) throws DALException, BLLException;
-	 Utilisateur getUser(String pseudo, String motDePasse) throws DALException, BLLException;
-
+	Utilisateur insert (Utilisateur user) throws BLLException;
+	List<Utilisateur> selectAll() throws BLLException;
+	Utilisateur selectById(Integer id) throws DALException, BLLException;
+	Utilisateur verifLogin(String pseudo, String motDePasse) throws DALException, BLLException;
 }
