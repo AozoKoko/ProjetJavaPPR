@@ -13,6 +13,11 @@
 
 </head>
 <body>
+	<nav class="navbar bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">ENI-Enchères</a>
+		</div>
+	</nav>
 	<div class="container-fluid">
 		<div class="row mb-4">
 			<div class="text-center">Mon profil</div>
@@ -21,66 +26,134 @@
 			<div class="col">
 				<input type="hidden" name="idUtilisateur"
 					value="${empty utlisateur?'':utilisateur.no_utilisateur }" />
+
 				<div class="form-outline">
-					<input type="text" id="form3Example1" class="form-control"
-						name="pseudo" /> <label class="form-label" for="form3Example1">Pseudo
-						: </label>
+					<div class="row mb-2">
+						<div class="col-md-3">
+							<label class="form-label" for="form3Example1">Pseudo : </label>
+						</div>
+						<div class="col-md-9">
+							<input type="text" id="form3Example1" class="form-control"
+								name="pseudo" />
+						</div>
+					</div>
 				</div>
 				<div class="form-outline">
-					<input type="text" id="form3Example1" class="form-control"
-						name="prenom" /> <label class="form-label" for="form3Example1">Prénom
-						: </label>
+					<div class="row mb-2">
+						<div class="col-md-3">
+							<label class="form-label" for="form3Example1">Prénom : </label>
+						</div>
+						<div class="col-md-9">
+							<input type="text" id="form3Example1" class="form-control"
+								name="prenom" />
+						</div>
+					</div>
 				</div>
 				<div class="form-outline">
-					<input type="tel" id="form3Example1" class="form-control"
-						name="telephone" /> <label class="form-label" for="form3Example1">Téléphone
-						: </label>
+					<div class="row mb-2">
+						<div class="col-md-3">
+							<label class="form-label" for="form3Example1">Téléphone :
+							</label>
+						</div>
+						<div class="col-md-9">
+							<input type="tel" id="form3Example1" class="form-control"
+								name="telephone" />
+						</div>
+					</div>
 				</div>
 				<div class="form-outline">
-					<input type="number" id="form3Example1" class="form-control"
-						name="codePostal" /> <label class="form-label"
-						for="form3Example1">Code postal : </label>
+					<div class="row mb-2">
+						<div class="col-md-3">
+							<label class="form-label" for="form3Example1">Code postal
+								: </label>
+						</div>
+						<div class="col-md-9">
+							<input type="tel" id="form3Example1" class="form-control"
+								name="codePostal" />
+						</div>
+					</div>
 				</div>
 				<div class="form-outline">
-					<input type="password" id="form3Example1" class="form-control"
-						name="password" /> <label class="form-label" for="form3Example1">Password
-						: </label>
+					<div class="row mb-2">
+						<div class="col-md-3">
+							<label class="form-label" for="form3Example1">Password :
+							</label>
+						</div>
+						<div class="col-md-9">
+							<input type="password" id="form3Example1" class="form-control"
+								name="password" />
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col">
 				<div class="form-outline">
-					<input type="text" id="form3Example2" class="form-control"
-						name="nom" /> <label class="form-label" for="form3Example2">Nom
-						:</label>
+					<div class="row mb-2">
+						<div class="col-md-3">
+							<label class="form-label" for="form3Example1">Nom : </label>
+						</div>
+						<div class="col-md-9">
+							<input type="text" id="form3Example1" class="form-control"
+								name="nom" />
+						</div>
+					</div>
 				</div>
 				<div class="form-outline">
-					<input type="email" id="form3Example2" class="form-control"
-						name="nom" /> <label class="form-label" for="form3Example2">Email
-						:</label>
+					<div class="row mb-2">
+						<div class="col-md-3">
+							<label class="form-label" for="form3Example1">Email : </label>
+						</div>
+						<div class="col-md-9">
+							<input type="email" id="form3Example1" class="form-control"
+								name="email" />
+						</div>
+					</div>
 				</div>
 				<div class="form-outline">
-					<input type="text" id="form3Example2" class="form-control"
-						name="rue" /> <label class="form-label" for="form3Example2">Rue
-						:</label>
+					<div class="row mb-2">
+						<div class="col-md-3">
+							<label class="form-label" for="form3Example1">Rue : </label>
+						</div>
+						<div class="col-md-9">
+							<input type="text" id="form3Example1" class="form-control"
+								name="rue" />
+						</div>
+					</div>
 				</div>
 				<div class="form-outline">
-					<input type="text" id="form3Example2" class="form-control"
-						name="ville" /> <label class="form-label" for="form3Example2">Ville
-						:</label>
+					<div class="row mb-2">
+						<div class="col-md-3">
+							<label class="form-label" for="form3Example1">Ville : </label>
+						</div>
+						<div class="col-md-9">
+							<input type="text" id="form3Example1" class="form-control"
+								name="ville" />
+						</div>
+					</div>
 				</div>
 				<div class="form-outline">
-					<input type="password" id="form3Example2" class="form-control"
-						name="passwordConfirm" /> <label class="form-label"
-						for="form3Example2">Confirmation :</label>
+					<div class="row mb-2">
+						<div class="col-md-3">
+							<label class="form-label" for="form3Example1">Confirm : </label>
+						</div>
+						<div class="col-md-9">
+							<input type="password" id="form3Example1" class="form-control"
+								name="passwordConfirm" />
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col">
-				<button><a href="/ProjetJavaPPR/accueilModeConnecte">Creer</a></button>
+			<div class="col text-center">
+				<button>
+					<a href="/ProjetJavaPPR/accueilModeConnecte">Creer</a>
+				</button>
 			</div>
-			<div class="col">
-				<button><a href="/ProjetJavaPPR/accueilModeDeconnecte">Annuler</a></button>
+			<div class="col text-center">
+				<button>
+					<a href="/ProjetJavaPPR/accueilModeDeconnecte">Annuler</a>
+				</button>
 			</div>
 		</div>
 	</div>
