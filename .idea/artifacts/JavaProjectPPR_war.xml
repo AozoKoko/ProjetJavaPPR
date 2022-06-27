@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JavaProjectPPR:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>JavaProjectPPR</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="JavaProjectPPR-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="JavaProjectPPR:war exploded" />
+    </root>
+  </artifact>
+</component>
