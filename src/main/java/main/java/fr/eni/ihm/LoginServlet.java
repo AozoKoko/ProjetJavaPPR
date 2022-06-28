@@ -8,11 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.java.fr.eni.bll.BLLException;
+import main.java.fr.eni.bll.BLLFactory;
+import main.java.fr.eni.bll.ManagerUtilisateurs;
+import main.java.fr.eni.dal.DALException;
+
 @WebServlet({"/login"})
 public class LoginServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-
+	private ManagerUtilisateurs mgr ;
+	
+	public LoginServlet() {
+		mgr = BLLFactory.getUtilisateursManager();
+	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
@@ -20,6 +29,23 @@ public class LoginServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		boolean reponse=false;
+		String pseudo = req.getParameter("pseudo");
+		String password = req.getParameter("password");
+		try {
+			reponse = mgr.verifLogin(pseudo, password);
+			if (reponse) {
+				//reste a voi si on fait sur la meme page (vu avec le prof les deux facons sont bonnes a nous de choisir
+				req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+			}else {
+				req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
+			}
+		} catch (DALException e) {
+			e.printStackTrace();
+		} catch (BLLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 

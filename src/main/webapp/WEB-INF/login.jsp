@@ -20,7 +20,7 @@
 			</div>
 		</nav>
 		<div class="row justify-content-center align-items-center">
-			<form action="ProjetJavaPPR/login" method="post"
+			<form action="/ProjetJavaPPR/login" method="post"
 				style="margin: auto; width: 300px;">
 				<div class="form-outline mb-4">
 					<input type="text" id="form2Example1" class="form-control"

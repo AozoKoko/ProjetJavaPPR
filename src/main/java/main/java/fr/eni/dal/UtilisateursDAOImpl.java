@@ -14,7 +14,6 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 		private static final String VERIF_INSERT = "SELECT pseudo FROM UTILISATEURS WHERE pseudo = ?";
 		private static final String INSERT = "insert into UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		private static final String SELECT_ID = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
-
 		private static final String VERIF_INFOS_USER = "SELECT pseudo, mot_de_passe FROM UTILISATEURS WHERE pseudo = ? AND mot_de_passe = ?";
 
 
@@ -125,12 +124,8 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 			//Valorisation des paramètres
 			stmt.setString(1,pseudo);
 			stmt.setString(2,motDePasse);
-
-			//Execution de la requète
-			stmt.executeQuery();
-
-			//Récupération des résultats de la requète
-			 ResultSet rs = stmt.getGeneratedKeys();
+			//Récupération des résultats de la requète Execution de la requète
+			 ResultSet rs = stmt.executeQuery();
 
 			 //Mise à jour de la boolean si l'utilisateur existe
 			 if (rs.next()){
