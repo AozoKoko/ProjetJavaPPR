@@ -16,13 +16,7 @@ public class ManagerUtilisateursImpl implements ManagerUtilisateurs {
 	    }
 	    
 		@Override
-		public Utilisateur insert(Utilisateur user) throws BLLException {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		@Override
-		public List<Utilisateur> selectAll() throws BLLException {
+		public Utilisateur ajouterUser(Utilisateur user) throws BLLException {
 			// TODO Auto-generated method stub
 			return null;
 		}

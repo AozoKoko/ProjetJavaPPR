@@ -8,7 +8,6 @@ import main.java.fr.eni.bo.Utilisateur;
 public class UtilisateursDAOImpl implements UtilisateursDAO {
 	
 		private static final String INSERT = "insert into UTILISATEURS (nom,, )" + " values (?, ?, ?, ?)";
-		private static final String SELECT_ALL = "SELECT * FROM UTILISATEURS";
 		private static final String SELECT_ID = "SELECT * FROM USERS WHERE noUTILISATEUR = ?";
 		private static final String VERIF_INFOS_USER = "SELECT username,password FROM USERS WHERE username = ? AND password = ?";
 	
@@ -18,11 +17,6 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 		return null;
 	}
 	
-	@Override
-	public List<Utilisateur> selectAll() throws BLLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	@Override
 	public Utilisateur selectById(Integer id) throws DALException, BLLException {
 		// TODO Auto-generated method stub

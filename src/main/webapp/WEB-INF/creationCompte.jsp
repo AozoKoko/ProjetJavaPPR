@@ -146,12 +146,12 @@
 		</div>
 		<div class="row mb-4">
 			<div class="col text-center">
-				<button>
+				<button class="btn btn-outline-dark">
 					<a href="/ProjetJavaPPR/accueilModeConnecte">Creer</a>
 				</button>
 			</div>
 			<div class="col text-center">
-				<button>
+				<button class="btn btn-outline-dark">
 					<a href="/ProjetJavaPPR/accueilModeDeconnecte">Annuler</a>
 				</button>
 			</div>
