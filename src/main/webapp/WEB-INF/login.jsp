@@ -4,14 +4,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
 
 <title>Enchere - login</title>
 </head>
 <body>
 	<div class="container-fluid">
+		<nav class="navbar bg-light mb-2">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="<%=request.getContextPath()%>/pageAccueil">ENI-Enchères</a>
+			</div>
+		</nav>
 		<div class="row justify-content-center align-items-center">
-			<form action="ProjetJavaPPR/login" method="post" style="margin: auto; width: 300px;">
+			<form action="ProjetJavaPPR/login" method="post"
+				style="margin: auto; width: 300px;">
 				<div class="form-outline mb-4">
 					<input type="text" id="form2Example1" class="form-control"
 						name="pseudo" /> <label class="form-label" for="form2Example1">Pseudo</label>
@@ -35,13 +45,15 @@
 				</div>
 
 				<!-- Submit button -->
-				<button type="submit" class="btn btn-primary btn-block mb-4">Connectez vous</button>
+				<button type="submit" class="btn btn-primary btn-block mb-4">Connectez
+					vous</button>
 
 				<!-- Register buttons -->
 				<div class="text-center">
 					<p>
 						<!-- lien vers la page d'inscription en tant que nouveau memebre -->
-						Pas inscrits? <a href="<%=request.getContextPath()%>/creationCompte">Inscription</a>
+						Pas inscrits? <a
+							href="<%=request.getContextPath()%>/creationCompte">Inscription</a>
 					</p>
 				</div>
 			</form>
@@ -49,7 +61,10 @@
 	</div>
 
 
-	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+		crossorigin="anonymous"></script>
 
 </body>
 </html>
