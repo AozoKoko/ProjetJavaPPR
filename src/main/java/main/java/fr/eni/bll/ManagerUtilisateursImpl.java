@@ -16,9 +16,8 @@ public class ManagerUtilisateursImpl implements ManagerUtilisateurs {
 	    }
 	    
 		@Override
-		public Utilisateur ajouterUser(Utilisateur user) throws BLLException {
-			// TODO Auto-generated method stub
-			return null;
+		public void ajouterUser(Utilisateur user) throws BLLException {
+			daoUtilisateurs.insert(user);
 		}
 
 		@Override
