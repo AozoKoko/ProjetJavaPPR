@@ -66,7 +66,7 @@
     		<option value="0"> Vêtements</option>
     		<option value="0"> Sports & Loisirs</option>
     	</select>
-    		<br>
+    <br>
     </div>	
     
 <div class="card mb-3" style="max-width: 540px;">
