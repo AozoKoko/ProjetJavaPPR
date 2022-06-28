@@ -15,7 +15,7 @@
 <body>
 	<nav class="navbar bg-light">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">ENI-Enchères</a>
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/pageAccueil">ENI-Enchères</a>
 		</div>
 	</nav>
 	<div class="container-fluid">
