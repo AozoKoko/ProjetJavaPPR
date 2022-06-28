@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 import main.java.fr.eni.bll.BLLException;
 import main.java.fr.eni.bo.Utilisateur;
@@ -18,13 +17,10 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 	
 	@Override
 	public void insert(Utilisateur user) throws BLLException {
-		try {
-			//Tentative de connexion à la base de donnée
-			Connection conn = ConnectionProvider.getConnection();
-
-			//Initialisation du prepared statement
-			PreparedStatement stmt = conn.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
-
+		//Tentative de connexion à la base de donnée
+		//Initialisation du prepared statement
+		try (Connection conn = ConnectionProvider.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);	){
 			//Valorisation des paramètres
 			stmt.setString(1, user.getPseudo());
 			stmt.setString(2,user.getNom());

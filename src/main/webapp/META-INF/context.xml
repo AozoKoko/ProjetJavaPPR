@@ -7,8 +7,8 @@
 		type="javax.sql.DataSource"
 		
 		url="jdbc:sqlserver://localhost:1433;databasename=ENCHERES"
-		username="user_test"
-		password="user_test"
+		username="sa"
+		password="Pa$$w0rd"
 		
 		maxTotal="100"
 		maxIdle="30"

@@ -1,19 +1,27 @@
 package main.java.fr.eni.ihm;
 
 import java.io.IOException;
+import java.io.OutputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import main.java.fr.eni.bll.BLLException;
+import main.java.fr.eni.bll.BLLFactory;
+import main.java.fr.eni.bll.ManagerUtilisateurs;
 import main.java.fr.eni.bo.Utilisateur;
 
 @WebServlet("/creationCompte")
 public class ProfilCreationServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
+	private ManagerUtilisateurs mgr ;
+	
+	public ProfilCreationServlet() {
+		mgr = BLLFactory.getUtilisateursManager();
+	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,10 +30,27 @@ public class ProfilCreationServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Utilisateur user=null;
+		Utilisateur user = new Utilisateur();
 		user.setPseudo(req.getParameter("pseudo"));
-		
-		System.out.printf("pseudo  verif ",user.getPseudo());
+		user.setNom(req.getParameter("nom"));
+		user.setPrenom(req.getParameter("prenom"));
+		user.setTelephone(req.getParameter("telephone"));
+		user.setCodePostal(req.getParameter("codePostal"));
+		if (req.getParameter("password").equals(req.getParameter("passwordConfirm"))) {
+			user.setMotDePasse("password");
+		}else {
+			
+			System.out.println("ce n'est pas le meme mot de passe !! reesayer");  
+		}
+	
+		user.setEmail(req.getParameter("email"));
+		user.setRue(req.getParameter("rue"));
+		user.setVille(req.getParameter("ville"));
+		try {
+			mgr.ajouterUser(user);
+		} catch (BLLException e) {
+			e.printStackTrace();
+		}
 		req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
 	}
 }
