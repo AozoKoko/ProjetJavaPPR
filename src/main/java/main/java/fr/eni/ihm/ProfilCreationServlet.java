@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.java.fr.eni.bo.Utilisateur;
+
 @WebServlet("/creationCompte")
 public class ProfilCreationServlet extends HttpServlet{
 
@@ -18,4 +20,12 @@ public class ProfilCreationServlet extends HttpServlet{
 		req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Utilisateur user=null;
+		user.setPseudo(req.getParameter("pseudo"));
+		
+		System.out.printf("pseudo  verif ",user.getPseudo());
+		req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
+	}
 }
