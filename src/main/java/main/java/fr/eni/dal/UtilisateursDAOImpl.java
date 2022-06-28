@@ -26,7 +26,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 
 		Boolean inscriptionReussie = false;
 		//Tentative de connexion à la base de donnée
-
+	
 		try (Connection conn = ConnectionProvider.getConnection();
 			 //Initialisation du prepared statement
 				PreparedStatement stmt = conn.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -35,9 +35,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 			prStmt.setString(1,user.getPseudo());
 
 			ResultSet resultSet = prStmt.executeQuery();
-
 			if (!resultSet.next()){
-				System.out.println("Test");
 				//Valorisation des paramètres
 				stmt.setString(1, user.getPseudo());
 				stmt.setString(2,user.getNom());
