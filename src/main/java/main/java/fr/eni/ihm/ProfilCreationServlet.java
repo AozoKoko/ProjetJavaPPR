@@ -1,5 +1,6 @@
 package main.java.fr.eni.ihm;
 
+import java.awt.Button;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -34,6 +35,7 @@ public class ProfilCreationServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Utilisateur user = new Utilisateur();
+		Boolean inscription = false;
 		user.setPseudo(req.getParameter("pseudo"));
 		user.setNom(req.getParameter("nom"));
 		user.setPrenom(req.getParameter("prenom"));
@@ -45,18 +47,21 @@ public class ProfilCreationServlet extends HttpServlet{
 		if (req.getParameter("password").equals(req.getParameter("passwordConfirm"))) {
 			user.setMotDePasse(req.getParameter("password"));
 		}else {
-			infoBox("le mot de passe ne correspond pas !!","wrong password" );
+			
 			req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
 		}
 		try {
-			mgr.ajouterUser(user);
+
+			inscription = mgr.ajouterUser(user);
+			if (inscription){
+				req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+			}else{
+				req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
+			}
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-		req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
+
 	}
-	public static void infoBox(String infoMessage, String titleBar)
-    {
-        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
-    }
+	
 }

@@ -16,8 +16,8 @@ public class ManagerUtilisateursImpl implements ManagerUtilisateurs {
 	    }
 	    
 		@Override
-		public void ajouterUser(Utilisateur user) throws BLLException {
-			daoUtilisateurs.insert(user);
+		public Boolean ajouterUser(Utilisateur user) throws BLLException {
+			return daoUtilisateurs.insert(user);
 		}
 
 		@Override
@@ -29,6 +29,14 @@ public class ManagerUtilisateursImpl implements ManagerUtilisateurs {
 		public Boolean verifLogin(String pseudo, String motDePasse) throws DALException, BLLException {
 
 			return daoUtilisateurs.verifLogin(pseudo,motDePasse);
+		}
+
+		public void deleteUser(Utilisateur user){
+			 daoUtilisateurs.deleteUser(user);
+		}
+
+		public void updateUser(Utilisateur user){
+			daoUtilisateurs.updateUser(user);
 		}
 
 

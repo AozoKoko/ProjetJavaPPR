@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 import main.java.fr.eni.bll.BLLException;
 import main.java.fr.eni.bo.Utilisateur;
 
@@ -14,14 +15,16 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 		private static final String VERIF_INSERT = "SELECT pseudo FROM UTILISATEURS WHERE pseudo = ?";
 		private static final String INSERT = "insert into UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		private static final String SELECT_ID = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
-
 		private static final String VERIF_INFOS_USER = "SELECT pseudo, mot_de_passe FROM UTILISATEURS WHERE pseudo = ? AND mot_de_passe = ?";
 
+		private static final String DELETE_USER = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?";
 
+		private static final String UPDATE_USER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ?, administrateur = ? WHERE  no_utilisateur = ?";
 	//Fonction permettant l'insertion de nouveaux utilisateurs dans la base de donnée
 	@Override
-	public void insert(Utilisateur user) throws BLLException {
+	public Boolean insert(Utilisateur user) throws BLLException {
 
+		Boolean inscriptionReussie = false;
 		//Tentative de connexion à la base de donnée
 
 		try (Connection conn = ConnectionProvider.getConnection();
@@ -31,9 +34,10 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 
 			prStmt.setString(1,user.getPseudo());
 
-			ResultSet resultSet = prStmt.getGeneratedKeys();
+			ResultSet resultSet = prStmt.executeQuery();
 
 			if (!resultSet.next()){
+				System.out.println("Test");
 				//Valorisation des paramètres
 				stmt.setString(1, user.getPseudo());
 				stmt.setString(2,user.getNom());
@@ -57,6 +61,8 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 				if(rs.next()){
 					user.setNoUtilisateur(rs.getInt(1));
 				}
+
+				inscriptionReussie = true;
 			}
 
 
@@ -65,6 +71,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 			throw new RuntimeException(e);
 		}
 
+		return inscriptionReussie;
 	}
 
 	//Fonction permettant la sélection d'un utilisateur dans la base de données en se basant sur son numéro utilisateur
@@ -125,12 +132,8 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 			//Valorisation des paramètres
 			stmt.setString(1,pseudo);
 			stmt.setString(2,motDePasse);
-
-			//Execution de la requète
-			stmt.executeQuery();
-
-			//Récupération des résultats de la requète
-			 ResultSet rs = stmt.getGeneratedKeys();
+			//Récupération des résultats de la requète Execution de la requète
+			 ResultSet rs = stmt.executeQuery();
 
 			 //Mise à jour de la boolean si l'utilisateur existe
 			 if (rs.next()){
@@ -141,6 +144,59 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 		}
 
 		return userExist;
+	}
+
+
+	//Fonction permettant la suppression d'un utilisateur
+	public void deleteUser(Utilisateur user){
+
+		//Essai de la connexion
+		try (Connection conn = ConnectionProvider.getConnection()){
+
+			//Création du prepared statement
+			PreparedStatement stmt = conn.prepareStatement(DELETE_USER,PreparedStatement.RETURN_GENERATED_KEYS);
+
+			//Valorisation des paramètres
+			stmt.setInt(1,user.getNoUtilisateur());
+
+			//Execution du prepared Statement
+			stmt.executeUpdate();
+
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	//Fonction permettant la mise à jour d'un profil utilisateur
+	public void updateUser(Utilisateur user){
+
+		//Essai de la connexion
+		try (Connection conn = ConnectionProvider.getConnection()){
+
+			//Création du prepared statement
+			PreparedStatement stmt = conn.prepareStatement(UPDATE_USER,PreparedStatement.RETURN_GENERATED_KEYS);
+
+			//Valorisation des paramètres
+			stmt.setString(1,user.getPseudo());
+			stmt.setString(2,user.getNom());
+			stmt.setString(3,user.getPrenom());
+			stmt.setString(4, user.getEmail());
+			stmt.setString(5,user.getTelephone());
+			stmt.setString(6, user.getRue());
+			stmt.setString(7,user.getCodePostal());
+			stmt.setString(8,user.getVille());
+			stmt.setString(9,user.getMotDePasse());
+			stmt.setInt(10,user.getCredit());
+			stmt.setBoolean(11,user.isAdministrateur());
+			stmt.setInt(12,user.getNoUtilisateur());
+
+			//Execution du prepared statement
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
 
