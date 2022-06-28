@@ -22,14 +22,13 @@ public class ManagerUtilisateursImpl implements ManagerUtilisateurs {
 
 		@Override
 		public Utilisateur selectById(Integer id) throws DALException, BLLException {
-			// TODO Auto-generated method stub
-			return null;
+			return daoUtilisateurs.selectById(id);
 		}
 
 		@Override
-		public Utilisateur verifLogin(String pseudo, String motDePasse) throws DALException, BLLException {
-			// TODO Auto-generated method stub
-			return null;
+		public Boolean verifLogin(String pseudo, String motDePasse) throws DALException, BLLException {
+
+			return daoUtilisateurs.verifLogin(pseudo,motDePasse);
 		}
 
 
