@@ -16,10 +16,11 @@
 <body>
 	<nav class="navbar bg-light mb-2">
 		<div class="container-fluid">
-			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/pageAccueil">ENI-Enchères</a> <a
-				href="/ProjetJavaPPR/creationCompte">S'inscrire</a> - <a
-				href="/ProjetJavaPPR/login">Se connecter</a>
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/login">ENI-Enchères</a>
+			<div>
+				<a href="/ProjetJavaPPR/creationCompte">S'inscrire</a> - <a
+					href="/ProjetJavaPPR/login">Se déconnecter</a>
+			</div>
 
 		</div>
 	</nav>
