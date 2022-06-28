@@ -14,15 +14,53 @@
 <title>Accueil</title>
 </head>
 <body>
+	<div>
+ 		<a href="#" class="pull-left"><img src=""></a> 
+	</div>
+
+<div class="container mt-5 mb-5">
+	<c:if test="${ModeDeconnecte}">
 	<nav class="navbar bg-light mb-2">
-		<div class="container-fluid">
+		<div class="container-fluid"> 
 			<a class="navbar-brand" href="<%=request.getContextPath()%>/pageAccueil">ENI-Enchères</a>
 			<div>
-        		<a href="/ProjetJavaPPR/creationCompte">S'inscrire</a> - <a href="/ProjetJavaPPR/login">Se déconnecter</a>
+					<ul class="nav justify-content-end">
+  				<li class="nav-item">
+    				<a class="nav-link" href="<%=request.getContextPath()%>/creationCompte">S'inscrire</a>
+  				</li>
+  				<li class="nav-item">
+    				<a class="nav-link" href="<%=request.getContextPath()%>/login">Se connecter</a>
+  				</li>
+  				</ul>	
         	</div>
 		</div>
 	</nav>
-
+	</c:if>
+	<c:if test="${ModeConnecte}">
+	<nav class="navbar bg-light mb-2">
+		<div class="container-fluid"> 
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/pageAccueil">ENI-Enchères</a>
+			<div>
+			<ul class="nav justify-content-end">
+  				<li class="nav-item">
+    				<a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/pageAccueil">Enchères</a>
+  				</li>
+  				<li class="nav-item">
+    				<a class="nav-link" href="<%=request.getContextPath()%>/nouvelleVente">Vendre un article</a>
+  				</li>
+  				<li class="nav-item">
+    				<a class="nav-link" href="<%=request.getContextPath()%>/monProfil">Mon profil</a>
+  				</li>
+  				<li class="nav-item">
+    				<a class="nav-link" href="<%=request.getContextPath()%>/pageAccueil">Deconnexion</a>
+  				</li>
+			</ul>
+        	</div>
+		</div>
+	</nav>
+	</c:if>
+	</div>
+	
 	<div class="container-fluid">
 		<div class="row mb-4">
 			<div class="text-center">Liste des enchères</div>
@@ -44,7 +82,7 @@
 			</div>
 			<div class="col-md-9">
 				<button class="btn btn-outline-dark">
-    				<label class for="recherche" style="height:100px"> Rechercher </label>
+    				<label class for="recherche" style="height:75px"> Rechercher </label>
 				</button>
 			</div>
 		</div>
@@ -53,7 +91,7 @@
 		<div class="row mb-1">
 			<div class="col-md-6">
 				<i class="fas fa-search" aria-hidden="true"></i>
- 					<input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Rechercher un mot clé"aria-label="Search">
+ 					<input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Rechercher un mot clé" aria-label="Search">
     		</div>
     	</div>
 	</div>
@@ -61,14 +99,74 @@
     <div>
     	<label class="form-label" aria-label="Default select example" for="catImput"> Catégorie  : </label>
     	<select class="form-control-sm ml-3 w-75" name="genre" id="" value="a" >
+    		<option value=default> Toutes</option>
     		<option value="1"> Informatique</option>
-    		<option value="0"> Ameublement</option>
-    		<option value="0"> Vêtements</option>
-    		<option value="0"> Sports & Loisirs</option>
+    		<option value="2"> Ameublement</option>
+    		<option value="3"> Vêtements</option>
+    		<option value="4"> Sports & Loisirs</option>
     	</select>
     <br>
     </div>	
-    
+
+<br>
+
+<c:if test="${ModeConnecte}">
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
+  <label class="form-check-label" for="flexRadioDefault1">
+    Achats
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+  <label class="form-check-label" for="flexCheckedDisabled">
+    Enchères ouvertes
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+  <label class="form-check-label" for="flexCheckChecked">
+    Mes enchères
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    Mes enchères remportées
+  </label>
+  
+ </div>
+ 
+ <div class="col">
+ <div class="form-check">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  <label class="form-check-label" for="flexRadioDefault1">
+    Mes ventes
+  </label>
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    Mes ventes en cours
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+  <label class="form-check-label" for="flexCheckChecked">
+    Ventes non débutées
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    Ventes terminées
+  </label>
+ </div>
+ </div>
+ 
+</c:if>
+
 <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">  
   	<c:forEach var="element"items="${articles}">
@@ -90,7 +188,7 @@
    </c:forEach>
   </div>
 </div>
-	<br>
+
     </form>
     				
 
