@@ -13,7 +13,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 
 		//Déclaration des constantes Strings de commandes SQL
 		private static final String INSERT = "insert into UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		private static final String SELECT_ID = "SELECT * FROM USERS WHERE noUTILISATEUR = ?";
+		private static final String SELECT_ID = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
 		private static final String VERIF_INFOS_USER = "SELECT username,password FROM USERS WHERE username = ? AND password = ?";
 	
 	@Override
@@ -57,7 +57,30 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 	
 	@Override
 	public Utilisateur selectById(Integer id) throws DALException, BLLException {
-		// TODO Auto-generated method stub
+
+		Utilisateur user = new Utilisateur();
+
+		try (Connection conn = ConnectionProvider.getConnection();){
+
+			PreparedStatement stmt = conn.prepareStatement(SELECT_ID, PreparedStatement.RETURN_GENERATED_KEYS);
+
+			stmt.setInt(1,id);
+
+			stmt.executeQuery();
+
+			ResultSet rs = stmt.getGeneratedKeys();
+
+			if (rs.next()){
+				user.setNoUtilisateur(rs.getInt(1));
+				user.setPseudo(rs.getString(2));
+				user.setNom(rs.getString(3));
+				user.setPrenom(rs.getString(4));
+
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 		return null;
 	}
 
