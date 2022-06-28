@@ -43,7 +43,7 @@
 			</div>
 			<div class="col-md-9">
 				<button class="btn btn-outline-dark">
-    				<label classe for="recherche" style="height:100px" class="text-center"> Rechercher </label>
+    				<label classe for="recherche" style="height:100px"> Rechercher </label>
 				</button>
 			</div>
 		</div>
