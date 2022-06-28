@@ -7,8 +7,12 @@ import main.java.fr.eni.dal.DALException;
 
 public interface ManagerUtilisateurs {
 
-	void ajouterUser (Utilisateur user) throws BLLException;
+	Boolean ajouterUser (Utilisateur user) throws BLLException;
 	Utilisateur selectById(Integer id) throws DALException, BLLException;
 	Boolean verifLogin(String pseudo, String motDePasse) throws DALException, BLLException;
+
+	void deleteUser(Utilisateur user);
+
+	void updateUser(Utilisateur user);
 
 }

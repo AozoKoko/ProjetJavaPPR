@@ -34,6 +34,7 @@ public class ProfilCreationServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Utilisateur user = new Utilisateur();
+		Boolean inscription = false;
 		user.setPseudo(req.getParameter("pseudo"));
 		user.setNom(req.getParameter("nom"));
 		user.setPrenom(req.getParameter("prenom"));
@@ -49,11 +50,17 @@ public class ProfilCreationServlet extends HttpServlet{
 			req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
 		}
 		try {
-			mgr.ajouterUser(user);
+
+			inscription = mgr.ajouterUser(user);
+			if (inscription){
+				req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+			}else{
+				req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
+			}
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-		req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
+
 	}
 	public static void infoBox(String infoMessage, String titleBar)
     {
