@@ -44,24 +44,19 @@ public class ProfilCreationServlet extends HttpServlet{
 		user.setEmail(req.getParameter("email"));
 		user.setRue(req.getParameter("rue"));
 		user.setVille(req.getParameter("ville"));
+		user.setMotDePasse(req.getParameter("password"));
+		
+		System.out.println("password  " + req.getParameter("password") + "    confirm passwod   " + req.getParameter("passwordConfirm"));
 		if (req.getParameter("password").equals(req.getParameter("passwordConfirm"))) {
-			user.setMotDePasse(req.getParameter("password"));
+			try {
+				inscription = mgr.ajouterUser(user);
+				req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+			} catch (BLLException e) {
+				e.printStackTrace();
+			}
 		}else {
-			
+			req.setAttribute("user", user);
 			req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
 		}
-		try {
-
-			inscription = mgr.ajouterUser(user);
-			if (inscription){
-				req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
-			}else{
-				req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
-			}
-		} catch (BLLException e) {
-			e.printStackTrace();
-		}
-
 	}
-	
 }
