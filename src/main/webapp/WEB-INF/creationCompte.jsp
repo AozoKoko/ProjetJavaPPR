@@ -58,7 +58,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="tel" id="form3Example1" class="form-control"
-									name="telephone" required />
+									name="telephone" pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required />
 							</div>
 						</div>
 					</div>

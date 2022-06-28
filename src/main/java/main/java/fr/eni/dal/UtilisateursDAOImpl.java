@@ -31,7 +31,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 			stmt.setString(7, user.getCodePostal());
 			stmt.setString(8, user.getVille());
 			stmt.setString(9, user.getMotDePasse());
-			stmt.setInt(10,user.getCredit());
+			stmt.setInt(10,100);
 			stmt.setBoolean(11,user.isAdministrateur());
 
 			//Execute le prepared statement pour insérer les données renseignées dans la base de donnée

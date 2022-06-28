@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import main.java.fr.eni.bll.BLLException;
 import main.java.fr.eni.bll.BLLFactory;
 import main.java.fr.eni.bll.ManagerUtilisateurs;
@@ -36,16 +39,15 @@ public class ProfilCreationServlet extends HttpServlet{
 		user.setPrenom(req.getParameter("prenom"));
 		user.setTelephone(req.getParameter("telephone"));
 		user.setCodePostal(req.getParameter("codePostal"));
-		if (req.getParameter("password").equals(req.getParameter("passwordConfirm"))) {
-			user.setMotDePasse("password");
-		}else {
-			
-			System.out.println("ce n'est pas le meme mot de passe !! reesayer");  
-		}
-	
 		user.setEmail(req.getParameter("email"));
 		user.setRue(req.getParameter("rue"));
 		user.setVille(req.getParameter("ville"));
+		if (req.getParameter("password").equals(req.getParameter("passwordConfirm"))) {
+			user.setMotDePasse(req.getParameter("password"));
+		}else {
+			infoBox("le mot de passe ne correspond pas !!","wrong password" );
+			req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
+		}
 		try {
 			mgr.ajouterUser(user);
 		} catch (BLLException e) {
@@ -53,4 +55,8 @@ public class ProfilCreationServlet extends HttpServlet{
 		}
 		req.getRequestDispatcher("/WEB-INF/creationCompte.jsp").forward(req, resp);
 	}
+	public static void infoBox(String infoMessage, String titleBar)
+    {
+        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
 }
