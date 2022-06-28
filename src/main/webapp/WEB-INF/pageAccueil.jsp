@@ -16,9 +16,10 @@
 <body>
 	<nav class="navbar bg-light mb-2">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="<%=request.getContextPath()%>/pageAccueil">ENI-Enchères</a>
-			<a href="/ProjetJavaPPR/creationCompte">S'inscrire -</a>
-			<a href="/ProjetJavaPPR/login">Se connecter</a>
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/login">ENI-Enchères</a>
+			<div>
+        		<a href="/ProjetJavaPPR/creationCompte">S'inscrire</a> - <a href="/ProjetJavaPPR/login">Se déconnecter</a>
+        	</div>
 		</div>
 	</nav>
 	
@@ -43,7 +44,7 @@
 			</div>
 			<div class="col-md-9">
 				<button class="btn btn-outline-dark">
-    				<label classe for="recherche" style="height:100px"> Rechercher </label>
+    				<label class for="recherche" style="height:100px"> Rechercher </label>
 				</button>
 			</div>
 		</div>
@@ -57,34 +58,39 @@
     	</div>
 	</div>
     <br>
-    
-    		<label class="form-label" for="genreImput"> Catégorie  : </label>
+    <div>
+    	<label class="form-label" aria-label="Default select example" for="catImput"> Catégorie  : </label>
     	<select class="form-control-sm ml-3 w-75" name="genre" id="" value="a" >
-    		<option value="0"> Informatique</option>
+    		<option value="1"> Informatique</option>
     		<option value="0"> Ameublement</option>
     		<option value="0"> Vêtements</option>
     		<option value="0"> Sports & Loisirs</option>
     	</select>
     		<br>
-    		<div class="card" style="width: 18rem;">
-    			<figure class="image is-128x128">
- 					 <img src="https://bulma.io/images/placeholders/256x256.png">
-				</figure>
-  				<img src="..." class="card-img-top" alt="...">
-  					<div class="card-body">
-   					 <h5 class="card-title"> ${ArticleVendu.nomArticle}</h5>
+    </div>	
+    
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">  
+  	<c:forEach var="element"items="${articles}">
+   	 <div class="col-md-4">
+    	<figure class="image is-128x128">
+ 			<img src="https://bulma.io/images/placeholders/256x256.png" class="img-fluid rounded-start">
+		</figure>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+         <h5 class="card-title"> ${ArticleVendu.nomArticle}</h5>
    					 <p class="card-text"> ${ArticleVendu.description}</p>
    					 <p class="card-text"> Prix : ${ArticleVendu.prixVente}</p>
    					 <p class="card-text"> Fin de l'enchère : ${ArticleVendu.dateFinEncheres}</p>
-    <a href="#" class="btn btn-primary">Enchérir</a>
+    				<p class="card-text"><small class="text-muted">Dernière mise à jour il y a  minutes</small></p> 
+    				<a href="#" class="btn btn-primary">Enchérir</a>
+       </div>
+    </div>
+   </c:forEach>
   </div>
 </div>
-    		
-    		
-    		
-				
 	<br>
-    
     </form>
     					
 	
