@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 import main.java.fr.eni.bll.BLLException;
@@ -197,6 +199,12 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public List<Utilisateur> getAllUsers(){
+		List<Utilisateur> listeUtilisateurs = new ArrayList<Utilisateur>();
+
+		return listeUtilisateurs;
 	}
 }
 
