@@ -41,7 +41,7 @@
 				<div class="text-center">
 					<p>
 						<!-- lien vers la page d'inscription en tant que nouveau memebre -->
-						Pas inscrits? <a href="/ProjetJavaPPR/creationCompte">Inscription</a>
+						Pas inscrits? <a href="<%=request.getContextPath()%>/creationCompte">Inscription</a>
 					</p>
 				</div>
 			</form>
