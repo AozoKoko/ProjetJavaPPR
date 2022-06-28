@@ -35,9 +35,11 @@ public class LoginServlet extends HttpServlet{
 		try {
 			reponse = mgr.verifLogin(pseudo, password);
 			if (reponse) {
-				//reste a voi si on fait sur la meme page (vu avec le prof les deux facons sont bonnes a nous de choisir
+				// creation exprression language variable mode connecte pour utiliser une seule page accueil
+				req.setAttribute("modeConnecte", reponse);
 				req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 			}else {
+				req.setAttribute("modeDeconnecte", reponse);
 				req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
 			}
 		} catch (DALException e) {
