@@ -2,7 +2,10 @@ package main.java.fr.eni.dal;
 
 public class DALException extends Exception {
 
-    public DALException( ) {
+
+	private static final long serialVersionUID = 1L;
+
+	public DALException( ) {
 
     }
 

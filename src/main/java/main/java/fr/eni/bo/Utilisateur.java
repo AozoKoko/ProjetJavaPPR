@@ -5,6 +5,7 @@ public class Utilisateur {
 	private int noUtilisateur;
 	private String pseudo;
 	private String nom;
+	private String prenom;
 	private String email;
 	private String telephone;
 	private String rue;
@@ -12,7 +13,7 @@ public class Utilisateur {
 	private String ville;
 	private String motDePasse;
 	private int credit;
-	private boolean adminsitrateur;
+	private boolean administrateur;
 	
 	public Utilisateur() {
 		super();
@@ -26,12 +27,12 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 	}
 
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String email, String telephone, String rue,
-			String codePostal, String ville, String motDePasse, int credit, boolean adminsitrateur) {
+	public Utilisateur( String pseudo, String nom, String prenom, String email, String telephone, String rue,
+			String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
 		super();
-		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
+		this.prenom = prenom;
 		this.email = email;
 		this.telephone = telephone;
 		this.rue = rue;
@@ -39,7 +40,7 @@ public class Utilisateur {
 		this.ville = ville;
 		this.motDePasse = motDePasse;
 		this.credit = credit;
-		this.adminsitrateur = adminsitrateur;
+		this.administrateur = administrateur;
 	}
 
 	public int getNoUtilisateur() {
@@ -80,6 +81,22 @@ public class Utilisateur {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public boolean isAdministrateur() {
+		return administrateur;
+	}
+
+	public void setAdministrateur(boolean administrateur) {
+		this.administrateur = administrateur;
 	}
 
 	public String getTelephone() {
@@ -123,22 +140,28 @@ public class Utilisateur {
 	}
 
 	public boolean isAdminsitrateur() {
-		return adminsitrateur;
+		return administrateur;
 	}
 
 	public void setAdminsitrateur(boolean adminsitrateur) {
-		this.adminsitrateur = adminsitrateur;
+		this.administrateur = adminsitrateur;
 	}
 
 	@Override
 	public String toString() {
-		return "Utilisateur [noUtilisateur=" + noUtilisateur + ", pseudo=" + pseudo + ", nom=" + nom + ", email="
-				+ email + ", telephone=" + telephone + ", rue=" + rue + ", codePostal=" + codePostal + ", ville="
-				+ ville + ", motDePasse=" + motDePasse + ", credit=" + credit + ", adminsitrateur=" + adminsitrateur
-				+ "]";
+		return "Utilisateur{" +
+				"noUtilisateur=" + noUtilisateur +
+				", pseudo='" + pseudo + '\'' +
+				", nom='" + nom + '\'' +
+				", prenom='" + prenom + '\'' +
+				", email='" + email + '\'' +
+				", telephone='" + telephone + '\'' +
+				", rue='" + rue + '\'' +
+				", codePostal='" + codePostal + '\'' +
+				", ville='" + ville + '\'' +
+				", motDePasse='" + motDePasse + '\'' +
+				", credit=" + credit +
+				", administrateur=" + administrateur +
+				'}';
 	}
-
-	
-	
-	
 }
