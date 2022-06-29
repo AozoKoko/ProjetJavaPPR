@@ -121,9 +121,9 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 
 	//Fonction servant à vérifier si l'utilisateur existe dans la base de données
 	@Override
-	public Boolean verifLogin(String pseudo, String motDePasse) throws DALException, BLLException {
+	public Integer verifLogin(String pseudo, String motDePasse) throws DALException, BLLException {
 		//Déclaration de la boolean à renvoyer
-		Boolean userExist = false;
+		Integer userExist = null;
 
 		try (Connection conn = ConnectionProvider.getConnection()){
 			//Déclaration du prepared statement
@@ -137,7 +137,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 
 			 //Mise à jour de la boolean si l'utilisateur existe
 			 if (rs.next()){
-				 userExist = true;
+				 userExist = rs.getInt(1);
 			 }
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

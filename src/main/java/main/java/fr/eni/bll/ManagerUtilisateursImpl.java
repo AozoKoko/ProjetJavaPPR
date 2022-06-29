@@ -26,7 +26,7 @@ public class ManagerUtilisateursImpl implements ManagerUtilisateurs {
 		}
 
 		@Override
-		public Boolean verifLogin(String pseudo, String motDePasse) throws DALException, BLLException {
+		public Integer verifLogin(String pseudo, String motDePasse) throws DALException, BLLException {
 
 			return daoUtilisateurs.verifLogin(pseudo,motDePasse);
 		}
