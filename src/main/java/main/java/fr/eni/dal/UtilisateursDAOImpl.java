@@ -64,6 +64,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 
 				inscriptionReussie = true;
 			}
+		
 
 
 
