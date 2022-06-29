@@ -23,49 +23,49 @@
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Pseudo :</label>
 			<div class="col-sm-10">
-				${user.pseudo }
+				${profil.pseudo }
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Nom :</label>
 			<div class="col-sm-10">
-				${user.nom }
+				${profil.nom }
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Prenom :</label>
 			<div class="col-sm-10">
-				${user.prenom }
+				${profil.prenom }
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Email :</label>
 			<div class="col-sm-10">
-				${user.email }
+				${profil.email }
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Téléphone :</label>
 			<div class="col-sm-10">
-				${user.telephone }
+				${profil.telephone }
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Rue :</label>
 			<div class="col-sm-10">
-				${user.rue }
+				${profil.rue }
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Code postal :</label>
 			<div class="col-sm-10">
-				${user.codePostal }
+				${profil.codePostal }
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Ville :</label>
 			<div class="col-sm-10">
-				${user.ville }
+				${profil.ville }
 			</div>
 		</div>
 	</div>
