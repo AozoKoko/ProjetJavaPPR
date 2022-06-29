@@ -6,4 +6,5 @@ public class DAOFactory {
 		return new UtilisateursDAOImpl();
 	}
 
+	public static CategorieDAO getDaoCategorie(){ return  new CategorieDAOImpl();}
 }
