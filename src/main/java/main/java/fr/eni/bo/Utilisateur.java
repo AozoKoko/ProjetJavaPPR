@@ -2,7 +2,7 @@ package main.java.fr.eni.bo;
 
 public class Utilisateur {
 
-	private int noUtilisateur;
+	private int noUtilisateur; //test
 	private String pseudo;
 	private String nom;
 	private String prenom;
