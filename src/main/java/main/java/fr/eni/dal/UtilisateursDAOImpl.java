@@ -17,7 +17,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 		private static final String VERIF_INSERT = "SELECT pseudo FROM UTILISATEURS WHERE pseudo = ?";
 		private static final String INSERT = "insert into UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		private static final String SELECT_ID = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
-		private static final String VERIF_INFOS_USER = "SELECT pseudo, mot_de_passe FROM UTILISATEURS WHERE pseudo = ? AND mot_de_passe = ?";
+		private static final String VERIF_INFOS_USER = "SELECT no_utilisateur, pseudo, mot_de_passe FROM UTILISATEURS WHERE pseudo = ? AND mot_de_passe = ?";
 
 		private static final String DELETE_USER = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?";
 
@@ -64,6 +64,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 
 				inscriptionReussie = true;
 			}
+		
 
 
 
@@ -121,9 +122,9 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 
 	//Fonction servant à vérifier si l'utilisateur existe dans la base de données
 	@Override
-	public Boolean verifLogin(String pseudo, String motDePasse) throws DALException, BLLException {
+	public Integer verifLogin(String pseudo, String motDePasse) throws DALException, BLLException {
 		//Déclaration de la boolean à renvoyer
-		Boolean userExist = false;
+		Integer userExist = null;
 
 		try (Connection conn = ConnectionProvider.getConnection()){
 			//Déclaration du prepared statement
@@ -137,7 +138,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 
 			 //Mise à jour de la boolean si l'utilisateur existe
 			 if (rs.next()){
-				 userExist = true;
+				 userExist = rs.getInt(1);
 			 }
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

@@ -6,7 +6,7 @@ import main.java.fr.eni.bo.Utilisateur;
 public interface UtilisateursDAO {
 	Boolean insert (Utilisateur user) throws BLLException;
 	Utilisateur selectById(Integer id) throws DALException, BLLException;
-	Boolean verifLogin(String pseudo, String motDePasse) throws DALException, BLLException;
+	Integer verifLogin(String pseudo, String motDePasse) throws DALException, BLLException;
 
 	void deleteUser(Utilisateur user);
 

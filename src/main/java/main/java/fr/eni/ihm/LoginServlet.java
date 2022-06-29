@@ -29,17 +29,18 @@ public class LoginServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		boolean reponse=false;
+		Integer reponse= null;
 		String pseudo = req.getParameter("pseudo");
 		String password = req.getParameter("password");
 		try {
 			reponse = mgr.verifLogin(pseudo, password);
-			if (reponse) {
+			if (reponse != null) {
 				// creation exprression language variable mode connecte pour utiliser une seule page accueil
 				req.setAttribute("modeConnecte", reponse);
 				req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 			}else {
-				req.setAttribute("modeDeconnecte", reponse);
+				System.out.println("valuer reponse si null   " + reponse);
+				req.setAttribute("modeConnecte", reponse);
 				req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
 			}
 		} catch (DALException e) {
