@@ -14,7 +14,7 @@ public class PageAccueilServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		boolean reponse=true;
+		Integer reponse=null;
 		req.setAttribute("modeDeconnecte", reponse);
 		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 	}

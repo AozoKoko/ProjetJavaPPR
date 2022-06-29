@@ -36,9 +36,11 @@ public class LoginServlet extends HttpServlet{
 			reponse = mgr.verifLogin(pseudo, password);
 			if (reponse != null) {
 				// creation exprression language variable mode connecte pour utiliser une seule page accueil
+				System.out.println("valuer reponse si non null    " + reponse);
 				req.setAttribute("modeConnecte", reponse);
 				req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 			}else {
+				System.out.println("valuer reponse si null   " + reponse);
 				req.setAttribute("modeDeconnecte", reponse);
 				req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
 			}
