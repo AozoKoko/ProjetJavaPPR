@@ -7,11 +7,11 @@ import main.java.fr.eni.bo.Enchere;
 
 public interface EnchereDAO {
 
-	void insert (Enchere enchere) throws BLLException;
+	void insertEnchere (Enchere enchere) throws BLLException;
 	
-	void update (Enchere enchere, LocalDate dateEnchere) throws BLLException;
+	void updateEnchere (Enchere enchere) throws BLLException;
 	
-	void remove (Enchere enchere, LocalDate dateEnchere)throws BLLException;
+	void removeEnchere (Enchere enchere, LocalDate dateEnchere)throws BLLException;
 	
 	
 }

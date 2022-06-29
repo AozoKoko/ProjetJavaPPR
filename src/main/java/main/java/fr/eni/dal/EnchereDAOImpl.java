@@ -1,12 +1,9 @@
 package main.java.fr.eni.dal;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 import main.java.fr.eni.bll.BLLException;
@@ -20,7 +17,7 @@ public class EnchereDAOImpl implements EnchereDAO {
 	  
 	  
 	@Override
-	public void insert(Enchere enchere) {
+	public void insertEnchere (Enchere enchere) {
 		 try (Connection conn = ConnectionProvider.getConnection()){
 
 	            PreparedStatement stmt = conn.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -43,7 +40,7 @@ public class EnchereDAOImpl implements EnchereDAO {
 	}
 
 	@Override
-	public void update(Enchere enchere, LocalDate dateEnchere) {
+	public void updateEnchere (Enchere enchere) {
 	     try (Connection conn = ConnectionProvider.getConnection()){
 	    	 
 	            PreparedStatement stmt = conn.prepareStatement(UPDATE, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -59,7 +56,7 @@ public class EnchereDAOImpl implements EnchereDAO {
 	    }
 
 	@Override
-	public void remove(Enchere enchere, LocalDate dateEnchere) throws BLLException {
+	public void removeEnchere (Enchere enchere, LocalDate dateEnchere) throws BLLException {
 	      try (Connection conn = ConnectionProvider.getConnection()){
 
 	            PreparedStatement statement = conn.prepareStatement(REMOVE,PreparedStatement.RETURN_GENERATED_KEYS);
