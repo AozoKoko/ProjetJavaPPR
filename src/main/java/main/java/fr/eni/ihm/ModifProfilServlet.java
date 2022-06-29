@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class modifProfil
  */
 @WebServlet("/modifProfil")
-public class modifProfil extends HttpServlet {
+public class ModifProfilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public modifProfil() {
+    public ModifProfilServlet() {
         super();
     }
 
