@@ -20,7 +20,7 @@
 	</div>
 
 	<div class="container mt-5 mb-5">
-		<c:if test="${empty modeDeconnecte}">
+		<c:if test="${empty modeConnecte}">
 			<nav class="navbar bg-light mb-2">
 				<div class="container-fluid">
 					<a class="navbar-brand"
