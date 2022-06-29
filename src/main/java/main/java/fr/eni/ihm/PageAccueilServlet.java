@@ -29,6 +29,7 @@ public class PageAccueilServlet extends HttpServlet {
 			req.setAttribute("modeConnecte", affichageConnexion);
 			req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 		}
+		
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

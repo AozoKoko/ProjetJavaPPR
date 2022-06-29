@@ -30,12 +30,9 @@ public class ModifProfilServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		Utilisateur user = new Utilisateur();
-		Integer idUser = (Integer) req.getAttribute("modeConnecte");
-		System.out.println("iduser en cours pour l'envoi a affichageprofil   "+ idUser);
-		idUser=13;
+		Integer idUser = Integer.parseInt(req.getParameter("param1"));
 		try {
 			user = mgr.selectById(idUser);
-			System.out.println("user selectionner   " + user.toString());
 			req.setAttribute("profil", user);
 			req.getRequestDispatcher("/WEB-INF/affichageProfil.jsp").forward(req, resp);
 		} catch (DALException e) {

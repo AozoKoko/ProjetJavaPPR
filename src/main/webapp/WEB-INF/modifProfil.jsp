@@ -24,7 +24,7 @@
 			<div class="text-center">Mon profil</div>
 		</div>
 		<!-- appel a la servlet modifValeur pour enregistrer les modif et faire un update en base -->
-		<form action="/ProjetJavaPPR/modifValeur" method="post">
+		<form action="/ProjetJavaPPR/monProfil" method="post">
 			<div class="row">
 				<div class="col">
 					<input type="hidden" name="idUtilisateur"

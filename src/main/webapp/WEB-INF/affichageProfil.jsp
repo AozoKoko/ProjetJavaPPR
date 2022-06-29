@@ -70,7 +70,7 @@
 		</div>
 	</div>
 	<div class="row mb-3">
-		<a class="btn btn-dark" href="<%=request.getContextPath()%>/modifProfil" role="button">Modifier</a>
+		<a class="btn btn-dark" href="<%=request.getContextPath()%>/monProfil" role="button">Modifier</a>
 	</div>
 
 	<script
