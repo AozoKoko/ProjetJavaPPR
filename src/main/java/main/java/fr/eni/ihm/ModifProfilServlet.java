@@ -28,12 +28,11 @@ public class ModifProfilServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Integer idUser = null;
+	
 		Utilisateur user = new Utilisateur();
-		idUser = (Integer) req.getAttribute("modeConnecte");
-		req.setAttribute("modeConnecte", idUser);
-		System.out.println("iduser en cours   "+ idUser);
-		
+		Integer idUser = (Integer) req.getAttribute("modeConnecte");
+		System.out.println("iduser en cours pour l'envoi a affichageprofil   "+ idUser);
+		idUser=13;
 		try {
 			user = mgr.selectById(idUser);
 			System.out.println("user selectionner   " + user.toString());
@@ -51,7 +50,6 @@ public class ModifProfilServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
 	}
 
 }
