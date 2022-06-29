@@ -14,13 +14,15 @@
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	crossorigin="anonymous">
 	
+	<nav class="navbar bg-light mb-2">
 	<div class="container-fluid">
-		<nav class="navbar bg-light mb-2">
-			<div class="container-fluid">
-				<a class="navbar-brand"
-					href="<%=request.getContextPath()%>/pageAccueil">ENI-Enchères</a>
-			</div>
-		</nav>
+		<a class="navbar-brand" href="#">
+		<figure class="image is-128x128">
+    		<a href="<%=request.getContextPath()%>/nouvelleVente"><img src="img/logo.png" alt="logo" class="d-inline-block align-text-top"></a>
+	 	</figure>
+   		</a>
+    </div>
+	</nav>
 	
 	
 <script
