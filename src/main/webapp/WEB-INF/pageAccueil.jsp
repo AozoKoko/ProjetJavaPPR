@@ -51,7 +51,7 @@
 								href="<%=request.getContextPath()%>/nouvelleVente">Vendre un
 									article</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="<%=request.getContextPath()%>/MonProfil">Mon profil</a></li>
+								href="<%=request.getContextPath()%>/modifProfil" value="${modeConnecte}">Mon profil</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="<%=request.getContextPath()%>/pageAccueil">Deconnexion</a>
 							</li>

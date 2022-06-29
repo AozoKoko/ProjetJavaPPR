@@ -80,9 +80,9 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 	public Utilisateur selectById(Integer id) throws DALException, BLLException {
 
 		//Création de l'objet utilisateur utilisé pour stocker le résultat de la query
-		Utilisateur user = new Utilisateur();
+		Utilisateur user = null;
 
-		try (Connection conn = ConnectionProvider.getConnection()){
+		try (Connection conn = ConnectionProvider.getConnection();){
 
 			//Création du prepared statement
 			PreparedStatement stmt = conn.prepareStatement(SELECT_ID, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -91,25 +91,15 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 			stmt.setInt(1,id);
 
 			//Execution de la requète
-			stmt.executeQuery();
 
 			//Récupération du résultat de la requète
-			ResultSet rs = stmt.getGeneratedKeys();
-
+			ResultSet rs =  stmt.executeQuery();
+		
 			//Mise à jour des paramètres de l'objet Utilisateur avec les résultats de la requète
 			if (rs.next()){
-				user.setNoUtilisateur(rs.getInt(1));
-				user.setPseudo(rs.getString(2));
-				user.setNom(rs.getString(3));
-				user.setPrenom(rs.getString(4));
-				user.setEmail(rs.getString(5));
-				user.setTelephone(rs.getString(6));
-				user.setRue(rs.getString(7));
-				user.setCodePostal(rs.getString(8));
-				user.setVille(rs.getString(9));
-				user.setMotDePasse(rs.getString(10));
-				user.setCredit(rs.getInt(11));
-				user.setAdminsitrateur(rs.getBoolean(12));
+				user = new Utilisateur(rs.getString("pseudo"),rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),
+						rs.getString("telephone"),rs.getString("rue"),rs.getString("code_postal"),rs.getString("ville"),rs.getString("mot_de_passe"),
+						rs.getInt("credit"),rs.getBoolean("administrateur"));
 			}
 
 
