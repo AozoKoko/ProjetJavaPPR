@@ -8,5 +8,12 @@ public class BLLFactory {
 
     public static ManagerCategorie getCategorieManager(){
     	return new ManagerCategorieImpl();
+
     }
+
+
+	public static ManagerEnchere getEnchereManager() {
+		return new ManagerEnchereImpl();
+	}
 }
+
