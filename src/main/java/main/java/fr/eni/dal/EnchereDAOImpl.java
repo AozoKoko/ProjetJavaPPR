@@ -50,9 +50,6 @@ public class EnchereDAOImpl implements EnchereDAO {
 	@Override
 	public Enchere updateEnchere (Enchere enchere, Utilisateur utilisateur, Categorie categorie) {
 		Enchere enchere1 = null;
-		// input field min max dans servlet
-		// recup crédits candidat = max enchère
-		// si crédits encheres = nb inférieur )à proposition = erreur
 		
 		try (Connection conn = ConnectionProvider.getConnection()){
 	    	 
