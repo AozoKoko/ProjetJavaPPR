@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet{
 		Integer idUser= null;
 		String pseudo = req.getParameter("pseudo");
 		String password = req.getParameter("password");
+	
 		try {
 			idUser = mgr.verifLogin(pseudo, password);
 			if (idUser != null) {
