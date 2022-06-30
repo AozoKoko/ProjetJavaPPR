@@ -11,9 +11,9 @@ import java.util.List;
 public class ArticlesDAOImpl implements ArticlesDAO{
 
     private static String SELECT_BY_ID = "SELECT * FROM ARTICLES_VENDUS WHERE no_article = ?";
-    private static String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
+    private static String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie, url_image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
     private static String DELETE = "DELETE FROM ARTICLES_VENDUS WHERE no_article = ?";
-    private static String UPDATE =  "UPDATE ARTICLES_VENDUS SET nom_article = ?, description = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, no_utilisateur = ?, no_categorie = ? WHERE no_article = ?";
+    private static String UPDATE =  "UPDATE ARTICLES_VENDUS SET nom_article = ?, description = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, no_utilisateur = ?, no_categorie = ?, url_image = ? WHERE no_article = ?";
     private static String GET_ALL_ARTICLE_UTILISATEUR = "SELECT * FROM ARTICLES_VENDUS av INNER JOIN UTILISATEURS u ON av.no_utilisateur = u.no_utilisateur WHERE u.no_utilisateur = ?";
     private static String GET_ALL_ARTICLE_CATEGORIE = "SELECT * FROM ARTICLES_VENDUS av INNER JOIN CATEGORIES c ON av.no_categorie = c.no_categorie WHERE c.no_categorie = ? ";
     private static String GET_ALL_ARTICLE = "SELECT * FROM ARTICLES_VENDUS";
@@ -35,7 +35,8 @@ public class ArticlesDAOImpl implements ArticlesDAO{
                         rs.getDate(4).toLocalDate(),
                         rs.getDate(5).toLocalDate(),
                         rs.getInt(6),
-                        rs.getInt(7));
+                        rs.getInt(7),
+                        rs.getString(10));
 
             }
 
@@ -59,6 +60,7 @@ public class ArticlesDAOImpl implements ArticlesDAO{
             stmt.setInt(6,articles.getPrixVente());
             stmt.setInt(7,utilisateur.getNoUtilisateur());
             stmt.setInt(8,categorie.getNoCategorie());
+            stmt.setString(9, articles.getUrlImage());
 
             stmt.executeUpdate();
 
@@ -105,6 +107,7 @@ public class ArticlesDAOImpl implements ArticlesDAO{
             stmt.setInt(6,articles.getPrixVente());
             stmt.setInt(7,utilisateur.getNoUtilisateur());
             stmt.setInt(8,categorie.getNoCategorie());
+            stmt.setString(9, articles.getUrlImage());
 
             stmt.executeUpdate();
 
@@ -117,7 +120,8 @@ public class ArticlesDAOImpl implements ArticlesDAO{
                         rs.getDate(4).toLocalDate(),
                         rs.getDate(5).toLocalDate(),
                         rs.getInt(6),
-                        rs.getInt(7));
+                        rs.getInt(7),
+                        rs.getString(10));
             }
 
         } catch (SQLException e) {
@@ -143,7 +147,8 @@ public class ArticlesDAOImpl implements ArticlesDAO{
                             rs.getDate(4).toLocalDate(),
                             rs.getDate(5).toLocalDate(),
                             rs.getInt(6),
-                            rs.getInt(7));
+                            rs.getInt(7),
+                            rs.getString(10));
 
                     liste.add(articles);
                 }
@@ -164,7 +169,8 @@ public class ArticlesDAOImpl implements ArticlesDAO{
                             rs.getDate(4).toLocalDate(),
                             rs.getDate(5).toLocalDate(),
                             rs.getInt(6),
-                            rs.getInt(7));
+                            rs.getInt(7),
+                            rs.getString(10));
 
                     liste.add(articles);
                 }
@@ -184,7 +190,8 @@ public class ArticlesDAOImpl implements ArticlesDAO{
                             rs.getDate(4).toLocalDate(),
                             rs.getDate(5).toLocalDate(),
                             rs.getInt(6),
-                            rs.getInt(7));
+                            rs.getInt(7),
+                            rs.getString(10));
 
                     liste.add(articles);
                 }
