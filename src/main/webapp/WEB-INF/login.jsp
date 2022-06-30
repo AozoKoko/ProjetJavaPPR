@@ -24,7 +24,7 @@
 				style="margin: auto; width: 300px;">
 				<div class="form-outline mb-4">
 					<input type="text" id="form2Example1" class="form-control"
-						name="pseudo" /> <label class="form-label" for="form2Example1">Pseudo</label>
+						name="pseudo" /> <label class="form-label" for="form2Example1">Pseudo ou email</label>
 				</div>
 				<div class="form-outline mb-4">
 					<input type="password" id="form2Example2" class="form-control"
