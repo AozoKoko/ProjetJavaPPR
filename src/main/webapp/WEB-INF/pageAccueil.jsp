@@ -43,8 +43,11 @@
 				<c:if test="${not empty modeConnecte}">
 					<nav class="navbar bg-light mb-2">
 						<div class="container-fluid">
-							<a class="navbar-brand"
-								href="<%=request.getContextPath()%>/pageAccueil">ENI-Enchères</a>
+							<figure class="image is-128x128">
+								<a href="<%=request.getContextPath()%>/pageAccueil"><img
+									src="img/logo.png" alt="logo" width="80px"
+									class="d-inline-block align-text-top"></a>
+							</figure>
 							<div>
 								<ul class="nav justify-content-end">
 									<li class="nav-item"><a class="nav-link active"
@@ -173,32 +176,50 @@
 		</form>
 		<div class="row mt-5">
 			<!--<c:forEach var="element" items="${articles}">-->
-				<div class="card mb-3" style="max-width: 540px;">
-					<div class="row g-0">
-						<div class="col-md-4">
-							<figure class="image is-128x128">
-								<img src="https://bulma.io/images/placeholders/256x256.png"
-									class="img-fluid rounded-start">
-							</figure>
+			<div class="card mb-3" style="max-width: 540px;">
+				<div class="row g-0">
+					<div class="col-md-4">
+						<img src="https://bulma.io/images/placeholders/256x256.png"
+							class="img-fluid rounded-start" alt="image du produit vendu">
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h5 class="card-title">${ArticleVendu.nomArticle}</h5>
+							<p class="card-text">${ArticleVendu.description}</p>
+							<p class="card-text">Prix : ${ArticleVendu.prixVente}</p>
+							<p class="card-text">Fin de l'enchère :
+								${ArticleVendu.dateFinEncheres}</p>
+							<p class="card-text">
+								<small class="text-muted">Dernière mise à jour il y a
+									minutes</small>
+							</p>
+							<a href="#" class="btn btn-primary">Enchérir</a>
 						</div>
-						<div class="col-md-8">
-							<div class="card-body">
-								<h5 class="card-title">${ArticleVendu.nomArticle}</h5>
-								<p class="card-text">${ArticleVendu.description}</p>
-								<p class="card-text">Prix : ${ArticleVendu.prixVente}</p>
-								<p class="card-text">Fin de l'enchère :
-									${ArticleVendu.dateFinEncheres}</p>
-								<p class="card-text">
-									<small class="text-muted">Dernière mise à jour il y a
-										minutes</small>
-								</p>
-								<a href="#" class="btn btn-primary">Enchérir</a>
-							</div>
-						</div>
-
 					</div>
 				</div>
+			</div>
 			<!--</c:forEach>-->
+		</div>
+		<!-- ajout temporaire d'une card sans expression langugue -->
+		<div class="row">
+			<div class="card mb-3" style="max-width: 400px;">
+				<div class="row g-0">
+					<div class="col-md-4">
+						<img src="https://bulma.io/images/placeholders/256x256.png" class="img-fluid rounded-start" alt="...">
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h5 class="card-title">Card title</h5>
+							<p class="card-text">This is a wider card with supporting
+								text below as a natural lead-in to additional content. This
+								content is a little bit longer.</p>
+							<p class="card-text">
+								<small class="text-muted">Last updated 3 mins ago</small>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 

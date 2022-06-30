@@ -17,11 +17,10 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 		private static final String VERIF_INSERT = "SELECT pseudo FROM UTILISATEURS WHERE pseudo = ?";
 		private static final String INSERT = "insert into UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		private static final String SELECT_ID = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
-		private static final String VERIF_INFOS_USER = "SELECT no_utilisateur, pseudo,email, mot_de_passe FROM UTILISATEURS WHERE pseudo = ? OR email = ? AND mot_de_passe = ?";
-
+		private static final String VERIF_INFOS_USER = "SELECT no_utilisateur, pseudo,email, mot_de_passe FROM UTILISATEURS WHERE pseudo = ? OR email = ? AND mot_de_passe = ?";		
 		private static final String DELETE_USER = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?";
 
-		private static final String UPDATE_USER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ?, administrateur = ? WHERE  no_utilisateur = ?";
+		private static final String UPDATE_USER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ? WHERE  no_utilisateur = ?";
 	//Fonction permettant l'insertion de nouveaux utilisateurs dans la base de donnée
 	@Override
 	public Boolean insert(Utilisateur user) throws BLLException {
@@ -97,7 +96,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 		
 			//Mise à jour des paramètres de l'objet Utilisateur avec les résultats de la requète
 			if (rs.next()){
-				user = new Utilisateur(rs.getString("pseudo"),rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),
+				user = new Utilisateur(rs.getInt("no_utilisateur"),rs.getString("pseudo"),rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),
 						rs.getString("telephone"),rs.getString("rue"),rs.getString("code_postal"),rs.getString("ville"),rs.getString("mot_de_passe"),
 						rs.getInt("credit"),rs.getBoolean("administrateur"));
 			}
@@ -108,7 +107,6 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 		}
 		return user;
 	}
-
 
 	//Fonction servant à vérifier si l'utilisateur existe dans la base de données
 	@Override
@@ -170,18 +168,18 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 			PreparedStatement stmt = conn.prepareStatement(UPDATE_USER,PreparedStatement.RETURN_GENERATED_KEYS);
 
 			//Valorisation des paramètres
+			
 			stmt.setString(1,user.getPseudo());
 			stmt.setString(2,user.getNom());
 			stmt.setString(3,user.getPrenom());
-			stmt.setString(4, user.getEmail());
+			stmt.setString(4,user.getEmail());
 			stmt.setString(5,user.getTelephone());
-			stmt.setString(6, user.getRue());
+			stmt.setString(6,user.getRue());
 			stmt.setString(7,user.getCodePostal());
 			stmt.setString(8,user.getVille());
 			stmt.setString(9,user.getMotDePasse());
 			stmt.setInt(10,user.getCredit());
-			stmt.setBoolean(11,user.isAdministrateur());
-			stmt.setInt(12,user.getNoUtilisateur());
+			stmt.setInt(11,user.getNoUtilisateur());
 
 			//Execution du prepared statement
 			stmt.executeUpdate();
