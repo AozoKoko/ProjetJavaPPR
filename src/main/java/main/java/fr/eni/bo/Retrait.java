@@ -1,6 +1,6 @@
 package main.java.fr.eni.bo;
 
-public class Retrait {
+public abstract class Retrait {
 
 	private String rue;
 	private String codePostal;

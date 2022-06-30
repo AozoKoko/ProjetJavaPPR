@@ -68,8 +68,9 @@ public class EnchereDAOImpl implements EnchereDAO {
 	        } catch (SQLException e) {
 	            throw new RuntimeException(e);
 	        }
-		
 	}
+	
+	
 
 
 	
