@@ -38,6 +38,4 @@ public class ManagerUtilisateursImpl implements ManagerUtilisateurs {
 		public void updateUser(Utilisateur user){
 			daoUtilisateurs.updateUser(user);
 		}
-
-
 }

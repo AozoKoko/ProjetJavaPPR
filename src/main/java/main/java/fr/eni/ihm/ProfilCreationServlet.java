@@ -46,7 +46,6 @@ public class ProfilCreationServlet extends HttpServlet{
 		user.setVille(req.getParameter("ville"));
 		user.setMotDePasse(req.getParameter("password"));
 		
-		System.out.println("password  " + req.getParameter("password") + "    confirm passwod   " + req.getParameter("passwordConfirm"));
 		if (req.getParameter("password").equals(req.getParameter("passwordConfirm"))) {
 			try {
 				inscription = mgr.ajouterUser(user);

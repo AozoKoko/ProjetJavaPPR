@@ -28,7 +28,7 @@
 			<div class="row">
 				<div class="col">
 					<input type="hidden" name="idUtilisateur"
-						value="${empty user?'':user.noUtilisateur }" />
+						value="${empty profil?'':profil.noUtilisateur }" />
 
 					<div class="form-outline">
 						<div class="row mb-2">
@@ -37,7 +37,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="form3Example1" class="form-control"
-									name="pseudo" />
+									name="pseudo" value="${empty profil?'':profil.pseudo }"/>
 							</div>
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="form3Example1" class="form-control"
-									name="prenom" />
+									name="prenom" value="${empty profil?'':profil.prenom }"/>
 							</div>
 						</div>
 					</div>
@@ -60,7 +60,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="tel" id="form3Example1" class="form-control"
-									name="telephone" />
+									name="telephone" value="${empty profil?'':profil.telephone }"/>
 							</div>
 						</div>
 					</div>
@@ -72,7 +72,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="tel" id="form3Example1" class="form-control"
-									name="codePostal" />
+									name="codePostal" value="${empty profil?'':profil.codePostal }"/>
 							</div>
 						</div>
 					</div>
@@ -84,7 +84,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="password" id="form3Example1" class="form-control"
-									name="password" value="${empty user?'':user.password }" />
+									name="password" value="${empty profil?'':profil.motDePasse }" />
 							</div>
 						</div>
 					</div>
@@ -96,7 +96,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="password" id="form3Example1" class="form-control"
-									name="password" value="${empty user?'':user.password }" />
+									name="password" value="${empty profil?'':profil.motDePasse }" />
 							</div>
 						</div>
 					</div>
@@ -109,7 +109,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="form3Example1" class="form-control"
-									name="nom" />
+									name="nom" value="${empty profil?'':profil.nom }"/>
 							</div>
 						</div>
 					</div>
@@ -120,7 +120,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="email" id="form3Example1" class="form-control"
-									name="email" />
+									name="email" value="${empty profil?'':profil.email }"/>
 							</div>
 						</div>
 					</div>
@@ -131,7 +131,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="form3Example1" class="form-control"
-									name="rue" />
+									name="rue" value="${empty profil?'':profil.rue }"/>
 							</div>
 						</div>
 					</div>
@@ -142,7 +142,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="form3Example1" class="form-control"
-									name="ville" />
+									name="ville" value="${empty profil?'':profil.ville }"/>
 							</div>
 						</div>
 					</div>
@@ -161,18 +161,23 @@
 							</div>
 							<div class="col-md-6">
 								<input type="password" id="form3Example1" class="form-control"
-									name="passwordConfirm" value="${empty user?'':user.password }" />
+									name="passwordConfirm" value="${empty profil?'':profil.motDePasse }" />
 							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<p>Credit : ${profil.credit }</p>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row mb-4">
 				<div class="col text-center">
-					<button type="submit" class="btn btn-outline-dark" name="save">Enregistrer</button>
+					<button type="submit" class="btn btn-outline-dark" name="buttonFunction" value="save">Enregistrer</button>
 				</div>
 				<div class="col text-center">
-					<button class="btn btn-outline-dark" name="delete">Supprimer mon compte</button>
+					<button type="submit" class="btn btn-outline-dark" name="buttonFunction" value="delete">Supprimer mon compte</button>
 				</div>
 			</div>
 		</form>
