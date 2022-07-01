@@ -68,12 +68,26 @@
 							</div>
 						</div>
 					</div>
+						</div>
+					<div class="form-outline">
+						<div class="row mb-5">
+							<div class="col-md-5">
+								<label class="quantity">Mise à prix : </label>
+								<input type="number" id="quantity" style="height: 40px; width: 70px" name="quantity" min="${empty article?'':article.prixVente}" max="${empty utilisateur?'':utilisateur.credit}"><br><br>
+  		
+							</div>
+							<div class="col-md-9">
+								<input type="text" id="form3Example1" class="form-control" style="height:100px"
+									name="prenom" value="" />
+							</div>
+						</div>
+					</div>
 					<div>
-						<label for="datemax">Enter a date before 1980-01-01:</label>
-  						<input type="date" id="datemax" name="datemax" max="1979-12-31"><br><br>
+						<label for="dateDebut">Début de l'enchère :</label>
+  						<input type="date" id="datemin" name="datemin" min="2022-07-01"><br><br>
 
-  						<label for="datemin">Enter a date after 2000-01-01:</label>
-  						<input type="date" id="datemin" name="datemin" min="2000-01-02"><br><br>
+  						<label for="dateFin">Fin de l'enchère :</label>
+  						<input type="date" id="datemin" name="datemin" min="2022-07-01"><br><br>
   					</div>
 				</div>
 			</div>

@@ -32,13 +32,20 @@
 	
 	<form name="form_compte" action="" method="get">
 		<div>
-  		<label for="quantity">Proposition:</label>
+  		<label for="quantity">Proposition : </label>
   		<input type="number" id="quantity" style="height: 40px; width: 70px" name="quantity" min="${empty article?'':article.prixVente}" max="${empty utilisateur?'':utilisateur.credit}"><br><br>
   			<div class="col offset-md-6">		
   					<input type="submit" value="Enchérir"/>
-  				</div>	
   			</div>
 		</div>
+		<div>
+  		<label for="quantity">Proposition : </label>
+  		<input type="number" id="quantity" style="height: 40px; width: 70px" name="quantity" min="${empty article?'':article.prixVente}" max="${empty utilisateur?'':utilisateur.credit}"><br><br>
+  			<div class="col offset-md-6">		
+  					<input type="submit" value="Enchérir"/>
+  			</div>
+		</div>
+		
 	</form>
 	
 <!-- <form act

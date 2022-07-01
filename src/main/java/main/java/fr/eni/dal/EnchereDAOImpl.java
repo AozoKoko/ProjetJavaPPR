@@ -14,23 +14,27 @@ import main.java.fr.eni.bo.Utilisateur;
 
 public class EnchereDAOImpl implements EnchereDAO {
 	
+	// à faire : create select by article
 
-	private static String INSERT = "INSERT INTO ENCHERE (date_enchere, montant_enchere, no_article, no_utilisateur) VALUES (?, ?, ?, ?)";
-	private static String UPDATE = "UPDATE ENCHERE SET date_enchere ?, montant_enchere = ?, no_article = ?, no_utilisateur = ?) WHERE date_enchere = ?, montant_enchere = ?, no_article = ?, no_utilisateur = ?";
-	private static String REMOVE = "DELETE FROM ENCHERE WHERE date_enchere = ?";
+	private static String INSERT = "INSERT INTO ENCHERE (date_enchere, montant_enchere, no_article, no_utilisateur, no_encherisseur) VALUES (?, ?, " + 
+			"(SELECT no_article FROM ARTICLES_VENDUS WHERE no_article = ?)," +
+			"(SELECT no_utilisateur FROM UTILISATEURS WHERE no_utilisateur = ?)," +            
+			" ?, ?) ";
+	private static String UPDATE = "UPDATE ENCHERE SET date_enchere = ?, montant_enchere = ?, no_article = ?, no_utilisateur = ?, no_encherisseur = ?) WHERE no_enchere = ?";
+	private static String REMOVE = "DELETE FROM ENCHERE WHERE no_enchere = ?";
 	
 	  
 	@Override
-	public void insertEnchere (Enchere enchere, Utilisateur utilisateur, Categorie categorie) {
+	public void insertEnchere (Enchere enchere) {
 		 try (Connection conn = ConnectionProvider.getConnection()){
 
 	            PreparedStatement stmt = conn.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 	            
 	            stmt.setDate(1,java.sql.Date.valueOf(enchere.getDateEnchere()));
-	            stmt.setInt(2,enchere.getMontantEnchere());
-	            stmt.setInt(3,utilisateur.getNoUtilisateur());
-	            stmt.setInt(4,categorie.getNoCategorie());
-	            
+	            stmt.setInt(2, enchere.getMontantEnchere());
+	            stmt.setInt(3,enchere.getNoArticle());
+	            stmt.setInt(4,enchere.getNoUtilisateur());
+	            stmt.setInt(5,enchere.getNoEncherisseur());
 	            
 	            //Execute le prepared statement pour insérer les données renseignées dans la base de donnée
 	            stmt.executeUpdate();
@@ -48,17 +52,20 @@ public class EnchereDAOImpl implements EnchereDAO {
 		}
 	
 	@Override
-	public Enchere updateEnchere (Enchere enchere, Utilisateur utilisateur, Categorie categorie) {
+	public Enchere updateEnchere (Enchere enchere, int noUtilisateur, int nouveauMontant) {
 		Enchere enchere1 = null;
+
 		
 		try (Connection conn = ConnectionProvider.getConnection()){
 	    	 
 	            PreparedStatement stmt = conn.prepareStatement(UPDATE, PreparedStatement.RETURN_GENERATED_KEYS);
 
 	            stmt.setDate(1,java.sql.Date.valueOf(enchere1.getDateEnchere()));
-	            stmt.setInt(2,enchere1.getMontantEnchere());
-	            stmt.setInt(3,utilisateur.getNoUtilisateur());
-	            stmt.setInt(4,categorie.getNoCategorie());
+	            stmt.setInt(2, nouveauMontant);
+	            stmt.setInt(3,enchere.getNoArticle());
+	            stmt.setInt(4,enchere.getNoUtilisateur());
+	            stmt.setInt(5,noUtilisateur);
+	            stmt.setInt(6,enchere.getNoEnchere());
 
 	            stmt.executeUpdate();
 
@@ -66,9 +73,13 @@ public class EnchereDAOImpl implements EnchereDAO {
 	            ResultSet rs = stmt.getGeneratedKeys();
 	            
 	            if(rs.next()){
-	            	enchere1 = new Enchere(rs.getInt(1),
-	                        rs.getDate(2).toLocalDate(),
-	                        rs.getInt(3));
+	            	enchere1 = new Enchere(rs.getInt("no_enchere"),
+	                        rs.getDate("date_enchere").toLocalDate(),
+	                        rs.getInt("montant_enchere"),
+	                        rs.getInt("no_article"),
+	                        rs.getInt("no_utilisateur"),
+	                        rs.getInt("no_encherisseur")
+	            			);
 	            }
 	            
 	        } catch (SQLException e) {

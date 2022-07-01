@@ -8,9 +8,9 @@ import main.java.fr.eni.bo.Utilisateur;
 
 public interface ManagerEnchere {
 
-	void ajouterEnchere (Enchere enchere, Utilisateur utilisateur, Categorie categorie) throws BLLException;
-	
-	void updateEnchere(Enchere enchere, Utilisateur utilisateur, Categorie categorie) throws BLLException;
-	
 	void supprimerEnchere(Enchere enchere) throws BLLException;
+
+	void updateEnchere(Enchere enchere, int noUtlisateur, int nouveauMontant) throws BLLException;
+
+	void ajouterEnchere(Enchere enchere) throws BLLException;
 }

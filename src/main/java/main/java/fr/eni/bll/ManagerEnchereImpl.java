@@ -17,13 +17,13 @@ public class ManagerEnchereImpl implements ManagerEnchere {
 	}
 	
 	@Override
-	public void ajouterEnchere(Enchere enchere, Utilisateur utilisateur, Categorie categorie) throws BLLException {
-		enchereDAO.insertEnchere(enchere, utilisateur, categorie);
+	public void ajouterEnchere(Enchere enchere) throws BLLException {
+		enchereDAO.insertEnchere(enchere);
 	}
 
 	@Override
-	public void updateEnchere(Enchere enchere, Utilisateur utilisateur, Categorie categorie) throws BLLException {
-		enchereDAO.updateEnchere(enchere, utilisateur, categorie);
+	public void updateEnchere(Enchere enchere, int noUtilisateur, int nouveauMontant) throws BLLException {
+		enchereDAO.updateEnchere(enchere, noUtilisateur, nouveauMontant);
 		
 	}
 

@@ -12,7 +12,6 @@ public class BLLFactory {
 
     public static ManagerCategorie getCategorieManager(){
     	return new ManagerCategorieImpl();
-
     }
 
 

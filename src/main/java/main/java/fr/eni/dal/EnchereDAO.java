@@ -8,11 +8,11 @@ import main.java.fr.eni.bo.Enchere;
 import main.java.fr.eni.bo.Utilisateur;
 
 public interface EnchereDAO {
-
-	void insertEnchere (Enchere enchere, Utilisateur utilisateur, Categorie categorie) throws BLLException;
-	
-	Enchere updateEnchere (Enchere enchere, Utilisateur utilisateur, Categorie categorie) throws BLLException;
 	
 	void removeEnchere (Enchere enchere)throws BLLException;
+
+	Enchere updateEnchere(Enchere enchere, int noUtilisateur, int nouveauMontant);
+
+	void insertEnchere(Enchere enchere);
 	
 }
