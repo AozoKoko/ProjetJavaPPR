@@ -91,7 +91,7 @@ public class TestDALServlet extends HttpServlet {
             articlesDAO.insertArticles(articles7,utilisateursDAO.selectById(3),categorieDAO.selectById(7));
             articlesDAO.insertArticles(articles8,utilisateursDAO.selectById(5),categorieDAO.selectById(8));
             articlesDAO.insertArticles(articles9,utilisateursDAO.selectById(1),categorieDAO.selectById(9));
-            
+
 
         } catch (DALException e) {
             throw new RuntimeException(e);

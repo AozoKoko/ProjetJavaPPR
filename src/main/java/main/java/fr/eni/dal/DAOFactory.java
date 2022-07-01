@@ -17,4 +17,6 @@ public class DAOFactory {
 	public static ArticlesDAO getDaoArticles(){ 
 		return  new ArticlesDAOImpl();
 	}
+
+	public static  RetraitsDAO getDaoRetraits(){ return  new RetraitsDAOImpl();}
 }

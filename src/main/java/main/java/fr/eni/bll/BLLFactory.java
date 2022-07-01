@@ -19,5 +19,7 @@ public class BLLFactory {
 	public static ManagerEnchere getEnchereManager() {
 		return new ManagerEnchereImpl();
 	}
+
+    public static ManagerRetraits getManagerRetraits(){return  new ManagerRetraitsImpl();}
 }
 
