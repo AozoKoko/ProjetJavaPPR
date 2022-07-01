@@ -174,58 +174,41 @@
 				</c:if>
 			</div>
 		</form>
-		<div class="row mt-5">
-			<!--<c:forEach var="element" items="${articles}">-->
-			<div class="card mb-3" style="max-width: 540px;">
-				<div class="row g-0">
-					<div class="col-md-4">
-						<img src="https://bulma.io/images/placeholders/256x256.png"
-							class="img-fluid rounded-start" alt="image du produit vendu">
-					</div>
-					<div class="col-md-8">
-						<div class="card-body">
-							<h5 class="card-title">${ArticleVendu.nomArticle}</h5>
-							<p class="card-text">${ArticleVendu.description}</p>
-							<p class="card-text">Prix : ${ArticleVendu.prixVente}</p>
-							<p class="card-text">Fin de l'enchère :
-								${ArticleVendu.dateFinEncheres}</p>
-							<p class="card-text">
-								<small class="text-muted">Dernière mise à jour il y a
-									minutes</small>
-							</p>
-							<a href="#" class="btn btn-primary">Enchérir</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--</c:forEach>-->
-		</div>
-		<!-- ajout temporaire d'une card sans expression langugue -->
+	</div>
+
+	<div class="container-fluid">
 		<div class="row">
-			<div class="card mb-3" style="max-width: 400px;">
-				<div class="row g-0">
-					<div class="col-md-4">
-						<img src="https://bulma.io/images/placeholders/256x256.png" class="img-fluid rounded-start" alt="...">
-					</div>
-					<div class="col-md-8">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
-							<p class="card-text">
-								<small class="text-muted">Last updated 3 mins ago</small>
-							</p>
+
+			<c:forEach var="articleVendu" items="${articles}">
+			
+					<div class="card m-2"
+						style="width: 18rem; display: inline-block;">
+						<div class="row g-0">
+							<div class="col-md-3">
+								<img src="${articleVendu.urlImage }"
+									class="img-fluid h-50 rounded" alt="image du produit vendu">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h5 class="card-title">${articleVendu.nomArticle}</h5>
+									<p class="card-text">${articleVendu.description}</p>
+									<p class="card-text">Prix : ${articleVendu.prixVente}</p>
+									<p class="card-text">Fin de l'enchère :
+										${articleVendu.dateFinEncheres}</p>
+									<a href="#" class="btn btn-primary">Enchérir</a>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
+			
+			</c:forEach>
+
 		</div>
 	</div>
 
-	<form action="testDal">
-		<input type="submit">
-	</form>
+
+
+
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
