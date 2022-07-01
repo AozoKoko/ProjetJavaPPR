@@ -28,22 +28,30 @@ public class DetailVenteServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-	/*	Enchere enchere = new Enchere();
-		
-		Integer idEnchere = Integer.parseInt(req.getParameter("enchere1"));
-		String article = req.getParameter("article");
-		String description = req.getParameter("description");	
 		
 		
+		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
+	}
+
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
 		
+		Enchere enchere = new Enchere();
+		
+		enchere.setMontantEnchere(Integer.parseInt(req.getParameter("montantEnchere")));
+		//enchere.setdateEnchere(req.getParameter("dateEnchere"));
+		System.out.println(req.getParameter("DateEnchere")); 
+		
+	/*	
 		try {
-			enchere = mgr.updateEnchere(enchere, utilisateur, categorie);
+			enchere = mgr.updateEnchere();
 			req.setAttribute("credit", enchere);
 			
-			if (==null) {
-				req.setAttribute("", );
+			if (credit <= prixVente) {
+				req.setAttribute("encherir", enchere);
 			}else {
-				req.setAttribute("", );
+				req.setAttribute("", enchere);
 			}
 			
 		} catch (DALException e) {
@@ -52,16 +60,7 @@ public class DetailVenteServlet extends HttpServlet {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-		
 		*/
-		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
-	}
-
-	
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req, resp);
-		
-		
 		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 	}
 

@@ -18,7 +18,7 @@ public class EnchereDAOImpl implements EnchereDAO {
 	private static String INSERT = "INSERT INTO ENCHERE (date_enchere, montant_enchere, no_article, no_utilisateur) VALUES (?, ?, ?, ?)";
 	private static String UPDATE = "UPDATE ENCHERE SET date_enchere ?, montant_enchere = ?, no_article = ?, no_utilisateur = ?) WHERE date_enchere = ?, montant_enchere = ?, no_article = ?, no_utilisateur = ?";
 	private static String REMOVE = "DELETE FROM ENCHERE WHERE date_enchere = ?";
-	  
+	
 	  
 	@Override
 	public void insertEnchere (Enchere enchere, Utilisateur utilisateur, Categorie categorie) {
