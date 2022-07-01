@@ -11,9 +11,14 @@ import java.util.List;
 public class ArticlesDAOImpl implements ArticlesDAO{
 
     private static String SELECT_BY_ID = "SELECT * FROM ARTICLES_VENDUS WHERE no_article = ?";
-    private static String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie, url_image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+    private static String INSERT = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie, url_image) VALUES (?, ?, ?, ?, ?, ?, " +
+            "(SELECT no_utilisateur FROM UTILISATEURS WHERE no_utilisateur = ?)," +
+            "(SELECT no_categorie FROM CATEGORIES WHERE no_categorie = ?)," +
+            " ?) ";
+
     private static String DELETE = "DELETE FROM ARTICLES_VENDUS WHERE no_article = ?";
     private static String UPDATE =  "UPDATE ARTICLES_VENDUS SET nom_article = ?, description = ?, date_debut_encheres = ?, date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, no_utilisateur = ?, no_categorie = ?, url_image = ? WHERE no_article = ?";
+
     private static String GET_ALL_ARTICLE_UTILISATEUR = "SELECT * FROM ARTICLES_VENDUS av INNER JOIN UTILISATEURS u ON av.no_utilisateur = u.no_utilisateur WHERE u.no_utilisateur = ?";
     private static String GET_ALL_ARTICLE_CATEGORIE = "SELECT * FROM ARTICLES_VENDUS av INNER JOIN CATEGORIES c ON av.no_categorie = c.no_categorie WHERE c.no_categorie = ? ";
     private static String GET_ALL_ARTICLE = "SELECT * FROM ARTICLES_VENDUS";

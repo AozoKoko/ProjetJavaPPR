@@ -80,8 +80,8 @@ public class CategorieDAOImpl implements  CategorieDAO{
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()){
-                categorie.setNoCategorie(rs.getInt(1));
-                categorie.setLibelle(rs.getString(2));
+                categorie = new Categorie(rs.getInt("no_categorie"),rs.getString("libelle") );
+
             }
 
         } catch (SQLException e) {

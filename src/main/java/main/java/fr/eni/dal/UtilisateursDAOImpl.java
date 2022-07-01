@@ -167,6 +167,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 			//Création du prepared statement
 			PreparedStatement stmt = conn.prepareStatement(UPDATE_USER,PreparedStatement.RETURN_GENERATED_KEYS);
 
+
 			//Valorisation des paramètres
 			
 			stmt.setString(1,user.getPseudo());
