@@ -14,7 +14,6 @@ public class BLLFactory {
     	return new ManagerCategorieImpl();
     }
 
-
 	public static ManagerEnchere getEnchereManager() {
 		return new ManagerEnchereImpl();
 	}
