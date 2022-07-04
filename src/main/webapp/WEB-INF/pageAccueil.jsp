@@ -120,7 +120,7 @@
 					<div class="col">
 						<div class="form-check">
 							<input class="form-check-input" type="radio"
-								name="flexRadioDefault1" id="flexRadioDefault1"> <label
+								name="FilterMode" id="flexRadioDefault1"> <label
 								class="form-check-label" for="flexRadioDefault1"> Achats
 							</label>
 						</div>
@@ -144,11 +144,13 @@
 						</div>
 					</div>
 
-
+<Script>
+	
+</Script>
 					<div class="col">
 						<div class="form-check">
 							<input class="form-check-input" type="radio"
-								name="flexRadioDefault" id="flexRadioDefault1"> <label
+								name="FilterMode" id="flexRadioDefault1"> <label
 								class="form-check-label" for="flexRadioDefault1"> Mes
 								ventes </label>
 						</div>
