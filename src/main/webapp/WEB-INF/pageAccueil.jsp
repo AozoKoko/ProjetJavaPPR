@@ -60,7 +60,7 @@
 										href="<%=request.getContextPath()%>/modifProfil?param1=${modeConnecte }">Mon
 											profil</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="<%=request.getContextPath()%>/pageAccueil">Deconnexion</a>
+										href="<%=request.getContextPath()%>/deconnexion">Deconnexion</a>
 									</li>
 								</ul>
 							</div>
@@ -120,7 +120,7 @@
 					<div class="col">
 						<div class="form-check">
 							<input class="form-check-input" type="radio"
-								name="flexRadioDefault1" id="flexRadioDefault1"> <label
+								name="FilterMode" id="flexRadioDefault1"> <label
 								class="form-check-label" for="flexRadioDefault1"> Achats
 							</label>
 						</div>
@@ -144,11 +144,13 @@
 						</div>
 					</div>
 
-
+<Script>
+	
+</Script>
 					<div class="col">
 						<div class="form-check">
 							<input class="form-check-input" type="radio"
-								name="flexRadioDefault" id="flexRadioDefault1"> <label
+								name="FilterMode" id="flexRadioDefault1"> <label
 								class="form-check-label" for="flexRadioDefault1"> Mes
 								ventes </label>
 						</div>

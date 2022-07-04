@@ -1,8 +1,10 @@
 package main.java.fr.eni.bll;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import main.java.fr.eni.bo.Enchere;
+import main.java.fr.eni.bo.Utilisateur;
 import main.java.fr.eni.dal.DAOFactory;
 import main.java.fr.eni.dal.EnchereDAO;
 
@@ -35,6 +37,12 @@ public class ManagerEnchereImpl implements ManagerEnchere {
 	public void supprimerEnchere(Enchere enchere) throws BLLException {
 		enchereDAO.removeEnchere(enchere);
 		
+	}
+
+	public List<Enchere> getEncheresByEncherisseur(Utilisateur user){
+		List<Enchere> list;
+		list = enchereDAO.getEncheresByEncherisseur(user);
+		return list;
 	}
 
 	
