@@ -65,6 +65,20 @@ public class Articles {
         this.miseAPrix = miseAPrix;
         this.urlImage = urlImage;
     }
+    public Articles(String nomArticle,String description,String urlImage,int prixVente, LocalDate dateDebutEncheres, LocalDate dateFinEncheres) {
+        this.nomArticle = nomArticle;
+        this.description = description;
+        this.dateDebutEncheres = dateDebutEncheres;
+        this.dateFinEncheres = dateFinEncheres;
+        this.urlImage = urlImage;
+        this.prixVente = prixVente;
+    }
+    public Articles(String urlImage) {
+    	this.urlImage = urlImage;
+    }
+    public Articles() {
+    	
+    }
 
     public int getNoArticle() {
         return noArticle;

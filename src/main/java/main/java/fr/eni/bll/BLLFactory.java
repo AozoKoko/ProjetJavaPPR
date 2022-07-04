@@ -20,5 +20,6 @@ public class BLLFactory {
 	}
 
     public static ManagerRetraits getManagerRetraits(){return  new ManagerRetraitsImpl();}
+
 }
 

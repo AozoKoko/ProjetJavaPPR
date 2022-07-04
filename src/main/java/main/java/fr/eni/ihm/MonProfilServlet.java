@@ -35,7 +35,6 @@ public class MonProfilServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Utilisateur user = new Utilisateur();
 		Integer idUser = Integer.parseInt(req.getParameter("param1"));
-		System.out.println("id pour la modif  profil   " + idUser);
 		try {
 			user = mgr.selectById(idUser);
 			req.setAttribute("profil", user);
