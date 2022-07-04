@@ -23,6 +23,8 @@ public class PageAccueilServlet extends HttpServlet {
 	private ManagerArticles mgrArticle;
 	List<Articles> articles;
 
+	private ManagerArticles art;
+
 	public PageAccueilServlet() {
 		mgr = BLLFactory.getUtilisateursManager();
 		mgrArticle = BLLFactory.getArticlesManager();
@@ -44,6 +46,7 @@ public class PageAccueilServlet extends HttpServlet {
 			req.setAttribute("modeConnecte", affichageConnexion);
 			req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 		}
+
 		
 	}
 
