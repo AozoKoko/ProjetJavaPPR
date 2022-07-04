@@ -54,7 +54,7 @@
 										aria-current="page"
 										href="<%=request.getContextPath()%>/pageAccueil">Enchères</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="<%=request.getContextPath()%>/nouvelleVente">Vendre
+										href="<%=request.getContextPath()%>/nouvelleVente?param1=${modeConnecte }">Vendre
 											un article</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="<%=request.getContextPath()%>/modifProfil?param1=${modeConnecte }">Mon
@@ -195,7 +195,7 @@
 									<p class="card-text">Prix : ${articleVendu.prixVente}</p>
 									<p class="card-text">Fin de l'enchère :
 										${articleVendu.dateFinEncheres}</p>
-									<a href="#" class="btn btn-primary">Enchérir</a>
+									<a href="<%=request.getContextPath()%>/detailVente?param1=${modeConnecte }" class="btn btn-primary">Enchérir</a>
 								</div>
 							</div>
 						</div>
