@@ -21,46 +21,77 @@ public class DetailVenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private ManagerEnchere mgr;
+	private ManagerUtilisateurs mgr2;
 
 	public DetailVenteServlet () {
 		mgr = BLLFactory.getEnchereManager();
+		mgr2 = BLLFactory.getUtilisateursManager();
 	}
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		Utilisateur user = new Utilisateur();
+		Enchere enchere = new Enchere();
 		
+		// recup idUser
+		Integer idUser= Integer.parseInt(req.getParameter("param1"));
+		System.out.println("idUserSuiteBtnEncherir " + idUser);
 		
-		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
-	}
+		// recup idArticle
+		Integer idArticle = Integer.parseInt(req.getParameter("param2"));
+		System.out.println("idArticleSuiteBtnEncherir " + idArticle);
+		
+		// recup montant de la derniere enchere (montantEnchere)
+		Integer montantEnchere = Integer.parseInt(req.getParameter("montantEnchere"));
+		
+		// recup credit de l'utilisateur de la session
+		try {
+			user = mgr2.selectById(idUser);
+			Integer creditUser = user.getCredit();
+			System.out.println("creditUserDebut" + creditUser);
+			
+	//		enchere = mgr.ajouterEnchere(enchere);
+			Integer montantEnchereDebut = enchere.getMontantEnchere();
+			System.out.println("montantEnchereDebut" + montantEnchereDebut);
+			
+			if (creditUser<=montantEnchere) {
+				System.out.println("");
+			}
+			
+			
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BLLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	//	req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
 
+	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
-		
-		Enchere enchere = new Enchere();
-		
-		enchere.setMontantEnchere(Integer.parseInt(req.getParameter("montantEnchere")));
-		//enchere.setdateEnchere(req.getParameter("dateEnchere"));
-		System.out.println(req.getParameter("DateEnchere")); 
-		
 	/*	
 		try {
-			enchere = mgr.updateEnchere();
-			req.setAttribute("credit", enchere);
+			// recup des parametres du formulaire (new proposition d'enchère)
+			int montantEnchere = (Integer.parseInt(req.getParameter("nouveauMontant")));
 			
 			if (credit <= prixVente) {
 				req.setAttribute("encherir", enchere);
 			}else {
 				req.setAttribute("", enchere);
 			}
-			
+		
 		} catch (DALException e) {
 			e.printStackTrace();
 			
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-		*/
+				
+	*/ 
 		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 	}
 
