@@ -60,7 +60,7 @@
 										href="<%=request.getContextPath()%>/modifProfil?param1=${modeConnecte }">Mon
 											profil</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="<%=request.getContextPath()%>/pageAccueil">Deconnexion</a>
+										href="<%=request.getContextPath()%>/deconnexion">Deconnexion</a>
 									</li>
 								</ul>
 							</div>

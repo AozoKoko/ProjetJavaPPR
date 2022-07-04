@@ -3,10 +3,12 @@ package main.java.fr.eni.ihm;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import main.java.fr.eni.bll.BLLException;
 import main.java.fr.eni.bll.BLLFactory;
@@ -33,12 +35,13 @@ public class LoginServlet extends HttpServlet{
 		String pseudo = req.getParameter("pseudo");
 		String password = req.getParameter("password");
 	
+		HttpSession session = req.getSession();
 		try {
 			idUser = mgr.verifLogin(pseudo, password);
 			if (idUser != null) {
 				// creation exprression language variable mode connecte pour utiliser une seule page accueil
-				req.setAttribute("modeConnecte", idUser);
-				req.getRequestDispatcher("/pageAccueil").forward(req, resp);
+				session.setAttribute("modeConnecte", idUser);
+				this.getServletContext().getRequestDispatcher("/pageAccueil").forward(req, resp);
 			}else {
 				req.setAttribute("modeConnecte", idUser);
 				req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
