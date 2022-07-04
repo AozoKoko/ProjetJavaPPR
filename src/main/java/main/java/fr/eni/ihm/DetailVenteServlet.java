@@ -44,20 +44,24 @@ public class DetailVenteServlet extends HttpServlet {
 		// recup montant de la derniere enchere (montantEnchere)
 		Integer montantEnchere = Integer.parseInt(req.getParameter("montantEnchere"));
 		
+		// recup id de la dernière enchere de l'article correspondant
+		int idEnchere = Integer.parseInt(req.getParameter(" "));
+		System.out.println("idEnchereSuiteBtnPrecEnchereTiers" + idEnchere);
+		
 		// recup credit de l'utilisateur de la session
 		try {
 			user = mgr2.selectById(idUser);
 			Integer creditUser = user.getCredit();
 			System.out.println("creditUserDebut" + creditUser);
 			
-	//		enchere = mgr.ajouterEnchere(enchere);
+			
+			enchere = mgr.selectById(idEnchere);
 			Integer montantEnchereDebut = enchere.getMontantEnchere();
 			System.out.println("montantEnchereDebut" + montantEnchereDebut);
 			
 			if (creditUser<=montantEnchere) {
 				System.out.println("");
 			}
-			
 			
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
@@ -73,26 +77,11 @@ public class DetailVenteServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
-	/*	
-		try {
-			// recup des parametres du formulaire (new proposition d'enchère)
-			int montantEnchere = (Integer.parseInt(req.getParameter("nouveauMontant")));
-			
-			if (credit <= prixVente) {
-				req.setAttribute("encherir", enchere);
-			}else {
-				req.setAttribute("", enchere);
-			}
 		
-		} catch (DALException e) {
-			e.printStackTrace();
-			
-		} catch (BLLException e) {
-			e.printStackTrace();
-		}
-				
-	*/ 
+	
+		
+		
 		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
-	}
 
+	}
 }
