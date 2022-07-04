@@ -16,6 +16,7 @@ import main.java.fr.eni.bll.BLLFactory;
 import main.java.fr.eni.bll.ManagerArticles;
 import main.java.fr.eni.bll.ManagerUtilisateurs;
 import main.java.fr.eni.bo.Articles;
+import main.java.fr.eni.bo.Categorie;
 import main.java.fr.eni.bo.Utilisateur;
 import main.java.fr.eni.dal.DALException;
 
@@ -53,9 +54,18 @@ public class NouvelleVenteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Articles article = new Articles(req.getParameter("nomArticle"),req.getParameter("desciptionArticle"),req.getParameter("url"),
 				Integer.parseInt(req.getParameter("prix")),LocalDate.parse(req.getParameter("debutEnchere")),LocalDate.parse(req.getParameter("finEnchere")));
-		
+		Utilisateur user = new Utilisateur();
+		Integer idUser = Integer.parseInt(req.getParameter("param1"));
+		Categorie cat = new Categorie(req.getParameter("genre"));
+		try {
+			user = mgr.selectById(idUser);
+		} catch (DALException e) {
+			e.printStackTrace();
+		} catch (BLLException e) {
+			e.printStackTrace();
+		}
 		if (req.getParameter("newEnchere").equals("save")) {
-			mgrArticle.insertArticles(article, null, null);
+			mgrArticle.insertArticles(article, user, cat);
 			req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 		}
 		if (req.getParameter("newEnchere").equals("annule")) {
