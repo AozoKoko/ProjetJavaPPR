@@ -1,6 +1,7 @@
 package main.java.fr.eni.dal;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import main.java.fr.eni.bll.BLLException;
 import main.java.fr.eni.bo.Categorie;
@@ -17,6 +18,6 @@ public interface EnchereDAO {
 
 	void insertEnchere(Enchere enchere);
 
-	
+	List<Enchere> getEncheresByEncherisseur(Utilisateur user);
 	
 }

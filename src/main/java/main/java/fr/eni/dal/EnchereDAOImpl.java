@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 
 import main.java.fr.eni.bll.BLLException;
 import main.java.fr.eni.bo.Articles;
@@ -23,6 +24,8 @@ public class EnchereDAOImpl implements EnchereDAO {
 			" ?, ?) ";
 	private static String UPDATE = "UPDATE ENCHERE SET date_enchere = ?, montant_enchere = ?, no_article = ?, no_utilisateur = ?, no_encherisseur = ?) WHERE no_enchere = ?";
 	private static String REMOVE = "DELETE FROM ENCHERE WHERE no_enchere = ?";
+
+	private static String GET_USER = "SELECT * FROM ENCHERES WHERE no_encherisseur = ?";
 	
 	 // Renvoie l'enchere en fonction de son id enchere
     public Enchere selectById (int id) {
@@ -137,7 +140,31 @@ public class EnchereDAOImpl implements EnchereDAO {
 	}
 	
 	
+		public List<Enchere> getEncheresByEncherisseur(Utilisateur user){
+		List<Enchere> listeEnchere = null;
+			try(Connection conn = ConnectionProvider.getConnection()) {
 
+				PreparedStatement stmt = conn.prepareStatement(GET_USER, PreparedStatement.RETURN_GENERATED_KEYS);
+
+				stmt.setInt(1,user.getNoUtilisateur());
+				ResultSet rs = stmt.executeQuery();
+
+				while (rs.next()) {
+					Enchere enchere = new Enchere(rs.getInt(1),
+							rs.getDate(2).toLocalDate(),
+							rs.getInt(3),
+							rs.getInt(4),
+							rs.getInt(5),
+							rs.getInt(6));
+
+					listeEnchere.add(enchere);
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+
+	return listeEnchere;
+		}
 
 	
 }
