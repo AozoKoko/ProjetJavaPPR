@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,6 +54,7 @@ public class NouvelleVenteServlet extends HttpServlet {
 		Articles article = new Articles(req.getParameter("nomArticle"),req.getParameter("desciptionArticle"),req.getParameter("url"),
 				Integer.parseInt(req.getParameter("prix")),LocalDate.parse(req.getParameter("debutEnchere")),LocalDate.parse(req.getParameter("finEnchere")));
 		Utilisateur user = new Utilisateur();
+		
 		Integer idUser = Integer.parseInt(req.getParameter("param1"));
 		Categorie cat = new Categorie(req.getParameter("genre"));
 		try {
