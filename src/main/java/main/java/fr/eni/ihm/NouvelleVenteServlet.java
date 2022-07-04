@@ -25,6 +25,7 @@ public class NouvelleVenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ManagerUtilisateurs mgr;
 	private ManagerArticles mgrArticle;
+	private Integer idUser;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -36,7 +37,7 @@ public class NouvelleVenteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Utilisateur user = new Utilisateur();
-		Integer idUser = Integer.parseInt(req.getParameter("param1"));
+		idUser = Integer.parseInt(req.getParameter("param1"));
 	
 		try {
 			user = mgr.selectById(idUser);
@@ -51,12 +52,12 @@ public class NouvelleVenteServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Articles article = new Articles(req.getParameter("nomArticle"),req.getParameter("desciptionArticle"),req.getParameter("url"),
-				Integer.parseInt(req.getParameter("prix")),LocalDate.parse(req.getParameter("debutEnchere")),LocalDate.parse(req.getParameter("finEnchere")));
+		Articles article = new Articles(req.getParameter("nomArticle"),req.getParameter("descriptionArticle"),
+										LocalDate.parse(req.getParameter("debutEnchere")),
+										LocalDate.parse(req.getParameter("finEnchere")),
+										Integer.parseInt(req.getParameter("prix")),req.getParameter("url"));
 		Utilisateur user = new Utilisateur();
-		
-		Integer idUser = Integer.parseInt(req.getParameter("param1"));
-		Categorie cat = new Categorie(req.getParameter("genre"));
+		Categorie cat = new Categorie(Integer.parseInt(req.getParameter("genre")));
 		try {
 			user = mgr.selectById(idUser);
 		} catch (DALException e) {

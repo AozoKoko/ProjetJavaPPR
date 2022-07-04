@@ -54,7 +54,7 @@
 										aria-current="page"
 										href="<%=request.getContextPath()%>/pageAccueil">Enchères</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="<%=request.getContextPath()%>/nouvelleVente">Vendre
+										href="<%=request.getContextPath()%>/nouvelleVente?param1=${modeConnecte }">Vendre
 											un article</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="<%=request.getContextPath()%>/modifProfil?param1=${modeConnecte }">Mon
