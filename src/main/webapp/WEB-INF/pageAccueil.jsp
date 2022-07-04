@@ -195,7 +195,7 @@
 									<p class="card-text">Prix : ${articleVendu.prixVente}</p>
 									<p class="card-text">Fin de l'enchère :
 										${articleVendu.dateFinEncheres}</p>
-									<a href="#" class="btn btn-primary">Enchérir</a>
+									<a href="<%=request.getContextPath()%>/detailVente?param1=${modeConnecte }&param2=${articleVendu.noArticle}" class="btn btn-primary">Enchérir</a>
 								</div>
 							</div>
 						</div>
