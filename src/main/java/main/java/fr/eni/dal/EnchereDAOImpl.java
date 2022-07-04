@@ -16,6 +16,7 @@ public class EnchereDAOImpl implements EnchereDAO {
 	
 	// à faire : create select by article
 
+	private static String SELECT_BY_ID = "SELECT * FROM ENCHERES WHERE no_enchere = ?";
 	private static String INSERT = "INSERT INTO ENCHERE (date_enchere, montant_enchere, no_article, no_utilisateur, no_encherisseur) VALUES (?, ?, " + 
 			"(SELECT no_article FROM ARTICLES_VENDUS WHERE no_article = ?)," +
 			"(SELECT no_utilisateur FROM UTILISATEURS WHERE no_utilisateur = ?)," +            
@@ -23,6 +24,38 @@ public class EnchereDAOImpl implements EnchereDAO {
 	private static String UPDATE = "UPDATE ENCHERE SET date_enchere = ?, montant_enchere = ?, no_article = ?, no_utilisateur = ?, no_encherisseur = ?) WHERE no_enchere = ?";
 	private static String REMOVE = "DELETE FROM ENCHERE WHERE no_enchere = ?";
 	
+	 // Renvoie l'enchere en fonction de son id enchere
+    public Enchere selectById (int id) {
+    	
+        Enchere enchere = null;
+        //Déclaration de la connexion à la base SQL
+        try ( Connection conn = ConnectionProvider.getConnection()) {
+
+            //Décla de la commande SQL utilisée
+            PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID, PreparedStatement.RETURN_GENERATED_KEYS);
+
+            //Valorisation du param
+            stmt.setInt(1,id);
+
+            //Récup des résultats dans un resultset
+            ResultSet rs =  stmt.executeQuery();
+
+            //Vérif la présence de données dans le resultset
+            if(rs.next()){
+                //Création de l'enchere à renvoyer en cas de présence de données
+                enchere = new Enchere (rs.getDate(1).toLocalDate(),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getInt(4),
+                        rs.getInt(5));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        //Renvoi de l'enchere
+        return enchere;
+    }
 	  
 	@Override
 	public void insertEnchere (Enchere enchere) {
@@ -62,10 +95,10 @@ public class EnchereDAOImpl implements EnchereDAO {
 
 	            stmt.setDate(1,java.sql.Date.valueOf(enchere1.getDateEnchere()));
 	            stmt.setInt(2, nouveauMontant);
-	            stmt.setInt(3,enchere.getNoArticle());
-	            stmt.setInt(4,enchere.getNoUtilisateur());
+	            stmt.setInt(3,enchere1.getNoArticle());
+	            stmt.setInt(4,enchere1.getNoUtilisateur());
 	            stmt.setInt(5,noUtilisateur);
-	            stmt.setInt(6,enchere.getNoEnchere());
+	            stmt.setInt(6,enchere1.getNoEnchere());
 
 	            stmt.executeUpdate();
 

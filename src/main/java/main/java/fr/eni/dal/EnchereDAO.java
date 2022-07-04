@@ -9,10 +9,14 @@ import main.java.fr.eni.bo.Utilisateur;
 
 public interface EnchereDAO {
 	
+	Enchere selectById(int id);
+	
 	void removeEnchere (Enchere enchere)throws BLLException;
 
 	Enchere updateEnchere(Enchere enchere, int noUtilisateur, int nouveauMontant);
 
 	void insertEnchere(Enchere enchere);
+
+	
 	
 }
