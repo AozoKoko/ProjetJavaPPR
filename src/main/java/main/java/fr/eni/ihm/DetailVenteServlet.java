@@ -64,10 +64,8 @@ public class DetailVenteServlet extends HttpServlet {
 			}
 			
 		} catch (DALException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (BLLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -80,10 +78,6 @@ public class DetailVenteServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
-		
-	
-		
-		
 		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
 
 	}

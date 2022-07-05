@@ -1,6 +1,5 @@
 package main.java.fr.eni.bll;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import main.java.fr.eni.bo.Enchere;
