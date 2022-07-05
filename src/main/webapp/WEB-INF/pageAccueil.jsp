@@ -117,30 +117,34 @@
 				</div>
 
 			</div>
+
 			<div class="row mt-5">
 				<c:if test="${not empty modeConnecte}">
 					<div class="col">
 						<div class="form-check">
 							<input class="form-check-input" type="radio" name="group1"
-								id="flexRadio" value="2"> <label
-								class="form-check-label" for="flexRadio"> Achats </label>
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value=""
-									id="EncheresOpen"> <label class="form-check-label"
-									for="EncheresOpen"> Enchères ouvertes </label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value=""
-									id="UserEncheres" checked onchange="griser(this);"> <label
-									class="form-check-label" for="UserEncheres"> Mes
-									enchères </label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value=""
-									id="EncheresWon"> <label class="form-check-label"
-									for="EncheresWon"> Mes enchères remportées </label>
+								id="flexRadio" value="1" checked="checked"> <label class="form-check-label"
+								for="flexRadio"> Achats </label>
 
-							</div>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox"
+								value="EncheresOpen" id="EncheresOpen"> <label
+								class="form-check-label" for="EncheresOpen"> Enchères
+								ouvertes </label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox"
+								value="UserEncheres" id="UserEncheres" checked>
+							<label class="form-check-label" for="UserEncheres"> Mes
+								enchères </label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox"
+								value="EncheresWon" id="EncheresWon"> <label
+								class="form-check-label" for="EncheresWon"> Mes enchères
+								remportées </label>
+
 						</div>
 					</div>
 
@@ -148,24 +152,25 @@
 					<div class="col">
 						<div class="form-check">
 							<input class="form-check-input" type="radio" name="group1"
-								id="flexRadio1" value="1"> <label
+								id="flexRadio1" value="2"> <label
 								class="form-check-label" for="flexRadio1"> Mes ventes </label>
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value=""
-									id="flexCheck"> <label class="form-check-label"
-									for="flexCheck"> Mes ventes en cours </label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value=""
-									id="flexCheckChecked" checked> <label
-									class="form-check-label" for="flexCheckChecked"> Ventes
-									non débutées </label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value=""
-									id="flexCheck1"> <label class="form-check-label"
-									for="flexCheck1"> Ventes terminées </label>
-							</div>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="flexCheck"
+								id="flexCheck"> <label class="form-check-label"
+								for="flexCheck"> Mes ventes en cours </label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox"
+								value="flexCheckChecked" id="flexCheckChecked" checked>
+							<label class="form-check-label" for="flexCheckChecked">
+								Ventes non débutées </label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox"
+								value="flexCheck1" id="flexCheck1"> <label
+								class="form-check-label" for="flexCheck1"> Ventes
+								terminées </label>
 						</div>
 
 
@@ -174,6 +179,7 @@
 			</div>
 		</form>
 	</div>
+
 
 	<div class="container-fluid">
 		<div class="row">
@@ -205,12 +211,14 @@
 
 		</div>
 	</div>
+	<script src="WEB-INF/Checkbox.js" type="text/javascript"></script>
+	<script src="js/Checkbox.js" type="text/javascript"></script>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 		crossorigin="anonymous"></script>
-	<script src="Checkbox.js"></script>
+
 
 </body>
 </html>
