@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,8 @@
 	<div class="container-fluid">
 		<nav class="navbar bg-light mb-2">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="<%=request.getContextPath()%>/pageAccueil">ENI-Enchères</a>
+				<a class="navbar-brand"
+					href="<%=request.getContextPath()%>/pageAccueil">ENI-Enchères</a>
 			</div>
 		</nav>
 		<div class="row justify-content-center align-items-center">
@@ -24,12 +26,20 @@
 				style="margin: auto; width: 300px;">
 				<div class="form-outline mb-4">
 					<input type="text" id="form2Example1" class="form-control"
-						name="pseudo" /> <label class="form-label" for="form2Example1">Pseudo ou email</label>
+						name="pseudo" /> <label class="form-label" for="form2Example1">Pseudo
+						ou email</label>
 				</div>
 				<div class="form-outline mb-4">
 					<input type="password" id="form2Example2" class="form-control"
 						name="password" /> <label class="form-label" for="form2Example2">Password</label>
 				</div>
+				<c:if test="${fail}">
+					<div>
+
+						<p>Le pseudo ou mot de passe est invalide</p>
+
+					</div>
+				</c:if>
 				<div class="row mb-4">
 					<div class="col d-flex justify-content-center">
 						<div class="form-check">

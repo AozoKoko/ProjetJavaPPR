@@ -37,12 +37,14 @@ public class PageAccueilServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer affichageConnexion = (Integer) req.getAttribute("modeConnecte");
 		articles = mgrArticle.getAllArticles(0, 0);
-		req.setAttribute("articles", articles);
+		
 		
 		if (affichageConnexion==null) {
+			req.setAttribute("articles", articles);
 			req.setAttribute("modeConnecte", affichageConnexion);
 			req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 		}else {
+			req.setAttribute("articles", articles);
 			req.setAttribute("modeConnecte", affichageConnexion);
 			req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 		}

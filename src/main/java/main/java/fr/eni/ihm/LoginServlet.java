@@ -32,18 +32,24 @@ public class LoginServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer idUser= null;
+		boolean fail = false;
 		String pseudo = req.getParameter("pseudo");
 		String password = req.getParameter("password");
-	
+			
+		System.out.println("pseudo   " + pseudo);
+		System.out.println("password   " + password);
 		HttpSession session = req.getSession();
 		try {
 			idUser = mgr.verifLogin(pseudo, password);
+			System.out.println("iduser   " + idUser);
 			if (idUser != null) {
 				// creation exprression language variable mode connecte pour utiliser une seule page accueil
 				session.setAttribute("modeConnecte", idUser);
 				this.getServletContext().getRequestDispatcher("/pageAccueil").forward(req, resp);
 			}else {
 				req.setAttribute("modeConnecte", idUser);
+				fail = true;
+				req.setAttribute("fail", fail);
 				req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
 			}
 		} catch (DALException e) {
