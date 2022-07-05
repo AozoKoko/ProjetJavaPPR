@@ -18,6 +18,9 @@ public class Categorie {
 
        this.noCategorie=noCategorie;
     }
+    public Categorie() {
+
+    }
     public int getNoCategorie() {
         return noCategorie;
     }
