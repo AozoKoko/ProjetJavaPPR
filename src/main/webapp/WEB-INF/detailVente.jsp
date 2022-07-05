@@ -79,6 +79,7 @@
 						class="btn btn-primary">Enchérir</a>
 				</div>
 			</div>
+			
 			<div class="btn-group me-2" role="group" aria-label="Second group">
 				<c:if test="visible">
 					<button type="submit" class="btn btn-secondary"

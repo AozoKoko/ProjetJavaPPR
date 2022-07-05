@@ -98,17 +98,16 @@ public class DetailVenteServlet extends HttpServlet {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-
 		
 		
 
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req, resp);
 		
+		Integer montantEnchereProposition = (Integer) req.getAttribute("quantity");
+		System.out.println("montant" + montantEnchereProposition);
 
-		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
-
+		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 	}
 }
