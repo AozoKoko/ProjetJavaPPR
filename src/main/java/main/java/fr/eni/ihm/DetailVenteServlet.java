@@ -105,9 +105,10 @@ public class DetailVenteServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Integer montantEnchereProposition = (Integer) req.getAttribute("quantity");
+		Integer montantEnchereProposition = Integer.parseInt(req.getParameter("quantity"));
 		System.out.println("montant" + montantEnchereProposition);
+		req.setAttribute("enchere", montantEnchereProposition);
 
-		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
 	}
 }

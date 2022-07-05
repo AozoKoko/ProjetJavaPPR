@@ -42,7 +42,7 @@
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Meilleur
 				offre : </label>
-			<div class="col-sm-10">${profil.email }</div>
+			<div class="col-sm-10">${enchere }</div>
 		</div>
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Mise
@@ -74,23 +74,21 @@
 					max="${empty utilisateur?'':utilisateur.credit}"><br>
 				<br>
 				<div class="col offset-md-6">
-					<a
-						href="<%=request.getContextPath()%>/detailVente?param3=${enchere.noEnchere}"
-						class="btn btn-primary">Enchérir</a>
+					<div class="btn-group me-2" role="group" aria-label="Second group">
+						<c:if test="${!visible }">
+							<button type="submit" class="btn btn-secondary"
+								name="submitEnchere" value="encherir">Enchérir</button>
+						</c:if>
+						<c:if test="${visible }">
+							<button type="submit" class="btn btn-secondary" disabled
+								name="submitEnchere" value="encherir">Enchérir</button>
+							<p>Vous n'avez pas assez de crédits pour enchérir :(</p>
+						</c:if>
+					</div>
 				</div>
 			</div>
-			
-			<div class="btn-group me-2" role="group" aria-label="Second group">
-				<c:if test="visible">
-					<button type="submit" class="btn btn-secondary"
-						name="submitEnchere" value="encherir">Enchérir</button>
-				</c:if>
-				<c:if test="!visible">
-					<button type="submit" class="btn btn-secondary" disabled
-						name="submitEnchere" value="encherir">Enchérir</button>
-					<p>Vous n'avez pas assez de crédits pour enchérir :(</p>
-				</c:if>
-			</div>
+
+
 		</form>
 	</div>
 
