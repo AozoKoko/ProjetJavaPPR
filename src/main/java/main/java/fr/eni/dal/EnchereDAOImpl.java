@@ -73,7 +73,7 @@ public class EnchereDAOImpl implements EnchereDAO {
 	            stmt.setInt(5,enchere.getNoEncherisseur());
 	            
 	            //Execute le prepared statement pour insérer les données renseignées dans la base de donnée
-	            stmt.executeUpdate();
+	            stmt.executeQuery();
 
 	            //Récupère les données générées suite à l'insert
 	            ResultSet rs = stmt.getGeneratedKeys();
