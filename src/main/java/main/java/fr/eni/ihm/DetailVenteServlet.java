@@ -45,7 +45,7 @@ public class DetailVenteServlet extends HttpServlet {
 		Integer montantEnchere = Integer.parseInt(req.getParameter("montantEnchere"));
 		
 		// recup id de la dernière enchere de l'article correspondant
-		int idEnchere = Integer.parseInt(req.getParameter(" "));
+		int idEnchere = Integer.parseInt(req.getParameter("param3"));
 		System.out.println("idEnchereSuiteBtnPrecEnchereTiers" + idEnchere);
 		
 		// recup credit de l'utilisateur de la session
@@ -71,7 +71,10 @@ public class DetailVenteServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-	//	req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
+		
+		// faire montantEnchere = article.miseAPrix
+		
+		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
 
 	}
 	
@@ -81,7 +84,7 @@ public class DetailVenteServlet extends HttpServlet {
 	
 		
 		
-		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
 
 	}
 }
