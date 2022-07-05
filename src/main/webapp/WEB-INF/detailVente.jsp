@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,7 @@
 	</tr>
 	
 	<form name="form_compte" action="" method="get">
-	
+		
 	
 	
 		<div>
@@ -42,90 +43,20 @@
   					<a href="<%=request.getContextPath()%>/detailVente?param3=${enchere.noEnchere}" class="btn btn-primary">Enchérir</a>
   			</div>
 		</div>
+		<div class="btn-group me-2" role="group" aria-label="Second group">
+		<c:if test="visible" >
+					<button type="submit" class="btn btn-secondary"
+						name="submitEnchere" value="encherir">Enchérir</button>
+		</c:if>
+		<c:if test="!visible" >
+					<button type="submit" class="btn btn-secondary" disabled
+						name="submitEnchere" value="encherir">Enchérir</button>
+					<p> Vous n'avez pas assez de crédits pour enchérir :( </p>
+		</c:if>
+		
+		</div>
 		
 	</form>
-	
-<!-- <form act
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ion="/detailVente" method="post">
-		<div class="row mb-2">
-				<div class="col"></div>
-					<div class="row">
-						<div class="col-6">
-							<div class="text-left">Description :</div>
-						</div>
-						<div class="col-9 mb-2">
-							<div class="text-left">${empty article?'':article.description}</div>
-						</div>
-					</div>
-				</div>
-			</div>
-	</form> -->	
 
 
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import main.java.fr.eni.bll.BLLFactory;
 import main.java.fr.eni.bll.ManagerArticles;
+import main.java.fr.eni.bll.ManagerUtilisateurs;
 import main.java.fr.eni.bo.Articles;
 
 
@@ -18,10 +19,14 @@ import main.java.fr.eni.bo.Articles;
 public class PageAccueilServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private ManagerUtilisateurs mgr;
 	private ManagerArticles mgrArticle;
 	List<Articles> articles;
 
+	private ManagerArticles art;
+
 	public PageAccueilServlet() {
+		mgr = BLLFactory.getUtilisateursManager();
 		mgrArticle = BLLFactory.getArticlesManager();
 	}
 	@Override

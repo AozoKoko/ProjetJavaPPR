@@ -1,6 +1,8 @@
 package main.java.fr.eni.ihm;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +13,7 @@ import main.java.fr.eni.bll.BLLException;
 import main.java.fr.eni.bll.BLLFactory;
 import main.java.fr.eni.bll.ManagerEnchere;
 import main.java.fr.eni.bll.ManagerUtilisateurs;
+import main.java.fr.eni.bo.Articles;
 import main.java.fr.eni.bo.Enchere;
 import main.java.fr.eni.bo.Utilisateur;
 import main.java.fr.eni.dal.DALException;
@@ -31,6 +34,7 @@ public class DetailVenteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Utilisateur user = new Utilisateur();
+		Articles article = new Articles();
 		Enchere enchere = new Enchere();
 		
 		// recup idUser
@@ -59,8 +63,17 @@ public class DetailVenteServlet extends HttpServlet {
 			Integer montantEnchereDebut = enchere.getMontantEnchere();
 			System.out.println("montantEnchereDebut" + montantEnchereDebut);
 			
-			if (creditUser<=montantEnchere) {
+			if (article.getMiseAPrix()>=montantEnchere && creditUser>=montantEnchere) {
 				System.out.println("");
+				Enchere enchereModify = new Enchere(idEnchere, LocalDate.parse(req.getParameter("dateEnchere")),
+						Integer.parseInt(req.getParameter("nouveauMontant")), idUser, idArticle, 
+						Integer.parseInt(req.getParameter("noEncherisseur")));
+				
+				int creditAcheteur = Integer.parseInt(req.getParameter("quantity"));
+				mgr.updateEnchere(enchereModify, idUser, creditAcheteur);
+				req.setAttribute("visible", true);
+			} else {
+				req.setAttribute("visible", false);
 			}
 			
 		} catch (DALException e) {
@@ -68,9 +81,7 @@ public class DetailVenteServlet extends HttpServlet {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-		
-		
-		// faire montantEnchere = article.miseAPrix
+
 		
 		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
 
@@ -78,6 +89,8 @@ public class DetailVenteServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
+		
+
 		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
 
 	}

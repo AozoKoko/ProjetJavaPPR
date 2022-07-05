@@ -34,6 +34,7 @@ public class Enchere {
 		super();
 	}
 
+
 	public void setNoEnchere(int noEnchere) {
 		this.noEnchere = noEnchere;
 	}
