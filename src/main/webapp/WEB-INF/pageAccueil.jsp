@@ -149,24 +149,6 @@
 								class="form-check-label" for="flexRadio"> Achats
 							</label>
 						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="EncheresOpen" > <label
-								class="form-check-label" for="EncheresOpen">
-								Enchères ouvertes </label>
-						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="UserEncheres" checked> <label
-								class="form-check-label" for="UserEncheres"> Mes
-								enchères </label>
-						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="EncheresWon"> <label class="form-check-label"
-								for="EncheresWon"> Mes enchères remportées </label>
-
-						</div>
 					</div>
 
 
@@ -192,23 +174,6 @@
 								value="flexCheck1" id="flexCheck1"> <label
 								class="form-check-label" for="flexCheck1"> Ventes
 								terminées </label>
-						</div>
-
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheck"> <label class="form-check-label"
-								for="flexCheck"> Mes ventes en cours </label>
-						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheckChecked" checked> <label
-								class="form-check-label" for="flexCheckChecked"> Ventes
-								non débutées </label>
-						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheck1"> <label class="form-check-label"
-								for="flexCheck1"> Ventes terminées </label>
 						</div>
 					</div>
 
