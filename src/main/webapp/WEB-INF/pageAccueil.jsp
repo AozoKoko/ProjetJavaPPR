@@ -187,8 +187,8 @@
 		<div class="row">
 
 			<c:forEach var="articleVendu" items="${articles}">
-			
-					<div class="card m-2 mx-auto"
+
+					<div class="card m-2 mx-auto h-100"
 						style=" display: inline-block;max-width: 35rem;">
 						<div class="row g-0">
 							<div class="col-md-5">
@@ -208,7 +208,7 @@
 							</div>
 						</div>
 					</div>
-			
+
 			</c:forEach>
 
 		</div>
