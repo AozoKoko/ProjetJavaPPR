@@ -14,7 +14,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
-
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/PageAccueil.css">
 
 <title>Accueil</title>
 </head>
@@ -223,15 +223,16 @@
 
 			<c:forEach var="articleVendu" items="${articles}">
 			
-					<div class="card m-2"
-						style="width: 18rem; display: inline-block;">
+					<div class="card m-2 mx-auto"
+						style=" display: inline-block;max-width: 35rem;">
 						<div class="row g-0">
-							<div class="col-md-3">
+							<div class="col-md-5">
 								<img src="${articleVendu.urlImage }"
-									class="img-fluid h-50 rounded" alt="image du produit vendu">
+									class="img-fluid rounded" alt="image du produit vendu">
 							</div>
-							<div class="col-md-8">
-								<div class="card-body">
+							<br>
+							<div class="col-md-7">
+								<div class="card-body text-center">
 									<h5 class="card-title">${articleVendu.nomArticle}</h5>
 									<p class="card-text">${articleVendu.description}</p>
 									<p class="card-text">Prix : ${articleVendu.prixVente}</p>
