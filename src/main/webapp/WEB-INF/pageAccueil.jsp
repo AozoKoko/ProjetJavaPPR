@@ -14,6 +14,8 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
+
+
 <title>Accueil</title>
 </head>
 <body>
@@ -120,45 +122,43 @@
 					<div class="col">
 						<div class="form-check">
 							<input class="form-check-input" type="radio"
-								name="FilterMode" id="flexRadioDefault1"> <label
-								class="form-check-label" for="flexRadioDefault1"> Achats
+								name="group1" id="flexRadio" value="2"> <label
+								class="form-check-label" for="flexRadio"> Achats
 							</label>
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheckDefault" disabled> <label
-								class="form-check-label" for="flexCheckedDisabled">
+								id="EncheresOpen" > <label
+								class="form-check-label" for="EncheresOpen">
 								Enchères ouvertes </label>
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheckChecked" checked> <label
-								class="form-check-label" for="flexCheckChecked"> Mes
+								id="UserEncheres" checked> <label
+								class="form-check-label" for="UserEncheres"> Mes
 								enchères </label>
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheckDefault"> <label class="form-check-label"
-								for="flexCheckDefault"> Mes enchères remportées </label>
+								id="EncheresWon"> <label class="form-check-label"
+								for="EncheresWon"> Mes enchères remportées </label>
 
 						</div>
 					</div>
 
-<Script>
-	
-</Script>
+
 					<div class="col">
 						<div class="form-check">
 							<input class="form-check-input" type="radio"
-								name="FilterMode" id="flexRadioDefault1"> <label
-								class="form-check-label" for="flexRadioDefault1"> Mes
+								name="group1" id="flexRadio1" value="1"> <label
+								class="form-check-label" for="flexRadio1"> Mes
 								ventes </label>
 						</div>
 
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheckDefault"> <label class="form-check-label"
-								for="flexCheckDefault"> Mes ventes en cours </label>
+								id="flexCheck"> <label class="form-check-label"
+								for="flexCheck"> Mes ventes en cours </label>
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value=""
@@ -168,8 +168,8 @@
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheckDefault"> <label class="form-check-label"
-								for="flexCheckDefault"> Ventes terminées </label>
+								id="flexCheck1"> <label class="form-check-label"
+								for="flexCheck1"> Ventes terminées </label>
 						</div>
 					</div>
 
@@ -216,5 +216,6 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 		crossorigin="anonymous"></script>
+	<script src="Checkbox.js"></script>
 </body>
 </html>
