@@ -84,9 +84,9 @@
 						</div>
 						<div class="col-8 mb-1">
 							<div class="input-group">
-								<input type="search" class="form-control" placeholder="mot cle"
+								<input type="search" class="form-control" placeholder="mot-cle"
 									aria-label="Search" aria-describedby="search-addon"
-									name="search" />
+									name="search"  />
 							</div>
 						</div>
 					</div>
@@ -96,8 +96,8 @@
 								for="catImput"> Catégorie : </label>
 						</div>
 						<div class="col-8 mb-1">
-							<select class="form-control-sm ml-3 w-75" name="genre" id=""
-								value="a">
+							<select class="form-control-sm ml-3 w-75" name="genre" id="filtreCategorie"
+								value="filtreCategorie">
 								<option value=default>Toutes</option>
 								<option value="1">Informatique</option>
 								<option value="2">Ameublement</option>
@@ -123,7 +123,7 @@
 					<div class="col">
 						<div class="form-check">
 							<input class="form-check-input" type="radio" name="group1"
-								id="flexRadio" value="1" checked="checked"> <label class="form-check-label"
+								id="radioAchats" value="radioAchats" checked="checked"> <label class="form-check-label"
 								for="flexRadio"> Achats </label>
 
 						</div>
@@ -151,23 +151,23 @@
 					<div class="col">
 						<div class="form-check">
 							<input class="form-check-input" type="radio" name="group1"
-								id="flexRadio1" value="2"> <label
+								id="radioVentes" value="radioVentes"> <label
 								class="form-check-label" for="flexRadio1"> Mes ventes </label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="flexCheck"
-								id="flexCheck"> <label class="form-check-label"
+							<input class="form-check-input" type="checkbox" value="mesVentesEnCours"
+								id="mesVentesEnCours"> <label class="form-check-label"
 								for="flexCheck"> Mes ventes en cours </label>
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox"
-								value="flexCheckChecked" id="flexCheckChecked" checked>
+								value="ventesNonDebutees" id="ventesNonDebutees" checked>
 							<label class="form-check-label" for="flexCheckChecked">
 								Ventes non débutées </label>
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox"
-								value="flexCheck1" id="flexCheck1"> <label
+								value="ventesTerminees" id="ventesTerminees"> <label
 								class="form-check-label" for="flexCheck1"> Ventes
 								terminées </label>
 						</div>
