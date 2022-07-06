@@ -33,6 +33,7 @@ public class PageAccueilServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer affichageConnexion = (Integer) req.getAttribute("modeConnecte");
 		articles = mgrArticle.getAllArticles(0, 0);
+		System.out.println("taille liste  get " + articles.size());
 		
 		
 		if (affichageConnexion==null) {
@@ -50,6 +51,7 @@ public class PageAccueilServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//dopost login servlet envoie les infos dans le dopost pageaccueil et ducoup rappel de doget pour afficher les valeurs
+		System.out.println("taille liste post " + articles.size());
 		doGet(req, resp);
 	}
 

@@ -73,6 +73,7 @@
 			</div>
 		</div>
 		<form name="form_compte" action="detailVente" method="post">
+
 			<div>
 				<label for="quantity">Proposition : </label> <input type="number"
 					id="quantity" style="height: 40px; width: 70px" name="quantity"

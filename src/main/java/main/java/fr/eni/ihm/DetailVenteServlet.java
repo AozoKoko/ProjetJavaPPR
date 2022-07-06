@@ -53,11 +53,11 @@ public class DetailVenteServlet extends HttpServlet {
 		
 		// recup idUser
 		Integer idUser= Integer.parseInt(req.getParameter("param1"));
-		System.out.println("idUserSuiteBtnEncherir " + idUser);
+		//System.out.println("idUserSuiteBtnEncherir " + idUser);
 		
 		// recup idArticle
 		Integer idArticle = Integer.parseInt(req.getParameter("param2"));
-		System.out.println("idArticleSuiteBtnEncherir " + idArticle);
+		//System.out.println("idArticleSuiteBtnEncherir " + idArticle);
 		
 		// recup montant de la derniere enchere (montantEnchere)
 		//Integer montantEnchere = Integer.parseInt(req.getParameter("montantEnchere"));
@@ -138,6 +138,6 @@ public class DetailVenteServlet extends HttpServlet {
 		
 		//req.setAttribute("enchere", montantEnchereProposition);
 
-		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+		req.getRequestDispatcher("/pageAccueil").forward(req, resp);
 	}
 }
