@@ -19,7 +19,7 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 		private static final String SELECT_ID = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
 		private static final String VERIF_INFOS_USER = "SELECT no_utilisateur, pseudo,email, mot_de_passe FROM UTILISATEURS WHERE (pseudo = ? OR email = ?) AND mot_de_passe = ?";		
 		private static final String DELETE_USER = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?";
-
+		private static final String GET_USER_BY_PSEUDO = "select pseudo,nom,prenom,email,telephone,rue,code_postal,ville from UTILISATEURS where pseudo=?";
 		private static final String UPDATE_USER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ? WHERE  no_utilisateur = ?";
 	//Fonction permettant l'insertion de nouveaux utilisateurs dans la base de donnée
 	@Override
@@ -194,6 +194,37 @@ public class UtilisateursDAOImpl implements UtilisateursDAO {
 		List<Utilisateur> listeUtilisateurs = new ArrayList<Utilisateur>();
 
 		return listeUtilisateurs;
+	}
+
+	@Override
+	public Utilisateur selectByPseudo(String pseudo) {
+		Utilisateur user=null;
+		
+		try (Connection conn = ConnectionProvider.getConnection();){
+
+			//Création du prepared statement
+			PreparedStatement stmt = conn.prepareStatement(GET_USER_BY_PSEUDO, PreparedStatement.RETURN_GENERATED_KEYS);
+
+			//Valorisation des paramètres
+			stmt.setString(1,pseudo);
+
+			//Execution de la requète
+
+			//Récupération du résultat de la requète
+			ResultSet rs =  stmt.executeQuery();
+		
+			//Mise à jour des paramètres de l'objet Utilisateur avec les résultats de la requète
+			if (rs.next()){
+				user = new Utilisateur(rs.getString("pseudo"),rs.getString("nom"),rs.getString("prenom"),rs.getString("email"),
+						rs.getString("telephone"),rs.getString("rue"),rs.getString("code_postal"),rs.getString("ville"));
+			}
+
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+		return user;
 	}
 }
 
