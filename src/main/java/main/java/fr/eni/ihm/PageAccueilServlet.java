@@ -19,14 +19,10 @@ import main.java.fr.eni.bo.Articles;
 public class PageAccueilServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private ManagerUtilisateurs mgr;
 	private ManagerArticles mgrArticle;
 	List<Articles> articles;
 
-	private ManagerArticles art;
-
 	public PageAccueilServlet() {
-		mgr = BLLFactory.getUtilisateursManager();
 		mgrArticle = BLLFactory.getArticlesManager();
 	}
 	@Override

@@ -11,4 +11,5 @@ public interface UtilisateursDAO {
 	void deleteUser(Utilisateur user);
 
 	void updateUser(Utilisateur user);
+	Utilisateur selectByPseudo(String pseudo);
 }

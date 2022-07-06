@@ -38,4 +38,10 @@ public class ManagerUtilisateursImpl implements ManagerUtilisateurs {
 		public void updateUser(Utilisateur user){
 			daoUtilisateurs.updateUser(user);
 		}
+
+		@Override
+		public Utilisateur selectUserByPseudo(String pseudo) {
+			Utilisateur user = daoUtilisateurs.selectByPseudo(pseudo);
+			return user;
+		}
 }

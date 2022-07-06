@@ -27,4 +27,8 @@ public interface ArticlesDAO {
     List<Articles> getAllVentesUser(Utilisateur user, int mode);
     //rajout de lamethode non implementee
     String getUserByIdArticle(int idArticle);
+
+    List<Articles> getArticleByName(String name);
+
+    Articles getObjectArticleByName(String name);
 }

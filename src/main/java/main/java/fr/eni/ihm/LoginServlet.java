@@ -3,7 +3,6 @@ package main.java.fr.eni.ihm;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,9 +34,7 @@ public class LoginServlet extends HttpServlet{
 		boolean fail = false;
 		String pseudo = req.getParameter("pseudo");
 		String password = req.getParameter("password");
-			
-		System.out.println("pseudo   " + pseudo);
-		System.out.println("password   " + password);
+
 		HttpSession session = req.getSession();
 		try {
 			idUser = mgr.verifLogin(pseudo, password);

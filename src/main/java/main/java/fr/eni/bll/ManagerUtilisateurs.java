@@ -14,5 +14,6 @@ public interface ManagerUtilisateurs {
 	void deleteUser(Utilisateur user);
 
 	void updateUser(Utilisateur user);
+	Utilisateur selectUserByPseudo(String pseudo);
 
 }

@@ -482,4 +482,66 @@ public class ArticlesDAOImpl implements ArticlesDAO{
         return liste;
     }
 
+
+    public List<Articles> getArticleByName(String name){
+        List<Articles> liste = new ArrayList<Articles>();
+
+        try (Connection conn = ConnectionProvider.getConnection()){
+          PreparedStatement stmt = conn.prepareStatement(GET_ARTICLE_BY_NAME, PreparedStatement.RETURN_GENERATED_KEYS);
+
+          stmt.setString(1,name);
+
+          ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+
+                //Crée un article par objet dans la base de donnée
+                Articles articles = new Articles(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDate(4).toLocalDate(),
+                        rs.getDate(5).toLocalDate(),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getString(10));
+                //Stock l'article crée dans la liste renvoyée à l'utilisateur
+                liste.add(articles);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return liste;
+    }
+    public Articles getObjectArticleByName(String name){
+        Articles articles = null;
+
+        try (Connection conn = ConnectionProvider.getConnection()){
+            PreparedStatement stmt = conn.prepareStatement(GET_ARTICLE_BY_NAME, PreparedStatement.RETURN_GENERATED_KEYS);
+
+            stmt.setString(1,name);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+
+                //Crée un article par objet dans la base de donnée
+                Articles article = new Articles(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDate(4).toLocalDate(),
+                        rs.getDate(5).toLocalDate(),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getString(10));
+                //Stock l'article crée dans la liste renvoyée à l'utilisateur
+                articles = article;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return articles;
+    }
+
 }

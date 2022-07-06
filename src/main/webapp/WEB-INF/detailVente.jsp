@@ -64,7 +64,13 @@
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Vendeur
 				: </label>
-			<div class="col-sm-10">${userPseudo }</div>
+			<div class="col-sm-10">
+				<button type="button" class="btn btn-secondary">
+					<a class="nav-link"
+						href="<%=request.getContextPath()%>/userProfil?param=${userPseudo }">${userPseudo }</a>
+				</button>
+
+			</div>
 		</div>
 		<form name="form_compte" action="detailVente" method="post">
 			<div>
