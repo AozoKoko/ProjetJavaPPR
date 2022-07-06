@@ -114,7 +114,7 @@ public class DetailVenteServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Integer montantEnchereProposition = Integer.parseInt(req.getParameter("quantity"));
+		Integer montantEnchereProposition = Integer.parseInt( req.getParameter("quantity"));
 		System.out.println("montant" + montantEnchereProposition);
 		req.setAttribute("enchere", montantEnchereProposition);
 

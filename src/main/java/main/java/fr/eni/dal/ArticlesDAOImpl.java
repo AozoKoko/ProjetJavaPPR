@@ -24,6 +24,8 @@ public class ArticlesDAOImpl implements ArticlesDAO{
     //rajout pour afficher le detenteur de l'article
     private static String GET_PSEUDO_BY_ARTICLE ="SELECT pseudo FROM ARTICLES_VENDUS av INNER JOIN UTILISATEURS u ON av.no_utilisateur = u.no_utilisateur WHERE av.no_article = ?";
 
+    private static  String GET_ARTICLE_BY_NAME = "SELECT * FROM ARTICLES_VENDUS av INNER JOIN CATEGORIES c ON av.no_categorie = c.no_categorie WHERE nom_article LIKE %" + "?" +"%";
+
 
     //rajout fonction pour recuperer lepseudo de l'artticle
     public String getUserByIdArticle(int idArticle) {
@@ -482,4 +484,35 @@ public class ArticlesDAOImpl implements ArticlesDAO{
         return liste;
     }
 
+
+    public List<Articles> getArticleByName(String name){
+        List<Articles> liste = new ArrayList<Articles>();
+
+        try (Connection conn = ConnectionProvider.getConnection()){
+          PreparedStatement stmt = conn.prepareStatement(GET_ARTICLE_BY_NAME, PreparedStatement.RETURN_GENERATED_KEYS);
+
+          stmt.setString(1,name);
+
+          ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+
+                //Crée un article par objet dans la base de donnée
+                Articles articles = new Articles(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDate(4).toLocalDate(),
+                        rs.getDate(5).toLocalDate(),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getString(10));
+                //Stock l'article crée dans la liste renvoyée à l'utilisateur
+                liste.add(articles);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return liste;
+    }
 }

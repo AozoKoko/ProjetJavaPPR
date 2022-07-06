@@ -25,4 +25,6 @@ public interface ManagerArticles {
 
     List<Articles> getAllVentesUtilisateur(Utilisateur user, int mode);
 	String getPseudoByIdArticle(Integer idArticle);
+
+    List<Articles> getArticleByName(String name);
 }
