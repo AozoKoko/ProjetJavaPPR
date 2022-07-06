@@ -56,7 +56,9 @@ public class NouvelleVenteServlet extends HttpServlet {
 		Articles article = new Articles(req.getParameter("nomArticle"),req.getParameter("descriptionArticle"),
 										LocalDate.parse(req.getParameter("debutEnchere")),
 										LocalDate.parse(req.getParameter("finEnchere")),
-										Integer.parseInt(req.getParameter("prix")),req.getParameter("url"));
+										Integer.parseInt(req.getParameter("prix")),
+										Integer.parseInt(req.getParameter("prix")),
+										req.getParameter("url"));
 		Utilisateur user = new Utilisateur();
 		Categorie cat = new Categorie(Integer.parseInt(req.getParameter("genre")));
 		try {

@@ -18,12 +18,12 @@ public class EnchereDAOImpl implements EnchereDAO {
 	// à faire : create select by article
 
 	private static String SELECT_BY_ID = "SELECT * FROM ENCHERES WHERE no_enchere = ?";
-	private static String INSERT = "INSERT INTO ENCHERE (date_enchere, montant_enchere, no_article, no_utilisateur, no_encherisseur) VALUES (?, ?, " + 
+	private static String INSERT = "INSERT INTO ENCHERES (date_enchere, montant_enchere, no_article, no_utilisateur, no_encherisseur) VALUES (?, ?, " + 
 			"(SELECT no_article FROM ARTICLES_VENDUS WHERE no_article = ?)," +
 			"(SELECT no_utilisateur FROM UTILISATEURS WHERE no_utilisateur = ?)," +            
-			" ?, ?) ";
-	private static String UPDATE = "UPDATE ENCHERE SET date_enchere = ?, montant_enchere = ?, no_article = ?, no_utilisateur = ?, no_encherisseur = ?) WHERE no_enchere = ?";
-	private static String REMOVE = "DELETE FROM ENCHERE WHERE no_enchere = ?";
+			" ?) ";
+	private static String UPDATE = "UPDATE ENCHERES SET date_enchere = ?, montant_enchere = ?, no_article = ?, no_utilisateur = ?, no_encherisseur = ?) WHERE no_enchere = ?";
+	private static String REMOVE = "DELETE FROM ENCHERES WHERE no_enchere = ?";
 
 	private static String GET_USER = "SELECT * FROM ENCHERES WHERE no_encherisseur = ?";
 	
@@ -72,11 +72,7 @@ public class EnchereDAOImpl implements EnchereDAO {
 	            stmt.setInt(4,enchere.getNoUtilisateur());
 	            stmt.setInt(5,enchere.getNoEncherisseur());
 	            
-	            //Execute le prepared statement pour insérer les données renseignées dans la base de donnée
-	            stmt.executeQuery();
-
-	            //Récupère les données générées suite à l'insert
-	            ResultSet rs = stmt.getGeneratedKeys();
+	            ResultSet rs =  stmt.executeQuery();
 
 	            if(rs.next()){
 	                enchere.setNoEnchere(rs.getInt(1));
