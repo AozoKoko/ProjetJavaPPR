@@ -64,7 +64,7 @@
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Vendeur
 				: </label>
-			<div class="col-sm-10">${user.pseudo }</div>
+			<div class="col-sm-10">${userPseudo }</div>
 		</div>
 		<form name="form_compte" action="detailVente" method="post">
 			<div>

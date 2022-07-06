@@ -41,6 +41,8 @@ public class DetailVenteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Utilisateur user = new Utilisateur();
+		//rajout pour recup pseudo
+		String pseudo =null;
 		Articles article = new Articles();
 		Categorie cat = new Categorie();
 		Enchere enchere = new Enchere();
@@ -60,66 +62,63 @@ public class DetailVenteServlet extends HttpServlet {
 		//int idEnchere = Integer.parseInt(req.getParameter("param3"));
 		//System.out.println("idEnchereSuiteBtnPrecEnchereTiers" + idEnchere);
 		
-		// recup credit de l'utilisateur de la session
 		try {
+
 			cat = mgrCat.selectById(idArticle);
-			user = mgr2.selectById(idUser);
 			article = mgrArt.selectParId(idArticle);
-			
+			user = mgr2.selectById(idArticle);
+			//rajout pour recup pseudo
+			pseudo = mgrArt.getPseudoByIdArticle(idArticle);
 			req.setAttribute("user", user);
+			//renvoi de la donnee dans la jsp
+			req.setAttribute("userPseudo", pseudo);
 			req.setAttribute("article", article);
 			req.setAttribute("cat", cat);
-		
-			Integer creditUser = user.getCredit();
-			System.out.println("creditUserDebut" + creditUser);
-			System.out.println("prix de vente   " + article.getPrixVente());
-			if (creditUser <= article.getPrixVente()) {
-				boolean visible = true;
-				req.setAttribute("visible", visible);
-			}
-			
 			req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
-			/*
-			enchere = mgr.selectById(idEnchere);
-			Integer montantEnchereDebut = enchere.getMontantEnchere();
-			System.out.println("montantEnchereDebut" + montantEnchereDebut);
-			
-			if (article.getMiseAPrix()>=montantEnchere && creditUser>=montantEnchere) {
-				System.out.println("");
-				Enchere enchereModify = new Enchere(idEnchere, LocalDate.parse(req.getParameter("dateEnchere")),
-						Integer.parseInt(req.getParameter("nouveauMontant")), idUser, idArticle, 
-						Integer.parseInt(req.getParameter("noEncherisseur")));
-				
-				int creditAcheteur = Integer.parseInt(req.getParameter("quantity"));
-				mgr.updateEnchere(enchereModify, idUser, creditAcheteur);
-				req.setAttribute("visible", true);
-				req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
-			} else {
-				req.setAttribute("visible", false);
-				req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
-			}*/
-			
 		} catch (DALException e) {
 			e.printStackTrace();
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
 		
+
+		
+		/*Integer creditUser = user.getCredit();
+		System.out.println("creditUserDebut" + creditUser);
+		
+		
+		enchere = mgr.selectById(idEnchere);
+		Integer montantEnchereDebut = enchere.getMontantEnchere();
+		System.out.println("montantEnchereDebut" + montantEnchereDebut);
+		
+		if (article.getMiseAPrix()>=montantEnchere && creditUser>=montantEnchere) {
+			System.out.println("");
+			Enchere enchereModify = new Enchere(idEnchere, LocalDate.parse(req.getParameter("dateEnchere")),
+					Integer.parseInt(req.getParameter("nouveauMontant")), idUser, idArticle, 
+					Integer.parseInt(req.getParameter("noEncherisseur")));
+			
+			int creditAcheteur = Integer.parseInt(req.getParameter("quantity"));
+			mgr.updateEnchere(enchereModify, idUser, creditAcheteur);
+			req.setAttribute("visible", true);
+			req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
+		} else {
+			req.setAttribute("visible", false);
+			req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
+		}*/
+		
+		
+		
 		
 
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Enchere enchere = new Enchere();
+		
 		Integer montantEnchereProposition = Integer.parseInt(req.getParameter("quantity"));
 		System.out.println("montant" + montantEnchereProposition);
 		req.setAttribute("enchere", montantEnchereProposition);
-		/*enchere = new Enchere(LocalDate.parse(req.getParameter("dateEnchere")),
-				Integer.parseInt(req.getParameter("nouveauMontant")), idUser, idArticle, 
-				Integer.parseInt(req.getParameter("noEncherisseur")));
-		
-		mgr.ajouterEnchere(enchere);*/
-		
-		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+
+		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
 	}
 }
+		

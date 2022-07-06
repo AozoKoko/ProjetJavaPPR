@@ -61,4 +61,10 @@ public class ManagerArticlesImpl implements ManagerArticles{
 
         return liste;
     }
+    //rajout pour recup psueod par id article
+	@Override
+	public String getPseudoByIdArticle(Integer idArticle) {
+		String pseudo = articlesDAO.getUserByIdArticle(idArticle);
+		return pseudo;
+	}
 }
