@@ -24,4 +24,5 @@ public interface ManagerArticles {
     List<Articles> getAllUserEnchereRemportees(Utilisateur user, List<Enchere> enchere);
 
     List<Articles> getAllVentesUtilisateur(Utilisateur user, int mode);
+	String getPseudoByIdArticle(Integer idArticle);
 }

@@ -21,8 +21,37 @@ public class ArticlesDAOImpl implements ArticlesDAO{
     private static String GET_ALL_ARTICLE_UTILISATEUR = "SELECT * FROM ARTICLES_VENDUS av INNER JOIN UTILISATEURS u ON av.no_utilisateur = u.no_utilisateur WHERE u.no_utilisateur = ?";
     private static String GET_ALL_ARTICLE_CATEGORIE = "SELECT * FROM ARTICLES_VENDUS av INNER JOIN CATEGORIES c ON av.no_categorie = c.no_categorie WHERE c.no_categorie = ? ";
     private static String GET_ALL_ARTICLE = "SELECT * FROM ARTICLES_VENDUS";
+    //rajout pour afficher le detenteur de l'article
+    private static String GET_PSEUDO_BY_ARTICLE ="SELECT pseudo FROM ARTICLES_VENDUS av INNER JOIN UTILISATEURS u ON av.no_utilisateur = u.no_utilisateur WHERE av.no_article = ?";
 
 
+    //rajout fonction pour recuperer lepseudo de l'artticle
+    public String getUserByIdArticle(int idArticle) {
+    	String pseudo = null;
+    	try ( Connection conn = ConnectionProvider.getConnection()) {
+
+            //Déclaration de la commande SQL utilisée
+            PreparedStatement stmt = conn.prepareStatement(GET_PSEUDO_BY_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
+
+            //Valorisation du paramètre
+            stmt.setInt(1,idArticle);
+
+            //Récupération des résultats dans un resultset
+            ResultSet rs =  stmt.executeQuery();
+
+            //Vérifie la présence de données dans le resultset
+            if(rs.next()){
+                pseudo = rs.getString(1);
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    	System.out.println("pseudo en sortie de dal  "+pseudo);
+    	return pseudo;
+    }
+    
     //Fonction utilisée pour renvoyer un aricle en fonction de son article
     public Articles selectById(int id){
         Articles articles = null;

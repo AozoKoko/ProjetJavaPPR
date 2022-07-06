@@ -25,4 +25,6 @@ public interface ArticlesDAO {
     List<Articles> getAllUtilisateurEnchereRemportees(Utilisateur user, List<Enchere> listeEnchere);
 
     List<Articles> getAllVentesUser(Utilisateur user, int mode);
+    //rajout de lamethode non implementee
+    String getUserByIdArticle(int idArticle);
 }
