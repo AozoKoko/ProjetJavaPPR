@@ -4,12 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
-
 import main.java.fr.eni.bll.BLLException;
-import main.java.fr.eni.bo.Articles;
-import main.java.fr.eni.bo.Categorie;
 import main.java.fr.eni.bo.Enchere;
 import main.java.fr.eni.bo.Utilisateur;
 
@@ -51,9 +47,9 @@ public class EnchereDAOImpl implements EnchereDAO {
 						rs.getInt(5));*/
 				enchere = new Enchere(rs.getDate("date_enchere").toLocalDate(),
 						rs.getInt("montant_enchere"),
-						rs.getInt("no_encherisseur"),
+						rs.getInt("no_article"),
 						rs.getInt("no_utilisateur"),
-						rs.getInt("no_article"));
+						rs.getInt("no_encherisseur"));
 			}
 
 		} catch (SQLException e) {
@@ -156,12 +152,12 @@ public class EnchereDAOImpl implements EnchereDAO {
 			ResultSet resultSet = stmt.executeQuery();
 
 			if (resultSet.next()) {
-				enchere = new Enchere(resultSet.getInt(1),
-								resultSet.getDate(2).toLocalDate(),
-								resultSet.getInt(3),
-								resultSet.getInt(4),
-								resultSet.getInt(5),
-								resultSet.getInt(6));
+				enchere = new Enchere(resultSet.getInt("no_enchere"),
+								resultSet.getDate("date_enchere").toLocalDate(),
+								resultSet.getInt("montant_enchere"),
+								resultSet.getInt("no_article"),
+								resultSet.getInt("no_utilisateur"),
+								resultSet.getInt("no_encherisseur"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

@@ -11,7 +11,7 @@ public class Enchere {
 	private int noUtilisateur;
 	private int noArticle;
 
-	public Enchere(LocalDate dateEnchere, int montantEnchere, int noEncherisseur, int noUtilisateur, int noArticle) {
+	public Enchere(LocalDate dateEnchere, int montantEnchere, int noArticle, int noUtilisateur, int noEncherisseur) {
 		super();
 		this.dateEnchere = dateEnchere;
 		this.montantEnchere = montantEnchere;
@@ -20,7 +20,7 @@ public class Enchere {
 		this.noArticle = noArticle;
 	}
 
-	public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere, int noEncherisseur, int noUtilisateur,int noArticle) {
+	public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere,int noArticle, int noUtilisateur, int noEncherisseur) {
 		super();
 		this.noEnchere = noEnchere;
 		this.dateEnchere = dateEnchere;
