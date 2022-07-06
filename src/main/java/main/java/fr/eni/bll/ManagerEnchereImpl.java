@@ -45,6 +45,10 @@ public class ManagerEnchereImpl implements ManagerEnchere {
 		return list;
 	}
 
+	public  Enchere getEnchereByNumArticle(int idArticle){
+		return enchereDAO.getEnchereByNumArticle(idArticle);
+	}
+
 	
 
 }
