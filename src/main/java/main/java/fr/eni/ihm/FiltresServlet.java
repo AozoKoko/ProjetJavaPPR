@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
+
 import main.java.fr.eni.bll.BLLException;
 import main.java.fr.eni.bll.BLLFactory;
 import main.java.fr.eni.bll.ManagerArticles;
@@ -67,17 +69,12 @@ public class FiltresServlet extends HttpServlet {
 		
 		Enchere enchere = new Enchere();
 		
-		if ("".equals(req.getParameter("filtreNom")) || req.getParameter("filtreNom")!=null){
-			String filtreNom = req.getParameter("filtreNom") ;
-			articles = mgrArt.getAllArticles(0,0);
-			System.out.println("articlesByNom " + articles);
-		}
-		
+		/*
 		if ("default".equals(req.getParameter("filtreCategorie")) || req.getParameter("filtreCategorie")==null) {
 			int filtreCategorie = Integer.parseInt(req.getParameter("filtreCategorie"));
 			articles = mgrArt.getAllArticles(1, 1);
 		}
-		
+		*/
 		/*
 		if ("checked".equals(req.getParameter("radioAchats"))) {
 			if ("checked".equals(req.getParameter("encheresOpen"))) {
@@ -105,14 +102,19 @@ public class FiltresServlet extends HttpServlet {
 		}
 		*/
 		
-		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+		req.getRequestDispatcher("/pageAccueil").forward(req, resp);
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req, resp);
 		
-		
-		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+		String filtreNom = req.getParameter("filtreNom") ;
+		articles = mgrArt.getArticleByName(filtreNom);
+	//	System.out.println("articlesByNom " + articles.get(0));
+		for(Articles articles : articles) {
+			System.out.println(articles);
+		}
+			
+		req.getRequestDispatcher("/pageAccueil").forward(req, resp);
 
 }
 }

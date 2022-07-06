@@ -470,7 +470,7 @@ public class ArticlesDAOImpl implements ArticlesDAO{
         try (Connection conn = ConnectionProvider.getConnection()){
           PreparedStatement stmt = conn.prepareStatement(GET_ARTICLE_BY_NAME, PreparedStatement.RETURN_GENERATED_KEYS);
 
-          stmt.setString(1,name);
+          stmt.setString(1,"%" + name + "%");
 
           ResultSet rs = stmt.executeQuery();
 

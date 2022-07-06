@@ -74,7 +74,7 @@
 		<div class="row my-5">
 			<div class="col" style="text-align: center;">Liste des enchères</div>
 		</div>
-		<form action="/pageAccueil" method="post">
+		<form action="/ProjetJavaPPR/filtresServlet" method="post">
 			<div class="row mb-2">
 				<!-- insertion formulaire de recherche action a modifier en fonction de la servlet -->
 				<div class="col">
@@ -86,7 +86,7 @@
 							<div class="input-group">
 								<input type="search" class="form-control" placeholder="mot-cle"
 									aria-label="Search" aria-describedby="search-addon"
-									name="search"  />
+									name="filtreNom"  />
 							</div>
 						</div>
 					</div>
