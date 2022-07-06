@@ -1,6 +1,7 @@
 package main.java.fr.eni.ihm;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -25,7 +26,9 @@ import main.java.fr.eni.dal.DALException;
 public class FiltresServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-       
+     
+	List<Articles> articles;
+	List<Enchere> encheres;
 	private ManagerEnchere mgr;
 	private ManagerUtilisateurs mgrUser;
 	private ManagerArticles mgrArt;
@@ -38,42 +41,78 @@ public class FiltresServlet extends HttpServlet {
 		mgrArt = BLLFactory.getArticlesManager();
 		mgrCat = BLLFactory.getCategorieManager();
 	}
+	
+	@Override
+	public void init() throws ServletException {
+		articles = new ArrayList<>();
+		encheres = new ArrayList<>();
+	}
  
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	
+		// rappel id page accueil ? :
+	
 		Utilisateur user = new Utilisateur();
 		idUser = Integer.parseInt(req.getParameter("param1"));
 	
 		try {
 			user = mgrUser.selectById(idUser);
 			req.setAttribute("profil", user);
-			req.getRequestDispatcher("/WEB-INF/pageAccueik.jsp").forward(req, resp);
-		} catch (DALException e) {
-			e.printStackTrace();
-		} catch (BLLException e) {
-			e.printStackTrace();
-		}
-		
-	}
-
-
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req, resp);
-	/*	
-		// créa article pour recup liste
-		Articles article = new Articles();
-
-		if (req.getParameter("search")equals("mot-cle")) {
-			
-		}
-		try {
-			List<Articles> getArticleByName();
 			req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 		} catch (DALException e) {
 			e.printStackTrace();
 		} catch (BLLException e) {
 			e.printStackTrace();
+		}	
+		
+		Enchere enchere = new Enchere();
+		
+		if ("".equals(req.getParameter("filtreNom")) || req.getParameter("filtreNom")!=null){
+			String filtreNom = req.getParameter("filtreNom") ;
+			articles = mgrArt.getAllArticles(0,0);
+			System.out.println("articlesByNom " + articles);
 		}
-*/
+		
+		if ("default".equals(req.getParameter("filtreCategorie")) || req.getParameter("filtreCategorie")==null) {
+			int filtreCategorie = Integer.parseInt(req.getParameter("filtreCategorie"));
+			articles = mgrArt.getAllArticles(1, 1);
+		}
+		
+		/*
+		if ("checked".equals(req.getParameter("radioAchats"))) {
+			if ("checked".equals(req.getParameter("encheresOpen"))) {
+				articles = mgrArt.getAllEncheresOpen();
+			}
+			
+			if ("checked".equals(req.getParameter("UserEncheres"))) {
+				articles = mgrArt.getAllUserEnchere(user, enchere);
+			}
+			if ("checked".equals(req.getParameter("EncheresWon"))) {
+				articles = mgrArt.getAllUserEnchereRemportees(user, encheres);
+			}
+		}
+		if ("checked".equals(req.getParameter("radioVentes"))) {
+
+			if ("checked".equals(req.getParameter("mesVentesEnCours"))) {
+				articles = mgrArt.getAllVentesUtilisateur(user, 0);
+			}
+			if ("checked".equals(req.getParameter("ventesNonDebutees"))) {
+				articles = mgrArt.getAllVentesUtilisateur(user, 1);
+			}
+			if ("checked".equals(req.getParameter("ventesTerminees"))) {
+				articles = mgrArt.getAllVentesUtilisateur(user, 2);
+			}
+		}
+		*/
+		
+		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+	}
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+		
+		
+		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+
 }
 }
