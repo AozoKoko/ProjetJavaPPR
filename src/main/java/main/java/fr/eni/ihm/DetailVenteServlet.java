@@ -41,6 +41,7 @@ public class DetailVenteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Utilisateur user = new Utilisateur();
+		Utilisateur utilisateur = new Utilisateur();
 		//rajout pour recup pseudo
 		String pseudo =null;
 		Articles article = new Articles();
@@ -63,7 +64,7 @@ public class DetailVenteServlet extends HttpServlet {
 		//System.out.println("idEnchereSuiteBtnPrecEnchereTiers" + idEnchere);
 		
 		try {
-
+			utilisateur = mgr2.selectById(idUser);
 			cat = mgrCat.selectById(idArticle);
 			article = mgrArt.selectParId(idArticle);
 			user = mgr2.selectById(idArticle);
@@ -72,6 +73,7 @@ public class DetailVenteServlet extends HttpServlet {
 			req.setAttribute("user", user);
 			//renvoi de la donnee dans la jsp
 			req.setAttribute("userPseudo", pseudo);
+			req.setAttribute("utilisateur", utilisateur);
 			req.setAttribute("article", article);
 			req.setAttribute("cat", cat);
 			req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
@@ -116,6 +118,7 @@ public class DetailVenteServlet extends HttpServlet {
 		
 		Integer montantEnchereProposition = Integer.parseInt( req.getParameter("quantity"));
 		System.out.println("montant" + montantEnchereProposition);
+		
 		req.setAttribute("enchere", montantEnchereProposition);
 
 		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);

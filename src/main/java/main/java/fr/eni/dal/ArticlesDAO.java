@@ -29,4 +29,6 @@ public interface ArticlesDAO {
     String getUserByIdArticle(int idArticle);
 
     List<Articles> getArticleByName(String name);
+
+    Articles getObjectArticleByName(String name);
 }

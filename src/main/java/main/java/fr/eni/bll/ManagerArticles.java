@@ -27,4 +27,6 @@ public interface ManagerArticles {
 	String getPseudoByIdArticle(Integer idArticle);
 
     List<Articles> getArticleByName(String name);
+
+    Articles getObjectArticleByName(String name);
 }

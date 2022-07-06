@@ -10,12 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import main.java.fr.eni.bll.BLLException;
-import main.java.fr.eni.bll.BLLFactory;
-import main.java.fr.eni.bll.ManagerArticles;
-import main.java.fr.eni.bll.ManagerUtilisateurs;
+import main.java.fr.eni.bll.*;
 import main.java.fr.eni.bo.Articles;
 import main.java.fr.eni.bo.Categorie;
+import main.java.fr.eni.bo.Enchere;
 import main.java.fr.eni.bo.Utilisateur;
 import main.java.fr.eni.dal.DALException;
 
@@ -26,12 +24,15 @@ public class NouvelleVenteServlet extends HttpServlet {
 	private ManagerUtilisateurs mgr;
 	private ManagerArticles mgrArticle;
 	private Integer idUser;
+
+	private ManagerEnchere mgrE;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public NouvelleVenteServlet() {
     	mgr = BLLFactory.getUtilisateursManager();
     	mgrArticle = BLLFactory.getArticlesManager();
+		mgrE = BLLFactory.getEnchereManager();
     }
 
 
@@ -67,6 +68,13 @@ public class NouvelleVenteServlet extends HttpServlet {
 		}
 		if (req.getParameter("newEnchere").equals("save")) {
 			mgrArticle.insertArticles(article, user, cat);
+			Articles articles = mgrArticle.getObjectArticleByName(article.getNomArticle());
+			Enchere enchere = new Enchere(articles.getDateDebutEncheres(),articles.getMiseAPrix(),user.getNoUtilisateur(),user.getNoUtilisateur(), article.getNoArticle());
+			try {
+				mgrE.ajouterEnchere(enchere);
+			} catch (BLLException e) {
+				throw new RuntimeException(e);
+			}
 			req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 		}
 		if (req.getParameter("newEnchere").equals("annule")) {
