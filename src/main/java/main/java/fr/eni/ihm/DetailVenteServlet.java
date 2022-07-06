@@ -39,6 +39,7 @@ public class DetailVenteServlet extends HttpServlet {
 	private Articles article = new Articles();
 	private Categorie cat = new Categorie();
 	private Enchere enchere = new Enchere();
+	private Utilisateur formerUser = new Utilisateur();
 
 	public DetailVenteServlet () {
 		mgr = BLLFactory.getEnchereManager();
@@ -67,11 +68,13 @@ public class DetailVenteServlet extends HttpServlet {
 		
 		try {
 
-			utilisateur = mgr2.selectById(idUser);
+			utilisateur = mgrUser.selectById(idUser);
 			cat = mgrCat.selectById(idArticle);
 			article = mgrArt.selectParId(idArticle);
-			user = mgr2.selectById(idArticle);
-			enchere = mgr.getEnchereByNumArticle(article.getNoArticle());
+			user = mgrUser.selectById(idArticle);
+			enchere = mgr.getEnchereByNumArticle(idArticle);
+			System.out.println(enchere.toString());
+			formerUser = mgrUser.selectById(enchere.getNoEncherisseur());
 			//rajout pour recup pseudo
 			pseudo = mgrArt.getPseudoByIdArticle(idArticle);
 			req.setAttribute("user", user);
@@ -117,7 +120,23 @@ public class DetailVenteServlet extends HttpServlet {
 
 		
 		Integer montantEnchereProposition = Integer.parseInt( req.getParameter("quantity"));
-		user.setCredit(enchere.getMontantEnchere());
+
+		if (formerUser.getNoUtilisateur() != user.getNoUtilisateur()){
+			formerUser.setCredit(enchere.getMontantEnchere());
+			mgrUser.updateUser(formerUser);
+		}
+
+
+		utilisateur.setCredit(utilisateur.getCredit() - montantEnchereProposition);
+		mgrUser.updateUser(utilisateur);
+
+		enchere.setMontantEnchere(montantEnchereProposition);
+		enchere.setNoEncherisseur(utilisateur.getNoUtilisateur());
+		try {
+			mgr.updateEnchere(enchere, enchere.getNoEncherisseur(), enchere.getMontantEnchere());
+		} catch (BLLException e) {
+			throw new RuntimeException(e);
+		}
 
 		System.out.println("montant" + montantEnchereProposition);
 

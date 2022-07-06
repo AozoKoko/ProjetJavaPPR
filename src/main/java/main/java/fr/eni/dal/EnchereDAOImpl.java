@@ -27,7 +27,7 @@ public class EnchereDAOImpl implements EnchereDAO {
 
 	private static String GET_USER = "SELECT * FROM ENCHERES WHERE no_encherisseur = ?";
 
-	private static String GET_ENCHERE_BY_ID_ARTICLE = "SELECT * ENCHERES e INNER JOIN UTILISATEURS u ON e.no_utilisateur = u.no_utilisateur INNER JOIN ARTICLES_VENDUS av ON e.no_article = av.no_article WHERE no_article = ?";
+	private static String GET_ENCHERE_BY_ID_ARTICLE = "SELECT * FROM ENCHERES e INNER JOIN UTILISATEURS u ON e.no_utilisateur = u.no_utilisateur INNER JOIN ARTICLES_VENDUS av ON e.no_article = av.no_article WHERE e.no_article = ?";
 	
 	 // Renvoie l'enchere en fonction de son id enchere
     public Enchere selectById (int id) {
