@@ -117,13 +117,13 @@ public class DetailVenteServlet extends HttpServlet {
 		Integer montantEnchereProposition = Integer.parseInt( req.getParameter("quantity"));
 
 		if (formerUser.getNoUtilisateur() != user.getNoUtilisateur()){
-			formerUser.setCredit(enchere.getMontantEnchere());
+			formerUser.setCredit(formerUser.getCredit()+ enchere.getMontantEnchere());
 			mgrUser.updateUser(formerUser);
 		}
 
+			utilisateur.setCredit(utilisateur.getCredit() - montantEnchereProposition);
+			mgrUser.updateUser(utilisateur);
 
-		utilisateur.setCredit(utilisateur.getCredit() - montantEnchereProposition);
-		mgrUser.updateUser(utilisateur);
 
 		enchere.setMontantEnchere(montantEnchereProposition);
 		enchere.setNoEncherisseur(utilisateur.getNoUtilisateur());
