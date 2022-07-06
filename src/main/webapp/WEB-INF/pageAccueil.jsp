@@ -144,10 +144,6 @@
 								value="EncheresWon" id="EncheresWon"> <label
 								class="form-check-label" for="EncheresWon"> Mes enchères
 								remportées </label>
-							<input class="form-check-input" type="radio"
-								name="group1" id="flexRadio" value="2"> <label
-								class="form-check-label" for="flexRadio"> Achats
-							</label>
 						</div>
 					</div>
 

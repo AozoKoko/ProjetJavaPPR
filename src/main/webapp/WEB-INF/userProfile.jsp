@@ -15,12 +15,15 @@
 	<div class="container-fluid">
 		<nav class="navbar bg-light mb-2">
 			<div class="container-fluid">
-				<a class="navbar-brand"
-					href="<%=request.getContextPath()%>/pageAccueil">ENI-Enchères</a>
+				<figure class="image is-128x128">
+					<a href="<%=request.getContextPath()%>/pageAccueil"><img
+						src="img/logo.png" alt="logo" width="100px"
+						class="d-inline-block align-text-top"></a>
+				</figure>
 			</div>
 		</nav>
 
-		<div class="row mb-3">
+		<div class="row mb-3 mt-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Pseudo
 				:</label>
 			<div class="col-sm-10">${profil.pseudo }</div>
