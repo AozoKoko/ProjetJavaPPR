@@ -49,8 +49,11 @@ public class EnchereDAOImpl implements EnchereDAO {
 				// Création de l'enchere à renvoyer en cas de présence de données
 				/*enchere = new Enchere(rs.getDate(1).toLocalDate(), rs.getInt(2), rs.getInt(3), rs.getInt(4),
 						rs.getInt(5));*/
-				enchere = new Enchere(rs.getDate("date_enchere").toLocalDate(), rs.getInt("montant_enchere"), rs.getInt("no_article"), rs.getInt("no_utilisateur"),
-						rs.getInt("no_encherisseur"));
+				enchere = new Enchere(rs.getDate("date_enchere").toLocalDate(),
+						rs.getInt("montant_enchere"),
+						rs.getInt("no_encherisseur"),
+						rs.getInt("no_utilisateur"),
+						rs.getInt("no_article"));
 			}
 
 		} catch (SQLException e) {
@@ -84,11 +87,11 @@ public class EnchereDAOImpl implements EnchereDAO {
 	}
 
 	@Override
-	public void updateEnchere(Enchere enchere, int noUtilisateur, int nouveauMontant) {
-
-		try (Connection conn = ConnectionProvider.getConnection()) {
-
-			PreparedStatement stmt = conn.prepareStatement(UPDATE, PreparedStatement.RETURN_GENERATED_KEYS);
+	public void updateEnchere (Enchere enchere, int noUtilisateur, int nouveauMontant) {
+		
+		try (Connection conn = ConnectionProvider.getConnection()){
+	    	 
+	            PreparedStatement stmt = conn.prepareStatement(UPDATE, PreparedStatement.RETURN_GENERATED_KEYS);
 
 			stmt.setDate(1, java.sql.Date.valueOf(enchere.getDateEnchere()));
 			stmt.setInt(2, nouveauMontant);
