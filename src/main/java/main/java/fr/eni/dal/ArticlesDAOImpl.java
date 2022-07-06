@@ -24,7 +24,7 @@ public class ArticlesDAOImpl implements ArticlesDAO{
     //rajout pour afficher le detenteur de l'article
     private static String GET_PSEUDO_BY_ARTICLE ="SELECT pseudo FROM ARTICLES_VENDUS av INNER JOIN UTILISATEURS u ON av.no_utilisateur = u.no_utilisateur WHERE av.no_article = ?";
 
-
+    private static  String GET_ARTICLE_BY_NAME = "SELECT * FROM ARTICLES_VENDUS av INNER JOIN CATEGORIES c ON av.no_categorie = c.no_categorie WHERE nom_article LIKE ?";
 
     //rajout fonction pour recuperer lepseudo de l'artticle
     public String getUserByIdArticle(int idArticle) {
