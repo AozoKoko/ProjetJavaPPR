@@ -50,14 +50,6 @@ public class DetailVenteServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Utilisateur user = new Utilisateur();
-		Utilisateur utilisateur = new Utilisateur();
-		//rajout pour recup pseudo
-		String pseudo =null;
-		Articles article = new Articles();
-		Categorie cat = new Categorie();
-		Enchere enchere = new Enchere();
-		
 		// recup idUser
 		Integer idUser= Integer.parseInt(req.getParameter("param1"));
 		//System.out.println("idUserSuiteBtnEncherir " + idUser);
