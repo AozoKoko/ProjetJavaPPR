@@ -27,13 +27,13 @@ public class DetailVenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private ManagerEnchere mgr;
-	private ManagerUtilisateurs mgr2;
+	private ManagerUtilisateurs mgrUser;
 	private ManagerArticles mgrArt;
 	private ManagerCategorie mgrCat;
 
 	public DetailVenteServlet () {
 		mgr = BLLFactory.getEnchereManager();
-		mgr2 = BLLFactory.getUtilisateursManager();
+		mgrUser = BLLFactory.getUtilisateursManager();
 		mgrArt = BLLFactory.getArticlesManager();
 		mgrCat = BLLFactory.getCategorieManager();
 	}
@@ -67,7 +67,7 @@ public class DetailVenteServlet extends HttpServlet {
 			utilisateur = mgr2.selectById(idUser);
 			cat = mgrCat.selectById(idArticle);
 			article = mgrArt.selectParId(idArticle);
-			user = mgr2.selectById(idArticle);
+			user = mgrUser.selectById(idArticle);
 			//rajout pour recup pseudo
 			pseudo = mgrArt.getPseudoByIdArticle(idArticle);
 			req.setAttribute("user", user);
@@ -82,8 +82,6 @@ public class DetailVenteServlet extends HttpServlet {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-		
-
 		
 		/*Integer creditUser = user.getCredit();
 		System.out.println("creditUserDebut" + creditUser);
@@ -108,15 +106,11 @@ public class DetailVenteServlet extends HttpServlet {
 			req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
 		}*/
 		
-		
-		
-		
-
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Integer montantEnchereProposition = Integer.parseInt( req.getParameter("quantity"));
+		Integer montantEnchereProposition = Integer.parseInt(req.getParameter("quantity"));
 		System.out.println("montant" + montantEnchereProposition);
 		
 		req.setAttribute("enchere", montantEnchereProposition);
@@ -124,4 +118,3 @@ public class DetailVenteServlet extends HttpServlet {
 		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
 	}
 }
-		

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Dï¿½tail vente</title>
+<title>Détail vente</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
@@ -46,19 +46,19 @@
 		</div>
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Mise
-				ï¿½ prix : </label>
+				à prix : </label>
 			<div class="col-sm-10">${article.miseAPrix }</div>
 		</div>
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Fin
-				de l'enchï¿½re : </label>
+				de l'enchère : </label>
 			<div class="col-sm-10">${article.dateFinEncheres }</div>
 		</div>
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">retrait
 				postal : </label>
 			<div class="col-sm-10">${user.rue}
-				<br> ${user.codePostal} ${user.ville }
+				<br> ${user.codePostal} <br> ${user.ville }
 			</div>
 		</div>
 		<div class="row mb-3">
@@ -79,13 +79,19 @@
 					min="${empty article?'':article.prixVente}"
 					max="${empty utilisateur?'':utilisateur.credit}"><br>
 				<br>
-			<div class="col offset-md-6">
-				<!--	<a
-						href="<%=request.getContextPath()%>/detailVente?param3=${enchere.noEnchere}"
-						class="btn btn-primary">Enchï¿½rir</a>	-->
-
+				<div class="col offset-md-6">
+					<div class="btn-group me-2" role="group" aria-label="Second group">
+						<c:if test="${!visible }">
+							<button type="submit" class="btn btn-secondary"
+								name="submitEnchere" value="encherir">Enchérir</button>
+						</c:if>
+						<c:if test="${visible }">
+							<button type="submit" class="btn btn-secondary" disabled
+								name="submitEnchere" value="encherir">Enchérir</button>
+							<p>Vous n'avez pas assez de crédits pour enchérir :(</p>
+						</c:if>
+					</div>
 				</div>
-
 			</div>
 
 
