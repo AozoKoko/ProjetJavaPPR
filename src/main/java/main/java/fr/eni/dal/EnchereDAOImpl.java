@@ -22,7 +22,7 @@ public class EnchereDAOImpl implements EnchereDAO {
 			"(SELECT no_article FROM ARTICLES_VENDUS WHERE no_article = ?)," +
 			"(SELECT no_utilisateur FROM UTILISATEURS WHERE no_utilisateur = ?)," +            
 			" ?) ";
-	private static String UPDATE = "UPDATE ENCHERES SET date_enchere = ?, montant_enchere = ?, no_article = ?, no_utilisateur = ?, no_encherisseur = ?) WHERE no_enchere = ?";
+	private static String UPDATE = "UPDATE ENCHERES SET date_enchere = ?, montant_enchere = ?, no_article = ?, no_utilisateur = ?, no_encherisseur = ? WHERE no_enchere = ?";
 	private static String REMOVE = "DELETE FROM ENCHERES WHERE no_enchere = ?";
 
 	private static String GET_USER = "SELECT * FROM ENCHERES WHERE no_encherisseur = ?";
@@ -86,40 +86,26 @@ public class EnchereDAOImpl implements EnchereDAO {
 		}
 	
 	@Override
-	public Enchere updateEnchere (Enchere enchere, int noUtilisateur, int nouveauMontant) {
-		Enchere enchere1 = null;
+	public void updateEnchere (Enchere enchere, int noUtilisateur, int nouveauMontant) {
+
 
 		
 		try (Connection conn = ConnectionProvider.getConnection()){
 	    	 
 	            PreparedStatement stmt = conn.prepareStatement(UPDATE, PreparedStatement.RETURN_GENERATED_KEYS);
 
-	            stmt.setDate(1,java.sql.Date.valueOf(enchere1.getDateEnchere()));
+	            stmt.setDate(1,java.sql.Date.valueOf(enchere.getDateEnchere()));
 	            stmt.setInt(2, nouveauMontant);
-	            stmt.setInt(3,enchere1.getNoArticle());
-	            stmt.setInt(4,enchere1.getNoUtilisateur());
+	            stmt.setInt(3,enchere.getNoArticle());
+	            stmt.setInt(4,enchere.getNoUtilisateur());
 	            stmt.setInt(5,noUtilisateur);
-	            stmt.setInt(6,enchere1.getNoEnchere());
+	            stmt.setInt(6,enchere.getNoEnchere());
 
-	            stmt.executeUpdate();
-
-	          //Récup des données
-	            ResultSet rs = stmt.getGeneratedKeys();
-	            
-	            if(rs.next()){
-	            	enchere1 = new Enchere(rs.getInt("no_enchere"),
-	                        rs.getDate("date_enchere").toLocalDate(),
-	                        rs.getInt("montant_enchere"),
-	                        rs.getInt("no_article"),
-	                        rs.getInt("no_utilisateur"),
-	                        rs.getInt("no_encherisseur")
-	            			);
-	            }
+	            stmt.executeUpdate();       
 	            
 	        } catch (SQLException e) {
 	            throw new RuntimeException(e);
 	        }
-	     	return enchere1;
 	    }
 
 	@Override

@@ -132,6 +132,8 @@ public class DetailVenteServlet extends HttpServlet {
 
 		enchere.setMontantEnchere(montantEnchereProposition);
 		enchere.setNoEncherisseur(utilisateur.getNoUtilisateur());
+		article.setPrixVente(montantEnchereProposition);
+		mgrArt.updateArticle(article, user, cat);
 		try {
 			mgr.updateEnchere(enchere, enchere.getNoEncherisseur(), enchere.getMontantEnchere());
 		} catch (BLLException e) {

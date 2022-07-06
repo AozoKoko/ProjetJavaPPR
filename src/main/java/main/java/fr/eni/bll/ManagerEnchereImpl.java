@@ -28,9 +28,8 @@ public class ManagerEnchereImpl implements ManagerEnchere {
 	}
 
 	@Override
-	public Enchere updateEnchere(Enchere enchere, int noUtilisateur, int nouveauMontant) throws BLLException {
-		Enchere enchere1 = enchereDAO.updateEnchere(enchere, noUtilisateur, nouveauMontant);
-		 return enchere1;
+	public void updateEnchere(Enchere enchere, int noUtilisateur, int nouveauMontant) throws BLLException {
+		enchereDAO.updateEnchere(enchere, noUtilisateur, nouveauMontant);
 	}
 
 	@Override

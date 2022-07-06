@@ -148,9 +148,7 @@ public class ArticlesDAOImpl implements ArticlesDAO{
 
 
     //Fonction permettant la mise à jour d'un article dans la base de donnée SQL
-    public Articles updateArticle(Articles articles, Utilisateur utilisateur, Categorie categorie){
-
-        Articles articled = null;
+    public void updateArticle(Articles articles, Utilisateur utilisateur, Categorie categorie){
 
         //Tentative de connexion à la base de donnée SQL
         try (Connection conn = ConnectionProvider.getConnection()){
@@ -168,30 +166,13 @@ public class ArticlesDAOImpl implements ArticlesDAO{
             stmt.setInt(7,utilisateur.getNoUtilisateur());
             stmt.setInt(8,categorie.getNoCategorie());
             stmt.setString(9, articles.getUrlImage());
+            stmt.setInt(10,articles.getNoArticle());
 
             //Execution de la mise à jour en base de donnée
             stmt.executeUpdate();
-
-            //Récupération de l'objet midifié en base de donnée
-            ResultSet rs = stmt.getGeneratedKeys();
-
-            //Vérification que l'objet modifié existe bien
-            if (rs.next()){
-                //Création de l'article à renvoyer à partir du resultset généré
-                articled = new Articles(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getDate(4).toLocalDate(),
-                        rs.getDate(5).toLocalDate(),
-                        rs.getInt(6),
-                        rs.getInt(7),
-                        rs.getString(10));
-            }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return articled;
     }
 
     /**

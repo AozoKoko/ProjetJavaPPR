@@ -28,9 +28,9 @@ public class ManagerArticlesImpl implements ManagerArticles{
         articlesDAO.deleteArticle(id);
     }
 
-    public Articles updateArticle(Articles articles, Utilisateur utilisateur, Categorie categorie){
-        Articles articles1 = articlesDAO.updateArticle(articles,utilisateur,categorie);
-        return articles1;
+    public void updateArticle(Articles articles, Utilisateur utilisateur, Categorie categorie){
+    	articlesDAO.updateArticle(articles,utilisateur,categorie);
+        
     }
 
     public List<Articles> getAllArticles(int typeObjet, int id){

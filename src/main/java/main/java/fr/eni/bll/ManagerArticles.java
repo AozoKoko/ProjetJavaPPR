@@ -13,7 +13,7 @@ public interface ManagerArticles {
 
     void deleteArticle(int id);
 
-    Articles updateArticle(Articles articles, Utilisateur utilisateur, Categorie categorie);
+    void updateArticle(Articles articles, Utilisateur utilisateur, Categorie categorie);
 
     List<Articles> getAllArticles(int typeObjet, int id);
 
