@@ -17,5 +17,18 @@
     -webkit-box-pack: end;
 }
 
+.navbar{
+    background-color: #ffffff;
+}
+
+body{
+    background-color: #e7ecef;
+}
+.col-12{
+    padding-right: 0;
+}
+
+
+
 
 

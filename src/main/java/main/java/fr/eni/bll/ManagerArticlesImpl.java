@@ -67,4 +67,13 @@ public class ManagerArticlesImpl implements ManagerArticles{
 		String pseudo = articlesDAO.getUserByIdArticle(idArticle);
 		return pseudo;
 	}
+
+    public   List<Articles> getArticleByName(String name){
+        List<Articles> liste = articlesDAO.getArticleByName(name);
+        return liste;
+    }
+
+    public Articles getObjectArticleByName(String name){
+       return articlesDAO.getObjectArticleByName(name);
+    }
 }
