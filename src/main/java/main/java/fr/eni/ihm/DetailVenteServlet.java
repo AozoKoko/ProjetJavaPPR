@@ -73,7 +73,6 @@ public class DetailVenteServlet extends HttpServlet {
 			article = mgrArt.selectParId(idArticle);
 			user = mgrUser.selectById(idArticle);
 			enchere = mgr.getEnchereByNumArticle(idArticle);
-			System.out.println(enchere.toString());
 			formerUser = mgrUser.selectById(enchere.getNoEncherisseur());
 			//rajout pour recup pseudo
 			pseudo = mgrArt.getPseudoByIdArticle(idArticle);
@@ -116,9 +115,6 @@ public class DetailVenteServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
-		
 		Integer montantEnchereProposition = Integer.parseInt( req.getParameter("quantity"));
 
 		if (formerUser.getNoUtilisateur() != user.getNoUtilisateur()){
@@ -139,11 +135,9 @@ public class DetailVenteServlet extends HttpServlet {
 		} catch (BLLException e) {
 			throw new RuntimeException(e);
 		}
+		
+		//req.setAttribute("enchere", montantEnchereProposition);
 
-		System.out.println("montant" + montantEnchereProposition);
-
-		req.setAttribute("enchere", montantEnchereProposition);
-
-		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 	}
 }
