@@ -26,6 +26,8 @@ public class EnchereDAOImpl implements EnchereDAO {
 	private static String REMOVE = "DELETE FROM ENCHERE WHERE no_enchere = ?";
 
 	private static String GET_USER = "SELECT * FROM ENCHERES WHERE no_encherisseur = ?";
+
+	private static String GET_ENCHERE_BY_ID_ARTICLE = "SELECT * ENCHERES e INNER JOIN UTILISATEURS u ON e.no_utilisateur = u.no_utilisateur INNER JOIN ARTICLES_VENDUS av ON e.no_article = av.no_article WHERE no_article = ?";
 	
 	 // Renvoie l'enchere en fonction de son id enchere
     public Enchere selectById (int id) {
@@ -166,5 +168,31 @@ public class EnchereDAOImpl implements EnchereDAO {
 	return listeEnchere;
 		}
 
-	
+	public Enchere getEnchereByNumArticle(int idArticle){
+		Enchere enchere = null;
+		try (Connection conn = ConnectionProvider.getConnection()){
+
+			PreparedStatement stmt = conn.prepareStatement(GET_ENCHERE_BY_ID_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
+
+			stmt.setInt(1,idArticle);
+
+			ResultSet resultSet = stmt.executeQuery();
+
+			if(resultSet.next()){
+				Enchere encheres = new Enchere(resultSet.getInt(1),
+						resultSet.getDate(2).toLocalDate(),
+						resultSet.getInt(3),
+						resultSet.getInt(4),
+						resultSet.getInt(5),
+						resultSet.getInt(6));
+
+				enchere = encheres;
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+		return enchere;
+	}
 }

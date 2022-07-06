@@ -18,4 +18,5 @@ public interface ManagerEnchere {
 	void ajouterEnchere(Enchere enchere) throws BLLException;
 
 	List<Enchere> getEncheresByEncherisseur(Utilisateur user);
+	Enchere getEnchereByNumArticle(int idArticle);
 }

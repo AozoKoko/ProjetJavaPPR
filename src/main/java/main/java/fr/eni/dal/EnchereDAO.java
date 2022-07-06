@@ -19,5 +19,7 @@ public interface EnchereDAO {
 	void insertEnchere(Enchere enchere);
 
 	List<Enchere> getEncheresByEncherisseur(Utilisateur user);
+
+	Enchere getEnchereByNumArticle(int idArticle);
 	
 }
