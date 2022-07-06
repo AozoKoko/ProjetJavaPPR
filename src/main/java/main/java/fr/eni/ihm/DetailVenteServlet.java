@@ -69,11 +69,17 @@ public class DetailVenteServlet extends HttpServlet {
 			req.setAttribute("user", user);
 			req.setAttribute("article", article);
 			req.setAttribute("cat", cat);
-			req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
-			/*Integer creditUser = user.getCredit();
+		
+			Integer creditUser = user.getCredit();
 			System.out.println("creditUserDebut" + creditUser);
+			System.out.println("prix de vente   " + article.getPrixVente());
+			if (creditUser <= article.getPrixVente()) {
+				boolean visible = true;
+				req.setAttribute("visible", visible);
+			}
 			
-			
+			req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
+			/*
 			enchere = mgr.selectById(idEnchere);
 			Integer montantEnchereDebut = enchere.getMontantEnchere();
 			System.out.println("montantEnchereDebut" + montantEnchereDebut);
@@ -104,11 +110,16 @@ public class DetailVenteServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		Enchere enchere = new Enchere();
 		Integer montantEnchereProposition = Integer.parseInt(req.getParameter("quantity"));
 		System.out.println("montant" + montantEnchereProposition);
 		req.setAttribute("enchere", montantEnchereProposition);
-
-		req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
+		/*enchere = new Enchere(LocalDate.parse(req.getParameter("dateEnchere")),
+				Integer.parseInt(req.getParameter("nouveauMontant")), idUser, idArticle, 
+				Integer.parseInt(req.getParameter("noEncherisseur")));
+		
+		mgr.ajouterEnchere(enchere);*/
+		
+		req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
 	}
 }

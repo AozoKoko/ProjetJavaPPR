@@ -58,7 +58,7 @@
 			<label for="colFormLabel" class="col-sm-2 col-form-label">retrait
 				postal : </label>
 			<div class="col-sm-10">${user.rue}
-				<br> ${user.codePostal} <br> ${user.ville }
+				<br> ${user.codePostal} ${user.ville }
 			</div>
 		</div>
 		<div class="row mb-3">
