@@ -53,6 +53,7 @@ public class DetailVenteServlet extends HttpServlet {
 		String test = "";
 		if (test.equals(req.getParameter("param1"))) {
 			idUser = 0;
+			req.setAttribute("disabled", idUser);
 		} else {
 			idUser = Integer.parseInt(req.getParameter("param1"));
 		}
