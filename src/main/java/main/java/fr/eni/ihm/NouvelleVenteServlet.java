@@ -71,16 +71,18 @@ public class NouvelleVenteServlet extends HttpServlet {
 		if (req.getParameter("newEnchere").equals("save")) {
 			mgrArticle.insertArticles(article, user, cat);
 			Articles articles = mgrArticle.getObjectArticleByName(article.getNomArticle());
-			Enchere enchere = new Enchere(articles.getDateDebutEncheres(),articles.getMiseAPrix(),user.getNoUtilisateur(),user.getNoUtilisateur(), articles.getNoArticle());
+			System.out.println("numero article   " + articles.getNoArticle());
+			//test changement de place no article en 3 au lieu de en dernier
+			Enchere enchere = new Enchere(articles.getDateDebutEncheres(),articles.getPrixVente(), articles.getNoArticle(),user.getNoUtilisateur(),user.getNoUtilisateur());
 			try {
 				mgrE.ajouterEnchere(enchere);
 			} catch (BLLException e) {
 				throw new RuntimeException(e);
 			}
-			req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+			req.getRequestDispatcher("/pageAccueil").forward(req, resp);
 		}
 		if (req.getParameter("newEnchere").equals("annule")) {
-			req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+			req.getRequestDispatcher("/pageAccueil").forward(req, resp);
 		}
 		
 	}
