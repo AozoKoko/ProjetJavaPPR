@@ -129,19 +129,19 @@
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox"
-								value="EncheresOpen" id="EncheresOpen"> <label
+								value="EncheresOpen" id="EncheresOpen" name="EncheresOuvertes"> <label
 								class="form-check-label" for="EncheresOpen"> Enchères
 								ouvertes </label>
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox"
-								value="UserEncheres" id="UserEncheres" checked>
+								value="UserEncheres" id="UserEncheres" name="UtilisateurEncheres" checked>
 							<label class="form-check-label" for="UserEncheres"> Mes
 								enchères </label>
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox"
-								value="EncheresWon" id="EncheresWon"> <label
+								value="EncheresWon" id="EncheresWon" name="EncheresGagnees"> <label
 								class="form-check-label" for="EncheresWon"> Mes enchères
 								remportées </label>
 						</div>
@@ -156,18 +156,18 @@
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" value="mesVentesEnCours"
-								id="mesVentesEnCours"> <label class="form-check-label"
+								id="mesVentesEnCours" name="VentesEnCours"> <label class="form-check-label"
 								for="flexCheck"> Mes ventes en cours </label>
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox"
-								value="ventesNonDebutees" id="ventesNonDebutees" checked>
+								value="ventesNonDebutees" id="ventesNonDebutees" name="ventesNoDebutees" checked>
 							<label class="form-check-label" for="flexCheckChecked">
 								Ventes non débutées </label>
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox"
-								value="ventesTerminees" id="ventesTerminees"> <label
+								value="ventesTerminees" id="ventesTerminees" name="ventesFinies"> <label
 								class="form-check-label" for="flexCheck1"> Ventes
 								terminées </label>
 						</div>
