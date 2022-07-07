@@ -67,18 +67,14 @@
 			role="button">Modifier</a>
 	</div>
 
-
-    <footer>
-        <!-- pied de page -->
-        <div id="footer-author">
-            <!-- auteur -->
-            <a href="mailto:contact@eni-ecole.fr" title="Contact : ">ENI ECOLE</a>
-        </div>
-        <div id="footer-copyright">
-            <!-- copyright -->
-            <a href="http://www.eni-ecole.fr" title="Eni ECOLE " target="_blank">Copyright&copy; ENI ECOLE Informatique </a>
-        </div>
-    </footer>
+    <footer class="text-center text-white fixed-bottom" style="background-color: #21081a;">
+  	<!-- Grid container -->
+  		<div class="container p-4"></div>
+  		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+   		 © 2022 Copyright:
+    		<a class="text-white" title="Eni ECOLE " target="_blank" href="http://www.eni-ecole.fr">ENI ECOLE</a>
+  		</div>
+	</footer>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
