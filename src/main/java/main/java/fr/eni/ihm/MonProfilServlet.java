@@ -57,7 +57,7 @@ public class MonProfilServlet extends HttpServlet {
 			try {
 				user = mgr.selectById(idUser);
 				mgr.deleteUser(user);
-				req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+				req.getRequestDispatcher("/pageAccueil").forward(req, resp);
 			} catch (DALException e) {
 				e.printStackTrace();
 			} catch (BLLException e) {
@@ -70,7 +70,7 @@ public class MonProfilServlet extends HttpServlet {
 					req.getParameter("ville"),req.getParameter("password"));
 			
 			mgr.updateUser(userModify);
-			req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+			req.getRequestDispatcher("/pageAccueil").forward(req, resp);
 		}
 	}
 
