@@ -39,7 +39,8 @@
 							</div>
 							<div class="col-md-9">
 								<input type="text" id="form3Example1" class="form-control"
-									name="pseudo" value="${empty user?'':user.pseudo }" />
+									name="pseudo" pattern="[a-zA-Z0-9]+" required
+									value="${empty user?'':user.pseudo }" />
 							</div>
 						</div>
 					</div>
@@ -50,7 +51,8 @@
 							</div>
 							<div class="col-md-9">
 								<input type="text" id="form3Example1" class="form-control"
-									name="prenom" value="${empty user?'':user.prenom }" />
+									name="prenom" pattern="[a-zA-Z0-9]+" required
+									value="${empty user?'':user.prenom }" />
 							</div>
 						</div>
 					</div>
@@ -62,7 +64,9 @@
 							</div>
 							<div class="col-md-9">
 								<input type="tel" id="form3Example1" class="form-control"
-									name="telephone" value="${empty user?'':user.telephone }" />
+									name="telephone"
+									pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required
+									value="${empty user?'':user.telephone }" />
 							</div>
 						</div>
 					</div>
@@ -74,7 +78,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="tel" id="form3Example1" class="form-control"
-									name="codePostal" value="${empty user?'':user.codePostal }" />
+									name="codePostal" value="${empty user?'':user.codePostal }" required />
 							</div>
 						</div>
 					</div>
@@ -86,7 +90,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="password" id="form3Example1" class="form-control"
-									name="password" />
+									name="password" required/>
 							</div>
 						</div>
 					</div>
@@ -99,7 +103,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="text" id="form3Example1" class="form-control"
-									name="nom" value="${empty user?'':user.nom }" />
+									name="nom" value="${empty user?'':user.nom }" required/>
 							</div>
 						</div>
 					</div>
@@ -110,7 +114,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="email" id="form3Example1" class="form-control"
-									name="email" value="${empty user?'':user.email }" />
+									name="email" value="${empty user?'':user.email }" required/>
 							</div>
 						</div>
 					</div>
@@ -121,7 +125,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="text" id="form3Example1" class="form-control"
-									name="rue" value="${empty user?'':user.rue }" />
+									name="rue" value="${empty user?'':user.rue }" required/>
 							</div>
 						</div>
 					</div>
@@ -132,7 +136,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="text" id="form3Example1" class="form-control"
-									name="ville" value="${empty user?'':user.ville }" />
+									name="ville" value="${empty user?'':user.ville }" required/>
 							</div>
 						</div>
 					</div>
@@ -144,7 +148,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="password" id="form3Example1" class="form-control"
-									name="passwordConfirm" />
+									name="passwordConfirm" required/>
 							</div>
 						</div>
 					</div>
