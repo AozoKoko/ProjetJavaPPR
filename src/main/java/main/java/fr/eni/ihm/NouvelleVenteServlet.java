@@ -71,7 +71,6 @@ public class NouvelleVenteServlet extends HttpServlet {
 		if (req.getParameter("newEnchere").equals("save")) {
 			mgrArticle.insertArticles(article, user, cat);
 			Articles articles = mgrArticle.getObjectArticleByName(article.getNomArticle());
-			System.out.println("numero article   " + articles.getNoArticle());
 			//test changement de place no article en 3 au lieu de en dernier
 			Enchere enchere = new Enchere(articles.getDateDebutEncheres(),articles.getPrixVente(), articles.getNoArticle(),user.getNoUtilisateur(),user.getNoUtilisateur());
 			try {

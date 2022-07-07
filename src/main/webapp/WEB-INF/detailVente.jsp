@@ -47,7 +47,7 @@
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Mise
 				à prix : </label>
-			<div class="col-sm-10">${article.prixVente }</div>
+			<div class="col-sm-10">${article.miseAPrix }</div>
 		</div>
 		<div class="row mb-3">
 			<label for="colFormLabel" class="col-sm-2 col-form-label">Fin
