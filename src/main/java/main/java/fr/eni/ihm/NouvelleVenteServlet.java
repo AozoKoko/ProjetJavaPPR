@@ -71,7 +71,7 @@ public class NouvelleVenteServlet extends HttpServlet {
 		if (req.getParameter("newEnchere").equals("save")) {
 			mgrArticle.insertArticles(article, user, cat);
 			Articles articles = mgrArticle.getObjectArticleByName(article.getNomArticle());
-			Enchere enchere = new Enchere(articles.getDateDebutEncheres(),articles.getMiseAPrix(),user.getNoUtilisateur(),user.getNoUtilisateur(), article.getNoArticle());
+			Enchere enchere = new Enchere(articles.getDateDebutEncheres(),articles.getMiseAPrix(),user.getNoUtilisateur(),user.getNoUtilisateur(), articles.getNoArticle());
 			try {
 				mgrE.ajouterEnchere(enchere);
 			} catch (BLLException e) {

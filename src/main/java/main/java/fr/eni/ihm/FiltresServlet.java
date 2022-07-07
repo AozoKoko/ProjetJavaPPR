@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
+
 
 import main.java.fr.eni.bll.BLLException;
 import main.java.fr.eni.bll.BLLFactory;
