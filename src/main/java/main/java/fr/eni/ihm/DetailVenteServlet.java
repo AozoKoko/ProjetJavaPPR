@@ -134,8 +134,6 @@ public class DetailVenteServlet extends HttpServlet {
 		} catch (BLLException e) {
 			throw new RuntimeException(e);
 		}
-		
-		//req.setAttribute("enchere", montantEnchereProposition);
 
 		req.getRequestDispatcher("/pageAccueil").forward(req, resp);
 	}

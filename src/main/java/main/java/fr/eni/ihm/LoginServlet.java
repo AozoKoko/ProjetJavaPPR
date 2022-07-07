@@ -38,7 +38,6 @@ public class LoginServlet extends HttpServlet{
 		HttpSession session = req.getSession();
 		try {
 			idUser = mgr.verifLogin(pseudo, password);
-			System.out.println("iduser   " + idUser);
 			if (idUser != null) {
 				// creation exprression language variable mode connecte pour utiliser une seule page accueil
 				session.setAttribute("modeConnecte", idUser);
