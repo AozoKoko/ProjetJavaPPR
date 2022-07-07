@@ -46,7 +46,7 @@ public class ProfilCreationServlet extends HttpServlet{
 		if (req.getParameter("password").equals(req.getParameter("passwordConfirm"))) {
 			try {
 				inscription = mgr.ajouterUser(user);
-				req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);
+				req.getRequestDispatcher("/pageAccueil").forward(req, resp);
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}
