@@ -67,9 +67,23 @@
 			role="button">Modifier</a>
 	</div>
 
+
+    <footer>
+        <!-- pied de page -->
+        <div id="footer-author">
+            <!-- auteur -->
+            <a href="mailto:contact@eni-ecole.fr" title="Contact : ">ENI ECOLE</a>
+        </div>
+        <div id="footer-copyright">
+            <!-- copyright -->
+            <a href="http://www.eni-ecole.fr" title="Eni ECOLE " target="_blank">Copyright&copy; ENI ECOLE Informatique </a>
+        </div>
+    </footer>
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 		crossorigin="anonymous"></script>
+
 </body>
 </html>
