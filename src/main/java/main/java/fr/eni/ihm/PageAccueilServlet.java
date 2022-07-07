@@ -36,7 +36,7 @@ public class PageAccueilServlet extends HttpServlet {
 		System.out.println("taille liste  get " + articles.size());
 		
 		
-		if (affichageConnexion==null) {
+		 if (affichageConnexion==null) {
 			req.setAttribute("articles", articles);
 			req.setAttribute("modeConnecte", affichageConnexion);
 			req.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(req, resp);

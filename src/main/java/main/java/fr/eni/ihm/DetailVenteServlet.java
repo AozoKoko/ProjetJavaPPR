@@ -23,48 +23,52 @@ import main.java.fr.eni.dal.DALException;
 
 @WebServlet("/detailVente")
 public class DetailVenteServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private ManagerEnchere mgr;
 	private ManagerUtilisateurs mgrUser;
 	private ManagerArticles mgrArt;
 	private ManagerCategorie mgrCat;
 
-
 	private Utilisateur user = new Utilisateur();
 	private Utilisateur utilisateur = new Utilisateur();
-	//rajout pour recup pseudo
-	private String pseudo =null;
+	// rajout pour recup pseudo
+	private String pseudo = null;
 	private Articles article = new Articles();
 	private Categorie cat = new Categorie();
 	private Enchere enchere = new Enchere();
 	private Utilisateur formerUser = new Utilisateur();
 
-	public DetailVenteServlet () {
+	public DetailVenteServlet() {
 		mgr = BLLFactory.getEnchereManager();
 		mgrUser = BLLFactory.getUtilisateursManager();
 		mgrArt = BLLFactory.getArticlesManager();
 		mgrCat = BLLFactory.getCategorieManager();
 	}
-	
+
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		Integer idUser = null;
 		// recup idUser
-		Integer idUser= Integer.parseInt(req.getParameter("param1"));
-		//System.out.println("idUserSuiteBtnEncherir " + idUser);
-		
+		String test = "";
+		if (test.equals(req.getParameter("param1"))) {
+			idUser = 0;
+		} else {
+			idUser = Integer.parseInt(req.getParameter("param1"));
+		}
+
 		// recup idArticle
 		Integer idArticle = Integer.parseInt(req.getParameter("param2"));
-		//System.out.println("idArticleSuiteBtnEncherir " + idArticle);
-		
+		// System.out.println("idArticleSuiteBtnEncherir " + idArticle);
+
 		// recup montant de la derniere enchere (montantEnchere)
-		//Integer montantEnchere = Integer.parseInt(req.getParameter("montantEnchere"));
-		
+		// Integer montantEnchere =
+		// Integer.parseInt(req.getParameter("montantEnchere"));
+
 		// recup id de la dernière enchere de l'article correspondant
-		//int idEnchere = Integer.parseInt(req.getParameter("param3"));
-		//System.out.println("idEnchereSuiteBtnPrecEnchereTiers" + idEnchere);
-		
+		// int idEnchere = Integer.parseInt(req.getParameter("param3"));
+		// System.out.println("idEnchereSuiteBtnPrecEnchereTiers" + idEnchere);
+
 		try {
 
 			utilisateur = mgrUser.selectById(idUser);
@@ -73,64 +77,63 @@ public class DetailVenteServlet extends HttpServlet {
 			user = mgrUser.selectById(idArticle);
 			enchere = mgr.getEnchereByNumArticle(idArticle);
 			formerUser = mgrUser.selectById(enchere.getNoEncherisseur());
-			//rajout pour recup pseudo
+			// rajout pour recup pseudo
 			pseudo = mgrArt.getPseudoByIdArticle(idArticle);
 			req.setAttribute("user", user);
-			//renvoi de la donnee dans la jsp
+			// renvoi de la donnee dans la jsp
 			req.setAttribute("userPseudo", pseudo);
 			req.setAttribute("utilisateur", utilisateur);
 			req.setAttribute("article", article);
 			req.setAttribute("cat", cat);
 			req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
+
 		} catch (DALException e) {
 			e.printStackTrace();
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-		
-		/*Integer creditUser = user.getCredit();
-		System.out.println("creditUserDebut" + creditUser);
-		
-		
-		enchere = mgr.selectById(idEnchere);
-		Integer montantEnchereDebut = enchere.getMontantEnchere();
-		System.out.println("montantEnchereDebut" + montantEnchereDebut);
-		
-		if (article.getMiseAPrix()>=montantEnchere && creditUser>=montantEnchere) {
-			System.out.println("");
-			Enchere enchereModify = new Enchere(idEnchere, LocalDate.parse(req.getParameter("dateEnchere")),
-					Integer.parseInt(req.getParameter("nouveauMontant")), idUser, idArticle, 
-					Integer.parseInt(req.getParameter("noEncherisseur")));
-			
-			int creditAcheteur = Integer.parseInt(req.getParameter("quantity"));
-			mgr.updateEnchere(enchereModify, idUser, creditAcheteur);
-			req.setAttribute("visible", true);
-			req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
-		} else {
-			req.setAttribute("visible", false);
-			req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp);
-		}*/
-		
+
+		/*
+		 * Integer creditUser = user.getCredit(); System.out.println("creditUserDebut" +
+		 * creditUser);
+		 * 
+		 * 
+		 * enchere = mgr.selectById(idEnchere); Integer montantEnchereDebut =
+		 * enchere.getMontantEnchere(); System.out.println("montantEnchereDebut" +
+		 * montantEnchereDebut);
+		 * 
+		 * if (article.getMiseAPrix()>=montantEnchere && creditUser>=montantEnchere) {
+		 * System.out.println(""); Enchere enchereModify = new Enchere(idEnchere,
+		 * LocalDate.parse(req.getParameter("dateEnchere")),
+		 * Integer.parseInt(req.getParameter("nouveauMontant")), idUser, idArticle,
+		 * Integer.parseInt(req.getParameter("noEncherisseur")));
+		 * 
+		 * int creditAcheteur = Integer.parseInt(req.getParameter("quantity"));
+		 * mgr.updateEnchere(enchereModify, idUser, creditAcheteur);
+		 * req.setAttribute("visible", true);
+		 * req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp); }
+		 * else { req.setAttribute("visible", false);
+		 * req.getRequestDispatcher("/WEB-INF/detailVente.jsp").forward(req, resp); }
+		 */
+
 	}
-	
+
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Integer montantEnchereProposition = Integer.parseInt( req.getParameter("quantity"));
+		Integer montantEnchereProposition = Integer.parseInt(req.getParameter("quantity"));
 
+		if (formerUser.getNoUtilisateur() != user.getNoUtilisateur()) {
 
-
-		if (formerUser.getNoUtilisateur() != user.getNoUtilisateur()){
-
-			formerUser.setCredit(formerUser.getCredit()+ enchere.getMontantEnchere());
+			formerUser.setCredit(formerUser.getCredit() + enchere.getMontantEnchere());
 			mgrUser.updateUser(formerUser);
 
 		}
 
-		if(utilisateur.getNoUtilisateur() == formerUser.getNoUtilisateur()){
+		if (utilisateur.getNoUtilisateur() == formerUser.getNoUtilisateur()) {
 			try {
 
 				utilisateur.setCredit(mgrUser.selectById(formerUser.getNoUtilisateur()).getCredit());
 				mgrUser.updateUser(utilisateur);
-			
+
 			} catch (DALException e) {
 				throw new RuntimeException(e);
 			} catch (BLLException e) {
@@ -141,10 +144,6 @@ public class DetailVenteServlet extends HttpServlet {
 		utilisateur.setCredit(utilisateur.getCredit() - montantEnchereProposition);
 
 		mgrUser.updateUser(utilisateur);
-
-
-
-
 
 		enchere.setMontantEnchere(montantEnchereProposition);
 		enchere.setNoEncherisseur(utilisateur.getNoUtilisateur());
