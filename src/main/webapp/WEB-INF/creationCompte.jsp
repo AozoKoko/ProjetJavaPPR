@@ -15,8 +15,11 @@
 <body>
 	<nav class="navbar bg-light">
 		<div class="container-fluid">
-			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/pageAccueil">ENI-Enchères</a>
+			<figure class="image is-128x128">
+				<a href="<%=request.getContextPath()%>/pageAccueil"><img
+					src="img/logo.png" alt="logo" width="80px"
+					class="d-inline-block align-text-top"></a>
+			</figure>
 		</div>
 	</nav>
 	<div class="container-fluid">
