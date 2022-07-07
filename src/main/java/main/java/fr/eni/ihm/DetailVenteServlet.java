@@ -116,13 +116,34 @@ public class DetailVenteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer montantEnchereProposition = Integer.parseInt( req.getParameter("quantity"));
 
+
+
 		if (formerUser.getNoUtilisateur() != user.getNoUtilisateur()){
+
 			formerUser.setCredit(formerUser.getCredit()+ enchere.getMontantEnchere());
 			mgrUser.updateUser(formerUser);
+
 		}
 
-			utilisateur.setCredit(utilisateur.getCredit() - montantEnchereProposition);
-			mgrUser.updateUser(utilisateur);
+		if(utilisateur.getNoUtilisateur() == formerUser.getNoUtilisateur()){
+			try {
+
+				utilisateur.setCredit(mgrUser.selectById(formerUser.getNoUtilisateur()).getCredit());
+				mgrUser.updateUser(utilisateur);
+			
+			} catch (DALException e) {
+				throw new RuntimeException(e);
+			} catch (BLLException e) {
+				throw new RuntimeException(e);
+			}
+		}
+
+		utilisateur.setCredit(utilisateur.getCredit() - montantEnchereProposition);
+
+		mgrUser.updateUser(utilisateur);
+
+
+
 
 
 		enchere.setMontantEnchere(montantEnchereProposition);
