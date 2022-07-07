@@ -37,7 +37,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="form3Example1" class="form-control"
-									name="pseudo" value="${empty profil?'':profil.pseudo }"/>
+									name="pseudo" value="${empty profil?'':profil.pseudo }" />
 							</div>
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="form3Example1" class="form-control"
-									name="prenom" value="${empty profil?'':profil.prenom }"/>
+									name="prenom" value="${empty profil?'':profil.prenom }" />
 							</div>
 						</div>
 					</div>
@@ -60,7 +60,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="tel" id="form3Example1" class="form-control"
-									name="telephone" value="${empty profil?'':profil.telephone }"/>
+									name="telephone" value="${empty profil?'':profil.telephone }" />
 							</div>
 						</div>
 					</div>
@@ -72,7 +72,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="tel" id="form3Example1" class="form-control"
-									name="codePostal" value="${empty profil?'':profil.codePostal }"/>
+									name="codePostal" value="${empty profil?'':profil.codePostal }" />
 							</div>
 						</div>
 					</div>
@@ -109,7 +109,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="form3Example1" class="form-control"
-									name="nom" value="${empty profil?'':profil.nom }"/>
+									name="nom" value="${empty profil?'':profil.nom }" />
 							</div>
 						</div>
 					</div>
@@ -120,7 +120,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="email" id="form3Example1" class="form-control"
-									name="email" value="${empty profil?'':profil.email }"/>
+									name="email" value="${empty profil?'':profil.email }" />
 							</div>
 						</div>
 					</div>
@@ -131,7 +131,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="form3Example1" class="form-control"
-									name="rue" value="${empty profil?'':profil.rue }"/>
+									name="rue" value="${empty profil?'':profil.rue }" />
 							</div>
 						</div>
 					</div>
@@ -142,15 +142,19 @@
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="form3Example1" class="form-control"
-									name="ville" value="${empty profil?'':profil.ville }"/>
+									name="ville" value="${empty profil?'':profil.ville }" />
 							</div>
 						</div>
 					</div>
 					<!-- a voir pour ecart au dessus du password confirmation -->
 					<div class="form-outline">
 						<div class="row mb-2">
-							<div class="col-md-4"><label class="form-label" for="form3Example1"></label></div>
-							<div class="col-md-6"><label class="form-label" for="form3Example1"></label></div>
+							<div class="col-md-4">
+								<label class="form-label" for="form3Example1"></label>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label" for="form3Example1"></label>
+							</div>
 						</div>
 					</div>
 					<div class="form-outline">
@@ -161,7 +165,8 @@
 							</div>
 							<div class="col-md-6">
 								<input type="password" id="form3Example1" class="form-control"
-									name="passwordConfirm" value="${empty profil?'':profil.motDePasse }" />
+									name="passwordConfirm"
+									value="${empty profil?'':profil.motDePasse }" />
 							</div>
 						</div>
 					</div>
@@ -174,23 +179,20 @@
 			</div>
 			<div class="row mb-4">
 				<div class="col text-center">
-					<button type="submit" class="btn btn-outline-dark" name="buttonFunction" value="save">Enregistrer</button>
+					<button type="submit" class="btn btn-outline-dark"
+						name="buttonFunction" value="save">Enregistrer</button>
 				</div>
 				<div class="col text-center">
-					<button type="submit" class="btn btn-outline-dark" name="buttonFunction" value="delete">Supprimer mon compte</button>
+					<button type="submit" class="btn btn-outline-dark"
+						name="buttonFunction" value="delete">Supprimer mon compte</button>
 				</div>
 			</div>
 		</form>
 	</div>
 
-
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 		crossorigin="anonymous"></script>
-
-
-
-
 </body>
 </html>

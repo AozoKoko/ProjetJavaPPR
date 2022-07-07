@@ -78,7 +78,8 @@
 							</div>
 							<div class="col-md-9">
 								<input type="tel" id="form3Example1" class="form-control"
-									name="codePostal" value="${empty user?'':user.codePostal }" required />
+									name="codePostal" value="${empty user?'':user.codePostal }"
+									required />
 							</div>
 						</div>
 					</div>
@@ -90,7 +91,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="password" id="form3Example1" class="form-control"
-									name="password" required/>
+									name="password" required />
 							</div>
 						</div>
 					</div>
@@ -103,7 +104,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="text" id="form3Example1" class="form-control"
-									name="nom" value="${empty user?'':user.nom }" required/>
+									name="nom" value="${empty user?'':user.nom }" required />
 							</div>
 						</div>
 					</div>
@@ -114,7 +115,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="email" id="form3Example1" class="form-control"
-									name="email" value="${empty user?'':user.email }" required/>
+									name="email" value="${empty user?'':user.email }" required />
 							</div>
 						</div>
 					</div>
@@ -125,7 +126,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="text" id="form3Example1" class="form-control"
-									name="rue" value="${empty user?'':user.rue }" required/>
+									name="rue" value="${empty user?'':user.rue }" required />
 							</div>
 						</div>
 					</div>
@@ -136,7 +137,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="text" id="form3Example1" class="form-control"
-									name="ville" value="${empty user?'':user.ville }" required/>
+									name="ville" value="${empty user?'':user.ville }" required />
 							</div>
 						</div>
 					</div>
@@ -148,7 +149,7 @@
 							</div>
 							<div class="col-md-9">
 								<input type="password" id="form3Example1" class="form-control"
-									name="passwordConfirm" required/>
+									name="passwordConfirm" required />
 							</div>
 						</div>
 					</div>
@@ -168,7 +169,7 @@
 
 	</div>
 
-
+	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

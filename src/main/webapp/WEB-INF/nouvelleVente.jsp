@@ -99,16 +99,16 @@
 					</div>
 					<div class="row mb-2">
 						<div class="input-group mb-3">
-							<span class="input-group-text">Prix initial :</span> <input type="text"
-								class="form-control" aria-label="Amount (to the nearest dollar)"
-								name="prixInit">
+							<span class="input-group-text">Prix initial :</span> <input
+								type="text" class="form-control"
+								aria-label="Amount (to the nearest dollar)" name="prixInit">
 						</div>
 					</div>
 					<div class="row mb-2">
 						<div class="input-group mb-3">
-							<span class="input-group-text">Prix de vente:</span> <input type="text"
-								class="form-control" aria-label="Amount (to the nearest dollar)"
-								name="prixVente">
+							<span class="input-group-text">Prix de vente:</span> <input
+								type="text" class="form-control"
+								aria-label="Amount (to the nearest dollar)" name="prixVente">
 						</div>
 					</div>
 					<div class="row mb-2">
@@ -164,9 +164,6 @@
 			</div>
 		</form>
 	</div>
-
-
-
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
